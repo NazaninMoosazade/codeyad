@@ -15,7 +15,19 @@ export default {
         MorabbaMedium: "Morabba Medium",
         MorabbaBold: "Morabba Bold",
       },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: "1rem",
+          lg: "0.625rem",
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addVariant }) {
+      addVariant("child", "& > *");
+      addVariant("child-hover", "&>*:hover");
+    },
+  ],
 };
