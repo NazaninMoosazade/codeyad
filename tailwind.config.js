@@ -7,6 +7,14 @@ export default {
         bgBanner:
           "linear-gradient(270deg, #286bb8, #5fa4f0 23.78%, #286bb6 49.83%, #62a6f3 72.74%, #286bb8)",
       },
+      fontFamily: {
+        Dana: "Dana",
+        DanaMeduim: "Dana Medium",
+        DanaDemiBold: "Dana DemiBold",
+        MorabbaLight: "Morabba Light",
+        MorabbaMedium: "Morabba Medium",
+        MorabbaBold: "Morabba Bold",
+      },
     },
   },
   plugins: [],
