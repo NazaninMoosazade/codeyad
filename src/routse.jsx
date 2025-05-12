@@ -1,16 +1,13 @@
-import Index from "./Pages"
-import Course from "./Pages/Course"
-import CourseCat from "./Pages/CourseCat"
-import Blug from "./Pages/Blug"
-
+import Index from "./Pages";
+import Course from "./Pages/Course";
+import CourseCat from "./Pages/CourseCat";
+import Blug from "./Pages/Blug";
 
 const routes = [
-{path: '/' , elements: <Index/>},
-{path: '/course/:courseName' , elements: <Course/>},
-{path: '/course-cat/:categoryName' , elements: <CourseCat/>},
-{path: '/blug/:blugName' , elements: <Blug/>},
+  { path: '/', element: <Index /> },
+  { path: '/course/:courseName', element: <Course /> },
+  { path: '/course-cat/:categoryName', element: <CourseCat /> },
+  { path: '/blug/:blugName', element: <Blug /> },
+];
 
-
-]
-
-export default routes
+export default routes;
