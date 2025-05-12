@@ -7,6 +7,12 @@ export default {
         bgBanner:
           "linear-gradient(270deg, #286bb8, #5fa4f0 23.78%, #286bb6 49.83%, #62a6f3 72.74%, #286bb8)",
       },
+      backgroundColor: {
+        bgWhite: "#f1f5f9",
+      },
+      colors : {
+        blue : '#286bb8'
+      },
       fontFamily: {
         Dana: "Dana",
         DanaMeduim: "Dana Medium",
@@ -18,9 +24,11 @@ export default {
       container: {
         center: true,
         padding: {
-          DEFAULT: "1rem",
-          lg: "0.625rem",
+          DEFAULT: "3rem", // افزایش padding به 3rem
+          lg: "2rem", // تغییر padding در اندازه‌های بزرگتر
         },
+        width: "100%", // عرض 100 درصد صفحه
+        maxWidth: "1600px", // تعیین حداکثر عرض کانتینر به 1600px
       },
     },
   },

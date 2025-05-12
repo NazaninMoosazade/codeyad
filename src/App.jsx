@@ -7,7 +7,9 @@ export default function App() {
  const router = createBrowserRouter(routes);
   return (
     <>
-    <RouterProvider router={router} />
+    <div className='min-h-screen bg-bgWhite'>
+      <RouterProvider router={router} />
+    </div>
     </>
   )
 }
