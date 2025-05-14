@@ -2,6 +2,8 @@ import React from 'react'
 
 export default function LeftSectionLanding() {
   return (
-    <div>LeftSectionLanding</div>
+
+      <img src="/img/landing.webp" alt="" className='h-[630px]'/>
+
   )
 }

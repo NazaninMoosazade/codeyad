@@ -7,7 +7,7 @@ export default function MiddleHeader() {
     <>
       {/* Desktop Header */}
       <header>
-        <div className="container">
+        <div className="w-full max-w-[1600px] mx-auto px-4 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Right Header */}
             <div className="flex items-center mt-4">

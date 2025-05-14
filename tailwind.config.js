@@ -2,16 +2,6 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    container: {
-      center: true,
-      padding: '1rem',
-      screens: {
-        sm: '100%',
-        md: '720px',
-        lg: '960px',
-        xl: '1400px',
-      },
-    },
     extend: {
       backgroundImage: {
         bgBanner:
@@ -31,16 +21,23 @@ export default {
         MorabbaMedium: "Morabba Medium",
         MorabbaBold: "Morabba Bold",
       },
-      // اضافه کردن کانتینر جدید
-       container: {
+      container: {
         center: true,
         padding: {
-          DEFAULT: "1rem",
-          lg: "0.625rem",
+          DEFAULT: "1rem", // فاصله داخلی پیش‌فرض
+          lg: "2rem", // فاصله در نمایشگرهای بزرگ‌تر
+        },
+        screens: {
+          sm: "100%",
+          md: "768px",
+          lg: "1140px",
+          xl: "1600px", // تغییر اندازه به 1600px
+          "2xl": "1800px", // اندازه خیلی بزرگ‌تر
         },
       },
     },
   },
+
   plugins: [
     function ({ addVariant }) {
       addVariant("child", "& > *");
