@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function SectionTitle({ title, btnHref, btnTitle }) {
   return (
-    <div className="w-full max-w-[1600px] mx-auto px-4 lg:px-8">
+    <div className=" w-full max-w-[1600px] mx-auto px-4 lg:px-8">
       <div className="flex items-center justify-between">
         <h3 className="font-DanaDemiBold"> {title} </h3>
 
