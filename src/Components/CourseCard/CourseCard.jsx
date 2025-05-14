@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function CourseCard() {
   return (
@@ -14,15 +15,17 @@ export default function CourseCard() {
 
   {/* <!-- محتوای کارت --> */}
   <div class="p-4 flex flex-col justify-between flex-grow">
-    {/* <!-- سطح --> */}
-    <span class="text-xs text-blue-700 bg-blue-100 rounded-full px-3 py-1 w-fit mb-2">
-      سطح: از مقدماتی تا پیشرفته
-    </span>
+
 
     {/* <!-- عنوان دوره --> */}
-    <a href="/course/personal-professional-success-specialization" class="font-semibold text-gray-800 text-base leading-6 hover:text-blue-600 transition-colors mb-3">
+    <Link class="font-Dana no-underline text-gray-800 text-base leading-6 hover:text-blue transition-colors mb-3">
       آموزش تخصص در دستیابی به موفقیت شخصی و حرفه‌ای
-    </a>
+    </Link>
+
+        {/* <!-- سطح --> */}
+    <span class="text-xs font-DanaDemiBold text-blue rounded-full px-3 py-1 w-fit mb-2">
+       مدرس دوره :    امین سعیدی
+    </span>
 
     {/* <!-- اطلاعات زمان و جلسات --> */}
     <div class="flex items-center text-sm text-gray-600 gap-3 mb-4">
@@ -36,19 +39,28 @@ export default function CourseCard() {
     </div>
 
     {/* <!-- قیمت و دکمه --> */}
-    <div class="flex items-center justify-between mt-auto pt-2">
-      <p class="text-blue-600 font-bold text-[15px]">
-        ۱۹۹,۰۰۰ <span class="text-sm font-normal">تومان</span>
+    <div class="">
+      <p class="text-blue font-bold ">
+        ۱۹۹,۰۰۰ <span class="text-sm font-Dana ">تومان</span>
       </p>
-      <a
-        href="/course/personal-professional-success-specialization"
-        class="bg-blue-600 hover:bg-blue-700 text-white text-sm px-4 py-2 rounded-md flex items-center gap-1 transition-colors"
-      >
-        شروع دوره
-        <svg width="12" height="12" viewBox="0 0 6 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4.97172 8.65283..." fill="#fff" />
+
+      <div className="no-underline p-2 flex items-center justify-center gap-x-2 text-white bg-blue rounded-lg font-Dana">
+        <Link className="text-white cursor-pointer text-sm font-Dana no-underline"> شروع دوره </Link>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          className="w-3 h-3 font-bold text-white"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15.75 19.5 8.25 12l7.5-7.5"
+          />
         </svg>
-      </a>
+      </div>
     </div>
   </div>
 </div>
