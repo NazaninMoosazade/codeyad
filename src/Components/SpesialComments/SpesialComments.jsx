@@ -43,7 +43,7 @@ export default function SpesialComments() {
   };
 
   return (
-    <section className="mt-20 w-full bg-bgComments py-12 px-6">
+    <section className="mt-44 w-full bg-bgComments py-12 px-6">
       <Swiper
         modules={[Autoplay]}
         autoplay={{ delay: 1500, disableOnInteraction: false }}
