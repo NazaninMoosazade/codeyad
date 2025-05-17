@@ -13,6 +13,7 @@ export default {
       colors: {
         blue: "#286bb8",
         bgComments : '#286bb81a',
+        border: '#ffffff17'
       },
       fontFamily: {
         Dana: "Dana",
