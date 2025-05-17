@@ -5,9 +5,9 @@ import ThemeToggleButton from "./../ThemeToggleButton";
 export default function MiddleHeader() {
   return (
     <>
-      {/* Desktop Header */}
       <header>
-        <div className="w-full max-w-[1600px] mx-auto px-4 lg:px-8">
+        {/* Desktop Header */}
+        <div className="hidden lg:block w-full max-w-[1600px] mx-auto px-4 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Right Header */}
             <div className="flex items-center mt-4">
@@ -16,19 +16,19 @@ export default function MiddleHeader() {
                 <img src="/img/logo.png" alt="logo" className="h-[40px] pl-8" />
               </a>
               {/* Links */}
-              <ul className="pt-4 flex items-center gap-x-8">
+              <ul className="pt-4 flex items-center md:gap-x-5 lg:gap-x-8">
                 <li>
-                  <Link className="no-underline font-Dana text-black md:text-lg">
+                  <Link className="no-underline font-Dana text-black lg:text-lg">
                     دوره های آموزشی
                   </Link>
                 </li>
                 <li>
-                  <Link className="no-underline font-Dana text-black md:text-lg">
+                  <Link className="no-underline font-Dana text-black lg:text-lg">
                     بلاگ
                   </Link>
                 </li>
                 <li>
-                  <Link className="no-underline font-Dana text-black md:text-lg">
+                  <Link className="no-underline font-Dana text-black lg:text-lg">
                     درباره ما
                   </Link>
                 </li>
@@ -42,16 +42,16 @@ export default function MiddleHeader() {
                 <input
                   type="text"
                   placeholder="هرچی میخوای جست و جو کن"
-                  className="p-3 placeholder-gray-300 placeholder:text-sm placeholder:font-Dana h-[45px] w-[250px] rounded-lg"
+                  className="p-3 placeholder-gray-300 placeholder:text-sm placeholder:font-Dana h-[45px] w-auto md:w-[250px] rounded-lg"
                 />
-                <button className="absolute top-2.5 left-2">
+                <button className="absolute top-3.5 left-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="w-6 h-6 text-blue"
+                    className="w-5 h-5 text-blue"
                   >
                     <path
                       strokeLinecap="round"
