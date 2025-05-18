@@ -1,13 +1,14 @@
 import React from "react";
 import Header from "../Components/Headers/Header";
 import Footer from "../Components/Footer/Footer";
+import { Link } from "react-router-dom";
 
 export default function Course() {
   return (
     <>
       <Header />
       <section className="bg-blue w-ful h-auto">
-        <div className="mt-10 w-full max-w-[1600px] mx-auto px-4 lg:px-8">
+        <div className="mt-7 w-full max-w-[1600px] mx-auto px-4 lg:px-8">
           <div className="flex items-center justify-between pt-5 pb-5">
             {/* Right Section */}
             <div className="w-[50%]">
@@ -63,18 +64,89 @@ export default function Course() {
                 </span>
               </div>
               <span className="text-textGreen pb-4 font-DanaMeduim text-2xl">
-                قیمت دوره :
-                رایگان
-            </span>
+                قیمت دوره : رایگان
+              </span>
             </div>
             {/* Left Section */}
             <div className="w-[50%]">
-              <img src="/img/courseBanner.webp" alt="corseBanner" className="rounded-lg"/>
+              <img
+                src="/img/courseBanner.webp"
+                alt="corseBanner"
+                className="rounded-lg"
+              />
             </div>
           </div>
         </div>
       </section>
+
+      <div className="sticky top-0 z-10 bg-bgWhite">
+        <div className="w-full max-w-[1600px] mx-auto px-4 lg:px-8">
+          <div className="flex gap-x-14 mt-6">
+            <Link className="no-underline font-DanaDemiBold text-black pb-2 border-b-2 border-b-blue ">
+              محتوای دوره
+            </Link>
+            <Link className="no-underline font-DanaDemiBold text-black">
+              سر فصل های دوره
+            </Link>
+            <Link className="no-underline font-DanaDemiBold text-black">
+              {" "}
+              نظرات دانشجویان
+            </Link>
+          </div>
+        </div>
+      </div>
+
       <Footer />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </>
   );
 }
