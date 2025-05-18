@@ -17,14 +17,43 @@ export default function MiddleHeader() {
               </a>
               {/* Links */}
               <ul className="pt-4 flex items-center md:gap-x-5 lg:gap-x-8">
-                <li>
-                  <Link className="no-underline font-Dana text-black lg:text-lg">
-                    دوره های آموزشی
+               
+                <li className="relative group">
+                  <Link className="no-underline font-Dana text-black lg:text-lg cursor-pointer">
+                    دوره‌های آموزشی
                   </Link>
+
+                  {/* زیرمنو اصلی */}
+                  <ul className="absolute hidden right-0 top-7 rounded-tr-lg rounded-br-lg group-hover:flex flex-col bg-white  p-2 h-60 w-48 z-40 ">
+                    {/* آیتم فرانت‌اند با زیرزیرمنو */}
+                    <li className="relative group/frontend">
+                      <Link
+                        to="/courses/frontend"
+                        className="block no-underline font-DanaDemiBold px-4 py-2  text-gray-700 hover:bg-gray-100"
+                      >
+                        فرانت‌اند
+                      </Link>
+
+                      {/* زیرزیرمنو فرانت‌اند */}
+                      <ul className="absolute hidden -top-2 right-[184px] -z-20 overflow-y-scroll  group-hover/frontend:flex flex-col bg-zinc-50 p-2 h-60 w-48 ">
+                        <li>
+                          <Link
+                            to="/courses/frontend/javascript"
+                            className="block font-Dana no-underline px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                          >
+                            جاوااسکریپت
+                          </Link>
+                        </li>
+                       
+                        
+                      </ul>
+                    </li>
+                  </ul>
                 </li>
+
                 <li>
                   <Link className="no-underline font-Dana text-black lg:text-lg">
-                    بلاگ
+                    مقالات
                   </Link>
                 </li>
                 <li>
@@ -91,11 +120,11 @@ export default function MiddleHeader() {
               />
             </svg>
             {/* Logo */}
-            <img src="/img/logo.png" alt="logo" className="h-[30px]"/>
-             {/* Login & Register */}
-              <Link className="no-underline text-sm text-white bg-blue rounded-lg p-1.5 font-Dana">
-                ورود یا ثبت نام
-              </Link>
+            <img src="/img/logo.png" alt="logo" className="h-[30px]" />
+            {/* Login & Register */}
+            <Link className="no-underline text-sm text-white bg-blue rounded-lg p-1.5 font-Dana">
+              ورود یا ثبت نام
+            </Link>
           </div>
         </div>
       </header>
