@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../Components/Headers/Header'
 import Footer from '../Components/Footer/Footer'
+import { Link } from 'react-router-dom'
 
 export default function Login() {
   return (
@@ -23,7 +24,7 @@ export default function Login() {
               کاربر جدید هستید؟
             </span>
             <span className="font-Dana text-sm p-2 bg-sky-100 shadow-sm text-white rounded-md mr-2">
-              <a to="/register" className='text-black font-Dana no-underline cursor-pointer'> ثبت نام</a>
+              <Link to="/register" className='text-black font-Dana no-underline cursor-pointer'> ثبت نام</Link>
             </span>
           </div>
 
