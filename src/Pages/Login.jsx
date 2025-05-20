@@ -3,8 +3,15 @@ import Header from "../Components/Headers/Header";
 import Footer from "../Components/Footer/Footer";
 import { Link } from "react-router-dom";
 import Input from "../Components/Form/Input.jsx";
+import Button from "../Components/Form/Button.jsx";
 
 export default function Login() {
+
+  const registerNewUser = () => {
+    console.log('register');
+    
+  }
+
   return (
     <>
       <Header />
@@ -90,10 +97,12 @@ export default function Login() {
               <span className="absolute font-DanaDemiBold text-white">
                 ورود
               </span>
-              <button
+              <Button
                 className="w-full bg-blue p-4 text-center text-white font-DanaDemiBold"
                 type="submit"
-              ></button>
+                onClick={registerNewUser}
+                disabled={false}
+              ></Button>
               <svg
                 className="w-7 h-7 text-white absolute right-2"
                 xmlns="http://www.w3.org/2000/svg"

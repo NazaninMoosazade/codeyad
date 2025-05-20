@@ -3,6 +3,7 @@ import Header from "../Components/Headers/Header";
 import Footer from "../Components/Footer/Footer";
 import { Link } from "react-router-dom";
 import Input from "../Components/Form/Input";
+import Button from "../Components/Form/Button";
 
 export default function Register() {
   return (
@@ -158,7 +159,12 @@ export default function Register() {
                 عضویت
               </span>
 
-              <button className="w-full bg-blue p-4 text-center text-white font-DanaDemiBold"></button>
+              <Button
+                type="submit"
+                onClick={registerNewUser}
+                disabled={false}
+                className="w-full bg-blue p-4 text-center text-white font-DanaDemiBold"
+              ></Button>
             </div>
 
             <div className="flex items-center justify-between m-4">
