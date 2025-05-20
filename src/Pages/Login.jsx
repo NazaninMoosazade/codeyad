@@ -4,6 +4,12 @@ import Footer from "../Components/Footer/Footer";
 import { Link } from "react-router-dom";
 import Input from "../Components/Form/Input.jsx";
 import Button from "../Components/Form/Button.jsx";
+import {
+  requiredValidator,
+  minValidator,
+  maxValidator,
+  emailValidator,
+} from "../validators/Rules.jsx";
 
 export default function Login() {
   const loginUser = (event) => {
@@ -48,6 +54,11 @@ export default function Login() {
                   placeholder="نام کاربری یا آدرس ایمیل"
                   type="text"
                   element="input"
+                  validations={[
+                    requiredValidator(),
+                    minValidator(8),
+                    maxValidator(20),
+                  ]}
                 />
                 <svg
                   className="w-7 h-7 absolute top-2 left-2 text-gray-600"
@@ -74,6 +85,11 @@ export default function Login() {
                   placeholder="رمز عبور"
                   type="text"
                   element="input"
+                  validations={[
+                    requiredValidator(),
+                    minValidator(8),
+                    maxValidator(18),
+                  ]}
                 />
                 <svg
                   className="w-7 h-7 absolute top-2 left-2 text-gray-600"

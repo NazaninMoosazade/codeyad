@@ -4,13 +4,18 @@ import Footer from "../Components/Footer/Footer";
 import { Link } from "react-router-dom";
 import Input from "../Components/Form/Input";
 import Button from "../Components/Form/Button";
+import {
+  requiredValidator,
+  minValidator,
+  maxValidator,
+  emailValidator,
+} from "../validators/Rules.jsx";
 
 export default function Register() {
-
-    const registerNewUser = (event) => {
-        console.log('register');
-        event.preventDefault()
-    }
+  const registerNewUser = (event) => {
+    console.log("register");
+    event.preventDefault();
+  };
 
   return (
     <>
@@ -49,6 +54,11 @@ export default function Register() {
                   className="dark:placeholder-white w-full font-Dana  p-2 rounded-md "
                   element="input"
                   id="name"
+                  validations={[
+                    requiredValidator(),
+                    minValidator(8),
+                    maxValidator(20),
+                  ]}
                 />
                 <svg
                   className="w-7 h-7 absolute top-2 left-2 text-gray-600"
@@ -75,6 +85,11 @@ export default function Register() {
                   className="dark:placeholder-white w-full font-Dana  p-2 rounded-md "
                   element="input"
                   id="username"
+                  validations={[
+                    requiredValidator(),
+                    minValidator(8),
+                    maxValidator(20),
+                  ]}
                 />
                 <svg
                   className="w-7 h-7 absolute top-2 left-2 text-gray-600"
@@ -101,6 +116,11 @@ export default function Register() {
                   className="dark:placeholder-white w-full font-Dana  p-2 rounded-md "
                   element="input"
                   id="email"
+                  validations={[
+                    requiredValidator(),
+                    minValidator(8),
+                    maxValidator(20),
+                  ]}
                 />
                 <svg
                   className="w-7 h-7 absolute top-2 left-2 text-gray-600"
@@ -127,6 +147,11 @@ export default function Register() {
                   className="dark:placeholder-white w-full font-Dana p-2 rounded-md"
                   element="input"
                   id="password"
+                  validations={[
+                    requiredValidator(),
+                    minValidator(8),
+                    maxValidator(20),
+                  ]}
                 />
                 <svg
                   className="w-7 h-7 absolute top-2 left-2 text-gray-600"

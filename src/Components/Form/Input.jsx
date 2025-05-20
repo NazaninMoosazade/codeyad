@@ -1,9 +1,7 @@
 import React, { useReducer } from "react";
+import validator from "../../validators/Validator";
 
 export default function Input(props) {
-
-  
-
   const inputReducer = (state, action) => {
     switch (action.type) {
       case "CHANGE":
