@@ -6,6 +6,12 @@ import Input from "../Components/Form/Input";
 import Button from "../Components/Form/Button";
 
 export default function Register() {
+
+    const registerNewUser = (event) => {
+        console.log('register');
+        event.preventDefault()
+    }
+
   return (
     <>
       <Header />

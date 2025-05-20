@@ -1,6 +1,9 @@
 import React, { useReducer } from "react";
 
 export default function Input(props) {
+
+  
+
   const inputReducer = (state, action) => {
     switch (action.type) {
       case "CHANGE":

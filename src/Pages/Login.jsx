@@ -6,11 +6,10 @@ import Input from "../Components/Form/Input.jsx";
 import Button from "../Components/Form/Button.jsx";
 
 export default function Login() {
-
-  const registerNewUser = () => {
-    console.log('register');
-    
-  }
+  const loginUser = (event) => {
+    console.log("login");
+    event.preventDefault();
+  };
 
   return (
     <>
@@ -100,7 +99,7 @@ export default function Login() {
               <Button
                 className="w-full bg-blue p-4 text-center text-white font-DanaDemiBold"
                 type="submit"
-                onClick={registerNewUser}
+                onClick={loginUser}
                 disabled={false}
               ></Button>
               <svg
