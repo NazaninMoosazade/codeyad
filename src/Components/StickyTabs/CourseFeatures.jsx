@@ -1,8 +1,17 @@
+import React from "react";
+
 export default function CourseFeatures({ features }) {
   return (
-    <div id="course" className="p-4 bg-bgWhite mt-8">
-      <h2 className="text-xl font-bold mb-2">ویژگی های دوره</h2>
-      <p>{features}</p>
-    </div>
+    <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-10">
+      {features.map((feature) => (
+        <div
+          key={feature.id}
+          className="flex items-center gap-4 p-4 border rounded-xl shadow-sm hover:shadow-md transition"
+        >
+          <div className="w-10 h-10">{feature.icon}</div>
+          <span className="font-Dana text-sm md:text-base">{feature.title}</span>
+        </div>
+      ))}
+    </section>
   );
 }
