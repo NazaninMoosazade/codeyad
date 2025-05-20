@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../Components/Headers/Header";
 import Footer from "../Components/Footer/Footer";
 import { Link } from "react-router-dom";
+import Input from "../Components/Form/Input";
 
 export default function Register() {
   return (
@@ -32,7 +33,7 @@ export default function Register() {
           <form action="#">
             <div className="m-4">
               <div className="relative">
-                <input
+                <Input
                   type="text"
                   placeholder=" نام و نام خانوادگی"
                   className="dark:placeholder-white w-full font-Dana border border-gray-300 p-2 rounded-md "
@@ -58,7 +59,7 @@ export default function Register() {
 
             <div className="m-4">
               <div className="relative">
-                <input
+                <Input
                   type="text"
                   placeholder="نام کاربری"
                   className="dark:placeholder-white w-full font-Dana border border-gray-300 p-2 rounded-md dark:!bg-gray-400 dark:!border dark:!border-white"
@@ -84,7 +85,7 @@ export default function Register() {
 
             <div className="m-4">
               <div className="relative">
-                <input
+                <Input
                   type="text"
                   placeholder=" آدرس ایمیل"
                   className="dark:placeholder-white w-full font-Dana border border-gray-300 p-2 rounded-md dark:!bg-gray-400 dark:!border dark:!border-white"
@@ -110,7 +111,7 @@ export default function Register() {
 
             <div className="m-4">
               <div className="relative">
-                <input
+                <Input
                   type="password"
                   placeholder="رمز عبور"
                   className="dark:placeholder-white w-full font-Dana border border-gray-300 p-2 rounded-md dark:!bg-gray-400 dark:!border dark:!border-white"

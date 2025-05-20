@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Input from "./Form/Input";
 
 export default function ThemeToggleButton() {
   const [isDark, setIsDark] = useState(false);
@@ -13,7 +14,7 @@ export default function ThemeToggleButton() {
 
   return (
     <div className="flex items-center justify-center">
-      <input
+      <Input
         type="checkbox"
         id="themeCheck"
         className="sr-only"

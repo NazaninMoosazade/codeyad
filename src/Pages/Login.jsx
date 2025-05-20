@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '../Components/Headers/Header'
 import Footer from '../Components/Footer/Footer'
 import { Link } from 'react-router-dom'
+import Input from '../Components/Form/Input.jsx'
 
 export default function Login() {
   return (
@@ -32,8 +33,7 @@ export default function Login() {
           <form action="#">
             <div className="m-4">
               <div className="relative">
-                <input
-                  id="username"
+                <Input
                   className="dark:placeholder-white w-full font-Dana border border-gray-300 p-2 rounded-md dark:!bg-gray-400 dark:!border dark:!border-white"
                   placeholder="نام کاربری یا آدرس ایمیل"
                   type="text"
@@ -58,7 +58,7 @@ export default function Login() {
 
             <div className="m-4">
               <div className="relative">
-                <input
+                <Input
                   id="password"
                   className="dark:placeholder-white w-full font-Dana border border-gray-300 p-2 rounded-md dark:!bg-gray-400 dark:!border dark:!border-white"
                   placeholder="رمز عبور"
