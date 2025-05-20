@@ -1,14 +1,14 @@
-import React from 'react'
-import Header from '../Components/Headers/Header'
-import Footer from '../Components/Footer/Footer'
-import { Link } from 'react-router-dom'
-import Input from '../Components/Form/Input.jsx'
+import React from "react";
+import Header from "../Components/Headers/Header";
+import Footer from "../Components/Footer/Footer";
+import { Link } from "react-router-dom";
+import Input from "../Components/Form/Input.jsx";
 
 export default function Login() {
   return (
     <>
-    <Header/>
-    <section className="flex justify-center items-center mt-24">
+      <Header />
+      <section className="flex justify-center items-center mt-24">
         <div className="bg-white dark:!bg-darker border border-green-600 rounded-md w-[500px] h-auto">
           {/* Header Section */}
           <div className="mt-6 text-center flex flex-col">
@@ -21,11 +21,15 @@ export default function Login() {
           </div>
 
           <div className="flex items-center justify-center bg-sky-50 p-2 m-4">
-            <span className="font-Dana text-gray-700">
-              کاربر جدید هستید؟
-            </span>
+            <span className="font-Dana text-gray-700">کاربر جدید هستید؟</span>
             <span className="font-Dana text-sm p-2 bg-sky-100 shadow-sm text-white rounded-md mr-2">
-              <Link to="/register" className='text-black font-Dana no-underline cursor-pointer'> ثبت نام</Link>
+              <Link
+                to="/register"
+                className="text-black font-Dana no-underline cursor-pointer"
+              >
+                {" "}
+                ثبت نام
+              </Link>
             </span>
           </div>
 
@@ -34,7 +38,7 @@ export default function Login() {
             <div className="m-4">
               <div className="relative">
                 <Input
-                  className="dark:placeholder-white w-full font-Dana border border-gray-300 p-2 rounded-md dark:!bg-gray-400 dark:!border dark:!border-white"
+                  className="dark:placeholder-white w-full font-Dana  p-2 rounded-md "
                   placeholder="نام کاربری یا آدرس ایمیل"
                   type="text"
                   element="input"
@@ -60,7 +64,7 @@ export default function Login() {
               <div className="relative">
                 <Input
                   id="password"
-                  className="dark:placeholder-white w-full font-Dana border border-gray-300 p-2 rounded-md dark:!bg-gray-400 dark:!border dark:!border-white"
+                  className="dark:placeholder-white w-full font-Dana p-2 rounded-md dark:!border "
                   placeholder="رمز عبور"
                   type="text"
                   element="input"
@@ -87,9 +91,8 @@ export default function Login() {
                 ورود
               </span>
               <button
-                className='w-full bg-blue p-4 text-center text-white font-DanaDemiBold'
+                className="w-full bg-blue p-4 text-center text-white font-DanaDemiBold"
                 type="submit"
-
               ></button>
               <svg
                 className="w-7 h-7 text-white absolute right-2"
@@ -143,7 +146,7 @@ export default function Login() {
           </div>
         </div>
       </section>
-    <Footer/>
+      <Footer />
     </>
-  )
+  );
 }

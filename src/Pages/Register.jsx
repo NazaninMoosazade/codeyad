@@ -25,7 +25,10 @@ export default function Register() {
               قبلا ثبت نام کرده اید ؟
             </span>
             <span className="font-Dana text-sm p-2 bg-sky-100 shadow-sm  rounded-md mr-2">
-              <Link to="/login" className="text-black font-Dana no-underline"> وارد شوید</Link>
+              <Link to="/login" className="text-black font-Dana no-underline">
+                {" "}
+                وارد شوید
+              </Link>
             </span>
           </div>
 
@@ -36,7 +39,7 @@ export default function Register() {
                 <Input
                   type="text"
                   placeholder=" نام و نام خانوادگی"
-                  className="dark:placeholder-white w-full font-Dana border border-gray-300 p-2 rounded-md "
+                  className="dark:placeholder-white w-full font-Dana  p-2 rounded-md "
                   element="input"
                   id="name"
                 />
@@ -62,7 +65,7 @@ export default function Register() {
                 <Input
                   type="text"
                   placeholder="نام کاربری"
-                  className="dark:placeholder-white w-full font-Dana border border-gray-300 p-2 rounded-md dark:!bg-gray-400 dark:!border dark:!border-white"
+                  className="dark:placeholder-white w-full font-Dana  p-2 rounded-md "
                   element="input"
                   id="username"
                 />
@@ -88,7 +91,7 @@ export default function Register() {
                 <Input
                   type="text"
                   placeholder=" آدرس ایمیل"
-                  className="dark:placeholder-white w-full font-Dana border border-gray-300 p-2 rounded-md dark:!bg-gray-400 dark:!border dark:!border-white"
+                  className="dark:placeholder-white w-full font-Dana  p-2 rounded-md "
                   element="input"
                   id="email"
                 />
@@ -114,7 +117,7 @@ export default function Register() {
                 <Input
                   type="password"
                   placeholder="رمز عبور"
-                  className="dark:placeholder-white w-full font-Dana border border-gray-300 p-2 rounded-md dark:!bg-gray-400 dark:!border dark:!border-white"
+                  className="dark:placeholder-white w-full font-Dana p-2 rounded-md"
                   element="input"
                   id="password"
                 />
