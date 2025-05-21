@@ -1,55 +1,67 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import validator from "../../validators/Validator";
 
-export default function Input(props) {
-  const inputReducer = (state, action) => {
-    switch (action.type) {
-      case "CHANGE":
-        return {
-          ...state,
-          value: action.value,
-          isValid: action.value.trim().length > 0,
-        };
-      default:
-        return state;
+const inputReducer = (state, action) => {
+  switch (action.type) {
+    case "CHANGE": {
+      return {
+        ...state,
+        value: action.value,
+        isValid: validator(action.value, action.validations),
+      };
     }
-  };
+    default: {
+      return state;
+    }
+  }
+};
 
+export default function Input(props) {
+ 
   const [mainInput, dispatch] = useReducer(inputReducer, {
     value: "",
     isValid: false,
   });
 
+  const { value, isValid } = mainInput;
+  const {id , onInputHandler} = props;
+
+  useEffect(() => {
+    onInputHandler(id, value, isValid);
+  }, [value]);
+
   const onChangeHandler = (event) => {
     dispatch({
       type: "CHANGE",
       value: event.target.value,
+      validations: props.validations,
+      isValid: true,
     });
   };
-
-  const inputBorderColor = mainInput.isValid ? "border-green-600" : "border-red-500";
-
-  const inputClass = `
-    ${props.className || ""}
-    border-2
-    ${inputBorderColor}
-  `;
 
   const element =
     props.element === "input" ? (
       <input
-        value={mainInput.value}
-        type={props.type || "text"}
+        type={props.type}
         placeholder={props.placeholder}
-        className={inputClass}
+        className={`${props.className} ${
+          mainInput.isValid
+            ? "!border-4  !border-green-500"
+            : "!border-4 !border-red-500"
+        }`}
+        value={mainInput.value}
         onChange={onChangeHandler}
       />
     ) : (
       <textarea
-        value={mainInput.value}
         placeholder={props.placeholder}
-        className={inputClass}
+        className={`${props.className} ${
+          mainInput.isValid
+            ? "!border-4 !border-green-500"
+            : "!border-4 !border-red-500"
+        }`}
         onChange={onChangeHandler}
+        value={mainInput.value}
       />
     );
 

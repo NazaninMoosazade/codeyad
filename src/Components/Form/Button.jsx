@@ -11,21 +11,20 @@ export default function Button( props ) {
   } else if (props.href) {
     return (
       <a href={props.href} className={props.className}>
-        {props.children}
+        {props.childern}
       </a>
     );
   } else {
     return (
       <button
-        className={props.className}
         type={props.type}
+        className={props.className}
         onClick={props.onClick}
         disabled={props.disabled}
       >
-        {props.children}
+        {props.childern}
       </button>
     );
   }
 
-  return <div>Button</div>;
 }
