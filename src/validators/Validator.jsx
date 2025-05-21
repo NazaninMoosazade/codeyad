@@ -1,28 +1,52 @@
 import Rules from "./Rules";
 
 const validator = (value, validations) => {
-  let validationResults = [];
+  let isValid = true;
 
-  for (const validator of validations) {
-    if (validator.value === Rules.requiredValue) {
-      value.trim().length === 0 && validationResults.push(false);
+  for (const rule of validations) {
+    if (rule.value === Rules.requiredValue) {
+      isValid = isValid && value.trim().length > 0;
     }
-    if (validator.value === Rules.minValue) {
-      value.trim().length < validator.min && validationResults.push(false);
+    if (rule.value === Rules.minValue) {
+      isValid = isValid && value.trim().length >= rule.min;
     }
-    if (validator.value === Rules.maxValue) {
-      value.trim().length > validator.max && validationResults.push(false);
+    if (rule.value === Rules.maxValue) {
+      isValid = isValid && value.trim().length <= rule.max;
     }
-    if (validator.value === Rules.emailValue) {
-      !regex.testEmail(value) && validationResults.push(false);
+    if (rule.value === Rules.emailValue) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      isValid = isValid && emailRegex.test(value);
     }
   }
 
-  if (validationResults.length) {
-    return false;
-  } else {
-    return true;
-  }
+  return isValid;
 };
 
 export default validator;
+
+
+// import Rules from "./Rules";
+
+// const validator = (value, validations) => {
+//   let isValid = true;
+
+//   for (const rule of validations) {
+//     if (rule.value === Rules.requiredValue) {
+//       isValid = isValid && value.trim().length > 0;
+//     }
+//     if (rule.value === Rules.minValue) {
+//       isValid = isValid && value.trim().length >= rule.min;
+//     }
+//     if (rule.value === Rules.maxValue) {
+//       isValid = isValid && value.trim().length <= rule.max;
+//     }
+//     if (rule.value === Rules.emailValue) {
+//       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//       isValid = isValid && emailRegex.test(value);
+//     }
+//   }
+
+//   return isValid;
+// };
+
+// export default validator;
