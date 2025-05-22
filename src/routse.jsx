@@ -6,19 +6,18 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import AllCourse from "./Pages/AllCourse";
 import AboutUs from "./Pages/AboutUs";
+import Mag from "./Pages/Mag";
 
 const routes = [
-  { path: '/', element: <Index /> },
-  { path: '/course/:courseName', element: <Course /> },
-  { path: '/course-cat/:categoryName', element: <CourseCat /> },
-  { path: '/blug/:blugName', element: <Blug /> },
-  { path: '/login', element: <Login /> },
-  { path: '/register', element: <Register /> },
-  { path: '/allCourse', element: <AllCourse /> },
-  { path: '/about-us', element: <AboutUs /> },
-
-  
-
+  { path: "/", element: <Index /> },
+  { path: "/course/:courseName", element: <Course /> },
+  { path: "/course-cat/:categoryName", element: <CourseCat /> },
+  { path: "/blug/:blugName", element: <Blug /> },
+  { path: "/login", element: <Login /> },
+  { path: "/register", element: <Register /> },
+  { path: "/allCourse", element: <AllCourse /> },
+  { path: "/about-us", element: <AboutUs /> },
+  { path: "/mag", element: <Mag /> },
 ];
 
 export default routes;
