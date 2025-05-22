@@ -4,6 +4,7 @@ import CourseCat from "./Pages/CourseCat";
 import Blug from "./Pages/Blug";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import AllCourse from "./Pages/AllCourse";
 
 const routes = [
   { path: '/', element: <Index /> },
@@ -12,6 +13,8 @@ const routes = [
   { path: '/blug/:blugName', element: <Blug /> },
   { path: '/login', element: <Login /> },
   { path: '/register', element: <Register /> },
+  { path: '/allCourse', element: <AllCourse /> },
+
   
 
 ];
