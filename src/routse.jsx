@@ -5,6 +5,7 @@ import Blug from "./Pages/Blug";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import AllCourse from "./Pages/AllCourse";
+import AboutUs from "./Pages/AboutUs";
 
 const routes = [
   { path: '/', element: <Index /> },
@@ -14,6 +15,7 @@ const routes = [
   { path: '/login', element: <Login /> },
   { path: '/register', element: <Register /> },
   { path: '/allCourse', element: <AllCourse /> },
+  { path: '/about-us', element: <AboutUs /> },
 
   
 

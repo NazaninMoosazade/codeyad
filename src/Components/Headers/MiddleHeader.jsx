@@ -57,7 +57,7 @@ export default function MiddleHeader() {
                   </Link>
                 </li>
                 <li>
-                  <Link className="no-underline font-Dana text-black lg:text-lg">
+                  <Link to='/about-us' className="no-underline font-Dana text-black lg:text-lg">
                     درباره ما
                   </Link>
                 </li>
