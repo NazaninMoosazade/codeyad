@@ -13,21 +13,45 @@ export default function Register() {
     {
       username: { value: "", isValid: false },
       password: { value: "", isValid: false },
+      name: { value: "", isValid: false },
+      email: { value: "", isValid: false },
     },
     false // کل فرم اول اعتبار ندارد
   );
 
   // وقتی دکمه ارسال زده می‌شود
-  const loginUser = (event) => {
+  const registerNewUser = (event) => {
     event.preventDefault();
     // اگر فرم معتبر نبود، هشدار می‌دهد و ارسال نمی‌کند
     if (!formState.isFormValid) {
       alert("فرم معتبر نیست! لطفا ورودی‌ها را بررسی کنید.");
       return;
     }
-    // ارسال داده‌ها به سرور یا پردازش فرم
-    console.log("فرم ارسال شد:", formState.inputs);
-    // اینجا می‌توان درخواست API یا هر پردازش دیگری انجام داد
+
+    const newUserInfos = {
+      name: formState.inputs.name.value,
+      username: formState.inputs.username.value,
+      email: formState.inputs.email.value,
+      password: formState.inputs.password.value,
+      confirmPassword: formState.inputs.password.value,
+    };
+
+    fetch(`http://localhost:8000/v1/auth/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUserInfos),
+    }).then(res => res.json())
+    .then(result => {
+      console.log(result);
+      
+    })
+    // .then(response => {
+    //   console.log(response);
+    //   return response.json()
+    //   }).then(data => console.log(data))
+
   };
 
   return (
@@ -58,7 +82,7 @@ export default function Register() {
           </div>
 
           {/* Form */}
-          <form onSubmit={loginUser}>
+          <form onSubmit={registerNewUser}>
             <div className="m-4">
               <div className="relative">
                 <Input
