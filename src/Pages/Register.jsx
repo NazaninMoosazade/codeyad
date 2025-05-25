@@ -6,9 +6,9 @@ import Input from "../Components/Form/Input";
 import Button from "../Components/Form/Button";
 import { useForm } from "../Hooks/UseForm";
 import Rules from "../validators/Rules";
+import { useMutation } from "@tanstack/react-query";
 
 export default function Register() {
-  // مقدار اولیه فرم: هر فیلد مقدار و اعتبار اولیه دارد
   const [formState, onInputHandler] = useForm(
     {
       username: { value: "", isValid: false },
@@ -16,13 +16,45 @@ export default function Register() {
       name: { value: "", isValid: false },
       email: { value: "", isValid: false },
     },
-    false // کل فرم اول اعتبار ندارد
+    false
   );
 
-  // وقتی دکمه ارسال زده می‌شود
+  // تعریف فانکشن ثبت‌نام
+  const registerUser = async (newUserInfos) => {
+    const response = await fetch("http://localhost:8000/v1/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUserInfos),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "خطایی در ثبت‌نام رخ داده است.");
+    }
+
+    return response.json();
+  };
+
+  // استفاده از useMutation
+  const mutation = useMutation({
+    mutationFn: registerUser,
+    onSuccess: (data) => {
+      console.log("ثبت‌نام موفق", data);
+      alert("ثبت‌نام با موفقیت انجام شد.");
+      // اینجا می‌تونی ریدایرکت هم انجام بدی
+    },
+    onError: (error) => {
+      console.error("خطا در ثبت‌نام:", error.message);
+      alert(error.message);
+    },
+  });
+
+  // هندل ارسال فرم
   const registerNewUser = (event) => {
     event.preventDefault();
-    // اگر فرم معتبر نبود، هشدار می‌دهد و ارسال نمی‌کند
+
     if (!formState.isFormValid) {
       alert("فرم معتبر نیست! لطفا ورودی‌ها را بررسی کنید.");
       return;
@@ -36,22 +68,7 @@ export default function Register() {
       confirmPassword: formState.inputs.password.value,
     };
 
-    fetch(`http://localhost:8000/v1/auth/register`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUserInfos),
-    }).then(res => res.json())
-    .then(result => {
-      console.log(result);
-      
-    })
-    // .then(response => {
-    //   console.log(response);
-    //   return response.json()
-    //   }).then(data => console.log(data))
-
+    mutation.mutate(newUserInfos);
   };
 
   return (
@@ -59,7 +76,7 @@ export default function Register() {
       <Header />
       <section className="flex justify-center items-center mt-24">
         <div className="bg-white dark:!bg-darker border border-green-600 rounded-md w-[500px] h-auto">
-          {/* Header Section */}
+          {/* header */}
           <div className="mt-6 text-center flex flex-col">
             <span className="font-DanaDemiBold text-xl text-gray-600 dark:!text-gray-300">
               ساخت حساب کاربری
@@ -75,165 +92,91 @@ export default function Register() {
             </span>
             <span className="font-Dana text-sm p-2 bg-sky-100 shadow-sm  rounded-md mr-2">
               <Link to="/login" className="text-black font-Dana no-underline">
-                {" "}
                 وارد شوید
               </Link>
             </span>
           </div>
 
-          {/* Form */}
+          {/* form */}
           <form onSubmit={registerNewUser}>
-            <div className="m-4">
-              <div className="relative">
-                <Input
-                  className="dark:placeholder-white w-full font-Dana  p-2 rounded-md "
-                  id="name"
-                  type="text"
-                  placeholder="نام و نام خانوادگی"
-                  validations={[
-                    { value: Rules.requiredValue },
-                    { value: Rules.minValue, min: 5 },
-                    { value: Rules.maxValue, max: 20 },
-                  ]}
-                  onInputHandler={onInputHandler}
-                />
-                <svg
-                  className="w-7 h-7 absolute top-2 left-2 text-gray-600"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-                  />
-                </svg>
-              </div>
+            {/* Input: name */}
+            <div className="m-4 relative">
+              <Input
+                id="name"
+                type="text"
+                placeholder="نام و نام خانوادگی"
+                className="dark:placeholder-white w-full font-Dana p-2 rounded-md"
+                validations={[
+                  { value: Rules.requiredValue },
+                  { value: Rules.minValue, min: 5 },
+                  { value: Rules.maxValue, max: 20 },
+                ]}
+                onInputHandler={onInputHandler}
+              />
             </div>
 
-            <div className="m-4">
-              <div className="relative">
-                <Input
-                  className="dark:placeholder-white w-full font-Dana p-2 rounded-md dark:!border "
-                  id="username"
-                  placeholder="نام کاربری"
-                  validations={[
-                    { value: Rules.requiredValue },
-                    { value: Rules.minValue, min: 8 },
-                    { value: Rules.maxValue, max: 20 },
-                  ]}
-                  onInputHandler={onInputHandler}
-                />
-                <svg
-                  className="w-7 h-7 absolute top-2 left-2 text-gray-600"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"
-                  />
-                </svg>
-              </div>
+            {/* Input: username */}
+            <div className="m-4 relative">
+              <Input
+                id="username"
+                placeholder="نام کاربری"
+                className="dark:placeholder-white w-full font-Dana p-2 rounded-md"
+                validations={[
+                  { value: Rules.requiredValue },
+                  { value: Rules.minValue, min: 8 },
+                  { value: Rules.maxValue, max: 20 },
+                ]}
+                onInputHandler={onInputHandler}
+              />
             </div>
 
-            <div className="m-4">
-              <div className="relative">
-                <Input
-                  className="dark:placeholder-white w-full font-Dana p-2 rounded-md dark:!border "
-                  id="email"
-                  placeholder=" آدرس ایمیل"
-                  validations={[
-                    { value: Rules.requiredValue },
-                    { value: Rules.minValue, min: 8 },
-                    { value: Rules.maxValue, max: 20 },
-                  ]}
-                  onInputHandler={onInputHandler}
-                />
-                <svg
-                  className="w-7 h-7 absolute top-2 left-2 text-gray-600"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"
-                  />
-                </svg>
-              </div>
+            {/* Input: email */}
+            <div className="m-4 relative">
+              <Input
+                id="email"
+                placeholder=" آدرس ایمیل"
+                className="dark:placeholder-white w-full font-Dana p-2 rounded-md"
+                validations={[
+                  { value: Rules.requiredValue },
+                  { value: Rules.minValue, min: 8 },
+                  { value: Rules.maxValue, max: 20 },
+                ]}
+                onInputHandler={onInputHandler}
+              />
             </div>
 
-            <div className="m-4">
-              <div className="relative">
-                <Input
-                  className="dark:placeholder-white w-full font-Dana p-2 rounded-md dark:!border "
-                  id="password"
-                  placeholder=" رمز عبور "
-                  validations={[
-                    { value: Rules.requiredValue },
-                    { value: Rules.minValue, min: 8 },
-                    { value: Rules.maxValue, max: 20 },
-                  ]}
-                  onInputHandler={onInputHandler}
-                />
-                <svg
-                  className="w-7 h-7 absolute top-2 left-2 text-gray-600"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"
-                  />
-                </svg>
-              </div>
+            {/* Input: password */}
+            <div className="m-4 relative">
+              <Input
+                id="password"
+                placeholder=" رمز عبور "
+                className="dark:placeholder-white w-full font-Dana p-2 rounded-md"
+                validations={[
+                  { value: Rules.requiredValue },
+                  { value: Rules.minValue, min: 8 },
+                  { value: Rules.maxValue, max: 20 },
+                ]}
+                onInputHandler={onInputHandler}
+              />
             </div>
 
+            {/* Submit Button */}
             <div className="relative flex items-center justify-center m-4">
               <span className="absolute font-DanaDemiBold text-white">
-                عضویت{" "}
+                {mutation.isPending ? "در حال ثبت‌نام..." : "عضویت"}
               </span>
               <Button
                 type="submit"
-                disabled={!formState.isFormValid}
+                disabled={!formState.isFormValid || mutation.isPending}
                 className={`w-full p-3 text-white rounded transition-colors duration-300 ${
-                  formState.isFormValid
+                  formState.isFormValid && !mutation.isPending
                     ? "bg-green-600 hover:bg-green-700"
                     : "bg-gray-400 cursor-not-allowed"
                 }`}
-              ></Button>
-
-              <svg
-                className="w-7 h-7 text-white absolute right-2"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75"
-                />
-              </svg>
+              />
             </div>
 
+            {/* Footer options */}
             <div className="flex items-center justify-between m-4">
               <label className="flex items-center">
                 <input type="checkbox" />
@@ -241,27 +184,25 @@ export default function Register() {
                   مرا به خاطر داشته باش
                 </span>
               </label>
-
               <label>
                 <a href="#" className="font-DanaMeduim text-sm text-gray-500">
-                  رمز عبور را فراموش کرده اید؟
+                  رمز عبور را فراموش کرده‌اید؟
                 </a>
               </label>
             </div>
           </form>
 
-          {/* Footer Section */}
+          {/* Footer reminder */}
           <div className="m-5">
             <span className="font-DanaDemiBold text-xl text-gray-600 dark:!text-gray-300">
               سلام کاربر محترم:
             </span>
             <ul className="py-3 list-disc">
               <li className="font-Dana text-sm text-gray-500 mr-5">
-                لطفا از مرورگر های مطمئن و بروز مانند گوگل کروم و فایرفاکس
-                استفاده کنید.
+                لطفا از مرورگرهای مطمئن و بروز مانند گوگل کروم و فایرفاکس استفاده کنید.
               </li>
               <li className="font-Dana text-sm text-gray-500 mr-5">
-                ما هرگز اطلاعات محرمانه شمارا از طریق ایمیل درخواست نمیکنیم.
+                ما هرگز اطلاعات محرمانه شما را از طریق ایمیل درخواست نمی‌کنیم.
               </li>
               <li className="font-Dana text-sm text-gray-500 mr-5">
                 لطفا کلمه عبور خود را در فواصل زمانی کوتاه تغییر دهید.
