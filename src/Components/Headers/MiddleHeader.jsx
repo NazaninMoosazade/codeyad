@@ -17,7 +17,6 @@ export default function MiddleHeader() {
               </a>
               {/* Links */}
               <ul className="pt-4 flex items-center md:gap-x-5 lg:gap-x-8">
-               
                 <li className="relative group">
                   <Link className="no-underline font-Dana text-black lg:text-lg cursor-pointer">
                     دوره‌های آموزشی
@@ -44,20 +43,24 @@ export default function MiddleHeader() {
                             جاوااسکریپت
                           </Link>
                         </li>
-                       
-                        
                       </ul>
                     </li>
                   </ul>
                 </li>
 
                 <li>
-                  <Link to='/mag' className="no-underline font-Dana text-black lg:text-lg">
+                  <Link
+                    to="/mag"
+                    className="no-underline font-Dana text-black lg:text-lg"
+                  >
                     مقالات
                   </Link>
                 </li>
                 <li>
-                  <Link to='/about-us' className="no-underline font-Dana text-black lg:text-lg">
+                  <Link
+                    to="/about-us"
+                    className="no-underline font-Dana text-black lg:text-lg"
+                  >
                     درباره ما
                   </Link>
                 </li>
@@ -109,13 +112,13 @@ export default function MiddleHeader() {
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
               className="w-7 h-7 text-black"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
               />
             </svg>

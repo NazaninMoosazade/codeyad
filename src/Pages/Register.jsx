@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Header from "../Components/Headers/Header";
 import Footer from "../Components/Footer/Footer";
 import { Link } from "react-router-dom";
@@ -7,8 +7,14 @@ import Button from "../Components/Form/Button";
 import { useForm } from "../Hooks/UseForm";
 import Rules from "../validators/Rules";
 import { useMutation } from "@tanstack/react-query";
+import AuthContext from "../Context/AuthContext";
 
 export default function Register() {
+
+  const authContext = useContext(AuthContext)
+
+  
+
   const [formState, onInputHandler] = useForm(
     {
       username: { value: "", isValid: false },
@@ -30,6 +36,7 @@ export default function Register() {
     });
 
     if (!response.ok) {
+      authContext.login(result.user , result.accessToken)
       const errorData = await response.json();
       throw new Error(errorData.message || "خطایی در ثبت‌نام رخ داده است.");
     }
