@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import ThemeToggleButton from "./../ThemeToggleButton";
+import ThemeToggleButton from "../ThemeToggleButton/ThemeToggleButton";
 import AuthContext from "../../Context/AuthContext";
 
 
