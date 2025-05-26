@@ -18,6 +18,8 @@ export default {
         bgSecondary: '#e4edf8',
         bgSky: '#075985b3',
         textGreen:'rgb(93 202 167/var(--tw-text-opacity,1))',
+         darker: "#171717",
+         bgDarker: '#212123'
       },
       fontFamily: {
         Dana: "Dana",

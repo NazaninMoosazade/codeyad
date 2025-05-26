@@ -69,14 +69,14 @@ export default function SpesialComments() {
                   shadow-md
                   ${
                     isActive
-                      ? 'bg-white text-blue-700 scale-105 shadow-xl'
-                      : 'bg-gray-100 text-gray-600 scale-100'
+                      ? 'bg-white  dark:!bg-gray-700  text-blue-700 scale-105 shadow-xl'
+                      : 'bg-gray-100 dark:!bg-bgDarker text-gray-600 scale-100'
                   }
                 `}
               >
                 <div>
-                  <p className="font-semibold font-DanaDemiBold text-lg mb-3">{comment.name}</p>
-                  <p className="leading-relaxed font-Dana text-sm mb-4">{comment.text}</p>
+                  <p className="font-semibold font-DanaDemiBold text-lg mb-3 text-black dark:!text-white">{comment.name}</p>
+                  <p className="leading-relaxed font-Dana text-sm text-gray-700 dark:!text-gray-400 mb-4">{comment.text}</p>
                 </div>
                 <div className="flex space-x-1 rtl:space-x-reverse">
                   {renderStars(comment.rating)}

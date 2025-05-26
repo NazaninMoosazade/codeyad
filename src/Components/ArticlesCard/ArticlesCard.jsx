@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function ArticlesCard({ className = '', image, title, excerpt }) {
   return (
-    <div className={`bg-white rounded-xl shadow-md overflow-hidden flex flex-col ${className}`}>
+    <div className={`bg-white dark:!bg-bgDarker rounded-xl shadow-md overflow-hidden flex flex-col ${className}`}>
       {/* تصویر مقاله */}
       <div className="h-48 w-full">
         <img
@@ -14,13 +14,13 @@ export default function ArticlesCard({ className = '', image, title, excerpt }) 
 
       {/* محتوای مقاله */}
       <div className="p-4 flex flex-col justify-between flex-grow">
-        <h3 className="text-lg font-bold mb-2 text-gray-800">
+        <h3 className="text-lg font-bold mb-2 font-DanaDemiBold dark:!text-white text-gray-800">
           {title || 'عنوان مقاله'}
         </h3>
-        <p className="text-sm text-gray-600 mb-4 line-clamp-3">
+        <p className="text-sm dark:text-gray-300 font-Dana text-gray-600 mb-4 line-clamp-3">
           {excerpt || 'خلاصه‌ای از مقاله برای پیش‌نمایش در کارت مقالات.'}
         </p>
-        <button className="text-blue-600 font-semibold hover:underline mt-auto self-start">
+        <button className="text-blue font-semibold hover:underline mt-auto self-start">
           ادامه مطلب →
         </button>
       </div>

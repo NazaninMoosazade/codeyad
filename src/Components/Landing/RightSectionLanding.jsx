@@ -9,7 +9,7 @@ export default function RightSectionLanding() {
           دوره مورد علاقه خود را شروع کنید
         </p>
         <h2 className="child:font-DanaDemiBold">
-          <span className="block lg:pt-4 text-3xl lg:text-4xl">
+          <span className="block dark:text-white lg:pt-4 text-3xl lg:text-4xl">
             هر کسی باید یاد بگیره
           </span>
           <span className="block pt-2 lg:pt-4 text-blue text-2xl lg:text-4xl">

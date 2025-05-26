@@ -92,7 +92,7 @@ export default function Course() {
       <Header />
 
       {/* بنر دوره */}
-      <section className="bg-blue w-full h-auto">
+      <section className="bg-blue dark:!bg-bgDarker w-full h-auto">
         <div className="mt-7 w-full max-w-[1600px] mx-auto px-4 lg:px-8">
           <div className="flex-wrap md:flex items-center justify-between pt-5 pb-5">
             {/* بخش راست - توضیحات دوره */}
@@ -101,7 +101,7 @@ export default function Course() {
                 <span className="bg-bgSecondary text-blue font-Dana p-1.5 lg:p-2.5 rounded-full">
                   فرانت اند
                 </span>
-                <span className="bg-bgSky text-white font-Dana p-1.5 lg:p-2.5 rounded-full">
+                <span className="bg-bgSky  text-white font-Dana p-1.5 lg:p-2.5 rounded-full">
                   این دوره در حال برگزاری است
                 </span>
               </div>
@@ -189,7 +189,7 @@ export default function Course() {
         </div>
 
         <div id="course" className="mt-10">
-          <h2 className="text-xl font-DanaDemiBold font-bold mb-2">
+          <h2 className="text-xl dark:text-white font-DanaDemiBold font-bold mb-2">
             ویژگی‌های دوره
           </h2>
           <CourseFeatures features={featuresList} />

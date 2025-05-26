@@ -30,23 +30,23 @@ export default function ManyQuestions() {
 
   return (
     <section className="mt-28 w-full max-w-[1600px] mx-auto px-4 lg:px-8">
-      <h1 className="mx-auto text-lg md:text-2xl text-center mb-14 text-black font-DanaDemiBold">سوالات متداول</h1>
+      <h1 className="mx-auto text-lg md:text-2xl text-center mb-14 text-black dark:!text-white font-DanaDemiBold">سوالات متداول</h1>
 
       {questions.map((item, index) => {
         const isOpen = openIndex === index;
         return (
           <div
             key={item.id}
-            className="w-full h-auto rounded-lg bg-white mt-4 overflow-hidden transition-all duration-300 ease-in-out cursor-pointer"
+            className="w-full h-auto rounded-lg dark:!bg-bgDarker bg-white mt-4 overflow-hidden transition-all duration-300 ease-in-out cursor-pointer"
           >
             {/* سوال */}
             <div
               className="flex items-center justify-between p-4"
               onClick={() => toggleBox(index)}
             >
-              <span className="font-DanaMeduim text-lg lg:text-2xl">{item.question}</span>
+              <span className="font-DanaMeduim text-lg lg:text-2xl text-blue ">{item.question}</span>
               <svg
-                className={`w-7 h-7 text-black font-bold transform transition-transform duration-300 ${isOpen ? "-rotate-90" : ""}`}
+                className={`w-7 h-7 text-black dark:!text-white font-bold transform transition-transform duration-300 ${isOpen ? "-rotate-90" : ""}`}
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -58,7 +58,7 @@ export default function ManyQuestions() {
             </div>
 
             {/* خط جداکننده بین سوال و جواب */}
-            {isOpen && <span className="block w-full h-px bg-gray-200"></span>}
+            {isOpen && <span className="block w-full h-px  bg-gray-200"></span>}
 
             {/* جواب */}
             <div
@@ -66,7 +66,7 @@ export default function ManyQuestions() {
                 isOpen ? "max-h-[500px] py-4 opacity-100" : "max-h-0 py-0 opacity-0"
               }`}
             >
-              <div className="text-sm lg:text-xl font-Dana bg-white">{item.answer}</div>
+              <div className="text-sm lg:text-xl font-Dana dark:!bg-bgDarker dark:!text-white bg-white">{item.answer}</div>
             </div>
           </div>
         );

@@ -12,7 +12,7 @@ export default function MiddleHeader() {
     <>
       <header>
         {/* Desktop Header */}
-        <div className="hidden lg:block dark:!bg-black w-full max-w-[1600px] mx-auto px-4 lg:px-8">
+        <div className="hidden lg:block w-full max-w-[1600px] mx-auto px-4 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Right Header */}
             <div className="flex items-center mt-4">
@@ -21,11 +21,11 @@ export default function MiddleHeader() {
                 <img src="/img/logo.png" alt="logo" className="h-[40px] pl-8" />
               </a>
               {/* Links */}
-              <ul className="pt-4 flex items-center md:gap-x-5 lg:gap-x-8">
+              <ul className="pt-4 flex items-center md:gap-x-5 lg:gap-x-8 ">
                 <li className="relative group">
                   <Link
                     to="/courses"
-                    className="no-underline font-Dana dark:!text-red-600 text-black lg:text-lg cursor-pointer"
+                    className="no-underline font-Dana dark:!text-white text-black lg:text-lg cursor-pointer"
                   >
                     دوره‌های آموزشی
                   </Link>
@@ -71,7 +71,7 @@ export default function MiddleHeader() {
                 <li>
                   <Link
                     to="/mag"
-                    className="no-underline font-Dana dark:text-red-600 text-black lg:text-lg"
+                    className="no-underline font-Dana dark:!text-white text-black lg:text-lg"
                   >
                     مقالات
                   </Link>
@@ -79,7 +79,7 @@ export default function MiddleHeader() {
                 <li>
                   <Link
                     to="/about-us"
-                    className="no-underline font-Dana text-black lg:text-lg"
+                    className="no-underline font-Dana dark:!text-white text-black lg:text-lg"
                   >
                     درباره ما
                   </Link>
@@ -94,9 +94,9 @@ export default function MiddleHeader() {
                 <input
                   type="text"
                   placeholder="هرچی میخوای جست و جو کن"
-                  className="p-3 placeholder-gray-300 placeholder:text-sm placeholder:font-Dana h-[45px] w-auto md:w-[250px] rounded-lg"
+                  className="p-3 dark:bg-bgDarker placeholder-gray-300 placeholder:text-sm placeholder:font-Dana h-[45px] w-auto md:w-[260px] rounded-lg"
                 />
-                <button className="absolute top-3.5 left-2">
+                <button className="absolute top-4 left-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

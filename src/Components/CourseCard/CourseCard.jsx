@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function CourseCard() {
   return (
-    <div className=" mx-auto bg-white mt-10 rounded-xl shadow-md overflow-hidden flex flex-col transition-transform hover:-translate-y-4 hover:shadow-lg duration-300 w-full max-w-sm">
+    <div className=" mx-auto bg-white dark:!border-2 dark:!border-gray-500 dark:!bg-bgDarker mt-10 rounded-xl shadow-md overflow-hidden flex flex-col transition-transform hover:-translate-y-4 hover:shadow-lg duration-300 w-full max-w-sm">
       {/* <!-- تصویر --> */}
       <a href="/course/personal-professional-success-specialization">
         <img
@@ -16,7 +16,7 @@ export default function CourseCard() {
       {/* <!-- محتوای کارت --> */}
       <div className="p-4 flex flex-col justify-between flex-grow">
         {/* <!-- عنوان دوره --> */}
-        <Link className="font-Dana no-underline text-gray-800 text-base leading-6 hover:text-blue transition-colors mb-3">
+        <Link className="font-Dana no-underline text-gray-800 dark:!text-white text-base leading-6 hover:text-blue transition-colors mb-3">
           آموزش تخصص در دستیابی به موفقیت شخصی و حرفه‌ای
         </Link>
 

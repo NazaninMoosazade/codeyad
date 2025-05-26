@@ -53,7 +53,7 @@ export default function App() {
             logout,
           }}
         >
-          <div className="min-h-screen bg-bgWhite">
+          <div className="min-h-screen dark:bg-darker bg-bgWhite">
             <RouterProvider router={router} />
           </div>
         </AuthContext.Provider>

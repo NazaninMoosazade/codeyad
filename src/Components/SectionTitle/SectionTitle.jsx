@@ -5,7 +5,7 @@ export default function SectionTitle({ title, btnHref, btnTitle }) {
   return (
     <div className=" w-full max-w-[1600px] mx-auto px-4 lg:px-8">
       <div className="flex items-center justify-between">
-        <h3 className="font-DanaDemiBold pt-2.5 text-base sm:text-lg md:text-2xl lg:font-DanaDemiBold"> {title} </h3>
+        <h3 className="font-DanaDemiBold dark:text-white pt-2.5 text-base sm:text-lg md:text-2xl lg:font-DanaDemiBold"> {title} </h3>
 
         {btnTitle ? (
           <>

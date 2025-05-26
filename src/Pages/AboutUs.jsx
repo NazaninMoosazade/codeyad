@@ -7,10 +7,10 @@ export default function AboutUs() {
     <>
       <Header />
       <section className="mt-24 w-full max-w-[1600px] mx-auto px-4 lg:px-8">
-        <h1 className="font-DanaDemiBold text-right mb-8">درباره ما </h1>
+        <h1 className="font-DanaDemiBold text-right mb-8 dark:!text-white">درباره ما </h1>
         <img src="/img/aboutUs1.jpg" alt="aboutus1" />
         <div className="mt-3 mb-3">
-          <span className="font-Dana text-lg">
+          <span className="font-Dana text-lg dark:!text-gray-300">
             در دنیای امروز که فناوری‌های نوین به سرعت در حال تغییر و پیشرفت
             هستند، توانایی تسلط بر مهارت‌های برنامه‌نویسی و تکنولوژی‌های دیجیتال
             یکی از مهم‌ترین نیازهای فردی و حرفه‌ای به شمار می‌آید. آکادمی کدیاد
@@ -23,7 +23,7 @@ export default function AboutUs() {
           </span>
         </div>
         <div className="mt-3 mb-3">
-          <span className="font-Dana text-lg">
+          <span className="font-Dana text-lg dark:!text-gray-300">
             آکادمی کدیاد با بهره‌گیری از مجرب ترین مدرسین و پشتیبانی حرفه ای،
             محیطی پویا و تعاملی را برای یادگیری آنلاین ارائه می‌دهد. ما بر این
             باور هستیم که یادگیری نباید محدود به چهارچوب‌های سنتی کلاس‌های حضوری
@@ -34,10 +34,10 @@ export default function AboutUs() {
             دسترسی دارند و می‌توانند از محتوای آموزشی متنوع ما بهره‌مند شوند.
           </span>
         </div>
-        <h3 className="font-DanaDemiBold text-2xl mt-5">هدف و ماموریت ها</h3>
+        <h3 className="font-DanaDemiBold text-2xl mt-5 dark:!text-white">هدف و ماموریت ها</h3>
         <img src="/img/aboutus2.jpg" alt="aboutus2" />
         <div className="mt-3 mb-3">
-          <span className="font-Dana text-lg">
+          <span className="font-Dana text-lg dark:!text-gray-300">
             هدف اصلی ما در کدیاد، پرورش نسل جدیدی از برنامه‌نویسان و متخصصان
             فناوری است که بتوانند در دنیای پرسرعت و دیجیتال امروزی، حرفی برای
             گفتن داشته باشند. مأموریت ما ارائه آموزش‌هایی است که نه تنها به
@@ -47,10 +47,10 @@ export default function AboutUs() {
             پروژه‌های واقعی، مهارت‌های خود را در عمل به کار بگیرند.
           </span>
         </div>
-        <h3 className="font-DanaDemiBold text-2xl mt-5">رویکرد آموزشی ما</h3>
+        <h3 className="font-DanaDemiBold text-2xl mt-5 dark:!text-white">رویکرد آموزشی ما</h3>
         <img src="/img/aboutus3.jpg" alt="aboutus3" />
         <div className="mt-3 mb-3">
-          <span className="font-Dana text-lg">
+          <span className="font-Dana text-lg dark:!text-gray-300">
             آکادمی کدیاد از ابتدا با تمرکز بر ارائه آموزش‌های عملی و کاربردی بنا
             شده است. ما بر این باوریم که یادگیری نباید صرفاً به تئوری محدود شود؛
             بلکه ترکیبی از تئوری و تمرین عملی است که می‌تواند یک یادگیرنده را به
@@ -68,10 +68,10 @@ export default function AboutUs() {
             با مدرس دوره در ارتباط باشند.
           </span>
         </div>
-        <h3 className="font-DanaDemiBold text-2xl mt-5"> دوره‌های آموزشی ما</h3>
+        <h3 className="font-DanaDemiBold text-2xl mt-5 dark:!text-white"> دوره‌های آموزشی ما</h3>
         <img src="/img/aboutus4.jpg" alt="aboutus3" />
         <div className="mt-3 mb-3">
-          <span className="font-Dana text-lg">
+          <span className="font-Dana text-lg dark:!text-gray-300">
             در کدیاد، ما به ارائه دوره‌های آموزشی در زمینه‌های متنوعی از جمله
             برنامه‌نویسی، توسعه وب، هوش مصنوعی، تحلیل داده، دیجیتال مارکتینگ، و
             بسیاری از حوزه‌های دیگر فناوری می‌پردازیم. دوره‌های ما برای تمامی
@@ -87,11 +87,11 @@ export default function AboutUs() {
             تکنولوژی‌ها و استانداردهای روز دنیا همگام باشند.
           </span>
         </div>
-        <h3 className="font-DanaDemiBold text-2xl mt-5">
+        <h3 className="font-DanaDemiBold text-2xl mt-5 dark:!text-white">
           آینده برنامه نویسی با کدیاد
         </h3>
         <div className="mt-3 mb-3">
-          <span className="font-Dana text-lg">
+          <span className="font-Dana text-lg dark:!text-gray-300">
             در دنیایی که تکنولوژی به سرعت در حال پیشرفت است، یادگیری مداوم و
             ارتقای مهارت‌ها ضروری است. ما در آکادمی کدیاد متعهد به ارائه بهترین
             و به‌روزترین منابع آموزشی هستیم تا شما بتوانید با اعتماد به نفس و
