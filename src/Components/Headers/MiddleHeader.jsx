@@ -1,8 +1,31 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ThemeToggleButton from "./../ThemeToggleButton";
+import AuthContext from "../../Context/AuthContext";
+import { useQuery } from "@tanstack/react-query";
 
 export default function MiddleHeader() {
+  const authContext = useContext(AuthContext);
+
+  // const {
+  //   data: allMenus = [],
+  //   isLoading,
+  //   isError,
+  // } = useQuery({
+  //   queryKey: ["menus"],
+  //   queryFn: () =>
+  //     fetch("http://localhost:4000/v1/menus").then((res) => {
+  //       if (!res.ok) {
+  //         throw new Error("Network response was not ok");
+  //         // console.log(res);
+  //       }
+  //       return res.json();
+  //     }),
+  // });
+
+  // if (isLoading) return <p>در حال بارگذاری منوها...</p>;
+  // if (isError) return <p>خطا در بارگذاری منوها</p>;
+
   return (
     <>
       <header>
@@ -17,36 +40,50 @@ export default function MiddleHeader() {
               </a>
               {/* Links */}
               <ul className="pt-4 flex items-center md:gap-x-5 lg:gap-x-8">
-                <li className="relative group">
+                 <li className="relative group">
                   <Link className="no-underline font-Dana text-black lg:text-lg cursor-pointer">
                     دوره‌های آموزشی
                   </Link>
 
                   {/* زیرمنو اصلی */}
-                  <ul className="absolute hidden right-0 top-7 rounded-tr-lg rounded-br-lg group-hover:flex flex-col bg-white  p-2 h-60 w-48 z-40 ">
-                    {/* آیتم فرانت‌اند با زیرزیرمنو */}
-                    <li className="relative group/frontend">
+                {/* <ul className="absolute hidden right-0 top-7 rounded-tr-lg rounded-br-lg group-hover:flex flex-col bg-white w-44 h-auto z-40 ">
+                  {/* Menus */}
+                  {/* {allMenus.map((menu) => (
+                    <li key={menu._id} className="relative group/frontend">
                       <Link
                         to="/courses/frontend"
                         className="block no-underline font-DanaDemiBold px-4 py-2  text-gray-700 hover:bg-gray-100"
                       >
-                        فرانت‌اند
+                        {menu.title}
                       </Link>
 
-                      {/* زیرزیرمنو فرانت‌اند */}
-                      <ul className="absolute hidden -top-2 right-[184px] -z-20 overflow-y-scroll  group-hover/frontend:flex flex-col bg-zinc-50 p-2 h-60 w-48 ">
-                        <li>
-                          <Link
-                            to="/courses/frontend/javascript"
-                            className="block font-Dana no-underline px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                          >
-                            جاوااسکریپت
-                          </Link>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
+                      <>
+                        {/*  subMenus */}
+                        {/* <ul className="absolute hidden -top-2 right-[175px] -z-20 overflow-y-scroll  group-hover/frontend:flex flex-col bg-zinc-50 p-2 w-44 h-72">
+                          {menu.submenus.length ? (
+                            <>
+                              {menu.submenus.map((submenu) => (
+                                <li>
+                                  <Link
+                                    to="/courses/frontend/javascript"
+                                    className="block font-Dana no-underline px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                  >
+                                    {submenu.title}
+                                  </Link>
+                                </li>
+                              ))}
+                            </>
+                          ) : (
+                            <p>دوره ای وجود ندارد</p>
+                          )}
+                        </ul> */}
+                      {/* </> */}
+                    {/* </li> */}
+                  {/* ))} */} 
+                {/* </ul> */} 
+                 </li> 
+
+         
 
                 <li>
                   <Link
@@ -98,9 +135,19 @@ export default function MiddleHeader() {
               <ThemeToggleButton />
 
               {/* Login & Register */}
-              <Link className="no-underline text-white bg-blue rounded-lg p-2.5 font-Dana">
-                ورود یا ثبت نام
-              </Link>
+
+              {authContext.isLoggIn ? (
+                <Link className="no-underline text-white bg-blue rounded-lg p-2.5 font-Dana">
+                  {authContext.userInfos.name}
+                </Link>
+              ) : (
+                <Link
+                  to="/login"
+                  className="no-underline text-white bg-blue rounded-lg p-2.5 font-Dana"
+                >
+                  ورود یا ثبت نام
+                </Link>
+              )}
             </div>
           </div>
         </div>

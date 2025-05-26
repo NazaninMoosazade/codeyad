@@ -25,9 +25,8 @@ export default function Register() {
     false
   );
 
-  // تعریف فانکشن ثبت‌نام
   const registerUser = async (newUserInfos) => {
-    const response = await fetch("http://localhost:8000/v1/auth/register", {
+    const response = await fetch("http://localhost:4000/v1/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,21 +43,22 @@ export default function Register() {
     return response.json();
   };
 
-  // استفاده از useMutation
+
+
+
   const mutation = useMutation({
     mutationFn: registerUser,
     onSuccess: (data) => {
       console.log("ثبت‌نام موفق", data);
       alert("ثبت‌نام با موفقیت انجام شد.");
-      // اینجا می‌تونی ریدایرکت هم انجام بدی
     },
     onError: (error) => {
       console.error("خطا در ثبت‌نام:", error.message);
       alert(error.message);
     },
   });
+  
 
-  // هندل ارسال فرم
   const registerNewUser = (event) => {
     event.preventDefault();
 
@@ -222,3 +222,4 @@ export default function Register() {
     </>
   );
 }
+

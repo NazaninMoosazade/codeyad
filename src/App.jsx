@@ -6,9 +6,9 @@ import AuthContext from "./Context/AuthContext";
 export default function App() {
   const router = createBrowserRouter(routes);
 
-  const [isLoggedIn, setIsLoggedIng] = useState(false);
+  const [isLoggIn, setIsLoggedIng] = useState(false);
   const [token, setToken] = useState(false);
-  const [userInfos, setUserInfos] = useState(false);
+  const [userInfos, setUserInfos] = useState({});
 
   const login = useCallback((userInfos, token) => {
     setToken(token);
@@ -23,10 +23,10 @@ export default function App() {
     localStorage.removeItem("user");
   }, []);
 
-  useEffect(() => {
+ useEffect(() => {
     const localStorageData = JSON.parse(localStorage.getItem("user"));
     if (localStorageData) {
-      fetch(`http://localhost:8000/v1/auth/me`, {
+      fetch(`http://localhost:4000/v1/auth/me`, {
         headers: {
           Authorization: `Bearer ${localStorageData.token}`,
         },
@@ -35,16 +35,18 @@ export default function App() {
         .then((userData) => {
           setIsLoggedIng(true);
           setUserInfos(userData);
-          // console.log(userData);
+          console.log("userInfos in App.jsx", userInfos);
         });
-    }
+    } 
   }, [login]);
+
+
 
   return (
     <>
       <AuthContext.Provider
         value={{
-          isLoggedIn,
+          isLoggIn,
           token,
           userInfos,
           login,
@@ -58,3 +60,4 @@ export default function App() {
     </>
   );
 }
+
