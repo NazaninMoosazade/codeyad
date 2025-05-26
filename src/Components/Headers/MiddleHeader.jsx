@@ -41,7 +41,7 @@ export default function MiddleHeader() {
               {/* Links */}
               <ul className="pt-4 flex items-center md:gap-x-5 lg:gap-x-8">
                  <li className="relative group">
-                  <Link className="no-underline font-Dana text-black lg:text-lg cursor-pointer">
+                  <Link to='/courses' className="no-underline font-Dana text-black lg:text-lg cursor-pointer">
                     دوره‌های آموزشی
                   </Link>
 

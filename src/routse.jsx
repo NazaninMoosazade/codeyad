@@ -7,6 +7,7 @@ import Register from "./Pages/Register";
 import AllCourse from "./Pages/AllCourse";
 import AboutUs from "./Pages/AboutUs";
 import Mag from "./Pages/Mag";
+import Courses from "./Pages/Courses";
 
 const routes = [
   { path: "/", element: <Index /> },
@@ -18,6 +19,8 @@ const routes = [
   { path: "/allCourse", element: <AllCourse /> },
   { path: "/about-us", element: <AboutUs /> },
   { path: "/mag", element: <Mag /> },
+  { path: "/courses", element: <Courses /> },
+
 ];
 
 export default routes;
