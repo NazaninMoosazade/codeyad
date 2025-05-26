@@ -2,29 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ThemeToggleButton from "./../ThemeToggleButton";
 import AuthContext from "../../Context/AuthContext";
-import { useQuery } from "@tanstack/react-query";
+
 
 export default function MiddleHeader() {
   const authContext = useContext(AuthContext);
 
-  // const {
-  //   data: allMenus = [],
-  //   isLoading,
-  //   isError,
-  // } = useQuery({
-  //   queryKey: ["menus"],
-  //   queryFn: () =>
-  //     fetch("http://localhost:4000/v1/menus").then((res) => {
-  //       if (!res.ok) {
-  //         throw new Error("Network response was not ok");
-  //         // console.log(res);
-  //       }
-  //       return res.json();
-  //     }),
-  // });
 
-  // if (isLoading) return <p>در حال بارگذاری منوها...</p>;
-  // if (isError) return <p>خطا در بارگذاری منوها</p>;
 
   return (
     <>
