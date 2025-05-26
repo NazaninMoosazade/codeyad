@@ -29,9 +29,9 @@ export default function MiddleHeader() {
                   </Link>
 
                   {/* زیرمنو اصلی */}
-                {/* <ul className="absolute hidden right-0 top-7 rounded-tr-lg rounded-br-lg group-hover:flex flex-col bg-white w-44 h-auto z-40 ">
+                 {/* <ul className="absolute hidden right-0 top-7 rounded-tr-lg rounded-br-lg group-hover:flex flex-col bg-white w-44 h-auto z-40 ">
                   {/* Menus */}
-                  {/* {allMenus.map((menu) => (
+                   {/* {allMenus.map((menu) => (
                     <li key={menu._id} className="relative group/frontend">
                       <Link
                         to="/courses/frontend"
@@ -42,7 +42,7 @@ export default function MiddleHeader() {
 
                       <>
                         {/*  subMenus */}
-                        {/* <ul className="absolute hidden -top-2 right-[175px] -z-20 overflow-y-scroll  group-hover/frontend:flex flex-col bg-zinc-50 p-2 w-44 h-72">
+                         {/* <ul className="absolute hidden -top-2 right-[175px] -z-20 overflow-y-scroll  group-hover/frontend:flex flex-col bg-zinc-50 p-2 w-44 h-72">
                           {menu.submenus.length ? (
                             <>
                               {menu.submenus.map((submenu) => (
@@ -59,11 +59,11 @@ export default function MiddleHeader() {
                           ) : (
                             <p>دوره ای وجود ندارد</p>
                           )}
-                        </ul> */}
-                      {/* </> */}
-                    {/* </li> */}
-                  {/* ))} */} 
-                {/* </ul> */} 
+                        </ul> 
+                       </> 
+                     </li>  */}
+                   {/* ))}  */} 
+                 {/* </ul>  */}
                  </li> 
 
          

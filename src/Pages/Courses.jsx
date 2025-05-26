@@ -16,7 +16,6 @@ export default function Courses() {
       fetch("http://localhost:4000/v1/menus").then((res) => {
         if (!res.ok) {
           throw new Error("Network response was not ok");
-          // console.log(res);
         }
         return res.json();
       }),
@@ -41,18 +40,40 @@ export default function Courses() {
             دوره های کد یاد
           </h1>
           <div className="mt-10">
-            <ul className="flex justify-center items-center gap-x-32">
+            <ul className="flex justify-center items-stretch gap-x-6">
               <li>
-                <Link className="font-Dana  text-lg no-underline text-black">
-                  {" "}
-                  همه دوره ها{" "}
+                <Link className="font-Dana text-lg no-underline text-black">
+                  همه دوره ها
                 </Link>
               </li>
               {allMenus.map((menus) => (
                 <li>
-                  <Link className="font-Dana text-lg no-underline text-black">
-                    {" "}
-                    {menus.title}{" "}
+                  <Link
+                    // to="/courses/frontend"
+                    className="font-Dana text-lg no-underline text-black"
+                  >
+                    {menus.title}
+                    {
+                      <ul className="z-20 flex flex-col bg-zinc-50 p-2 w-44 h-72">
+                        {menus.submenus.length ? (
+                          <>
+                            {menus.submenus.map((submenuo) => (
+                               <li>
+                                 <Link
+                                  key={submenuo.href}
+                                  to={`/course/${submenuo.href}`}
+                                  className="block font-Dana no-underline px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                >
+                                  {submenuo.title}
+                                </Link>
+                               </li>
+                            ))}
+                          </>
+                        ) : (
+                          <p>دوره ای وجود ندارد</p>
+                        )}
+                      </ul>
+                    }
                   </Link>
                 </li>
               ))}

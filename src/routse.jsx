@@ -11,7 +11,7 @@ import Courses from "./Pages/Courses";
 
 const routes = [
   { path: "/", element: <Index /> },
-  { path: "/course/:courseName", element: <Course /> },
+  { path: "course/:courseName", element: <Course /> },
   { path: "/course-cat/:categoryName", element: <CourseCat /> },
   { path: "/blug/:blugName", element: <Blug /> },
   { path: "/login", element: <Login /> },
@@ -20,6 +20,8 @@ const routes = [
   { path: "/about-us", element: <AboutUs /> },
   { path: "/mag", element: <Mag /> },
   { path: "/courses", element: <Courses /> },
+
+
 
 ];
 
