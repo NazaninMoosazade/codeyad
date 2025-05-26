@@ -1,47 +1,26 @@
-import { createContext, memo, useState, useEffect } from "react";
-import { getFromLocal, setToLocal } from "../Js/utils/BrowserMemo";
+import { createContext, useState, useEffect } from "react";
+import { getFromLocal, setToLocal } from "../Utils/BrowserMemo";
 
 const ThemeContext = createContext(null);
 
-const ThemeContextProvider = memo(({ children }) => {
-  const initTheme = getFromLocal("theme") === "dark";
+const ThemeContextProvider = ({ children }) => {
+  const [isDark, setIsDark] = useState(() => {
+    // Safe default: use localStorage if exists, otherwise match system preference
+    const savedTheme = getFromLocal("theme");
+    if (savedTheme === "dark") return true;
+    if (savedTheme === "light") return false;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
 
-  const [isDark, setIsDark] = useState(initTheme);
-
-  // Sync tailwind class on <html>
+  // Sync Tailwind class with isDark state
   useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    document.documentElement.classList.toggle("dark", isDark);
+    setToLocal("theme", isDark ? "dark" : "light");
   }, [isDark]);
 
-  // First load: Apply theme from localStorage
-  useEffect(() => {
-    const savedTheme = getFromLocal("theme");
-    if (savedTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, []);
-
-  const changToDark = () => {
-    setIsDark(true);
-    setToLocal("theme", "dark");
-  };
-
-  const changToLight = () => {
-    setIsDark(false);
-    setToLocal("theme", "light");
-  };
-
-  const toggleTheme = () => {
-    const newTheme = !isDark;
-    setIsDark(newTheme);
-    setToLocal("theme", newTheme ? "dark" : "light");
-  };
+  const changToDark = () => setIsDark(true);
+  const changToLight = () => setIsDark(false);
+  const toggleTheme = () => setIsDark((prev) => !prev);
 
   const ThemeContextValue = {
     isDark,
@@ -55,8 +34,6 @@ const ThemeContextProvider = memo(({ children }) => {
       {children}
     </ThemeContext.Provider>
   );
-});
+};
 
 export { ThemeContext, ThemeContextProvider };
-
-

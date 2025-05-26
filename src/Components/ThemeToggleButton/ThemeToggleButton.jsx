@@ -1,15 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { ThemeContext } from "../../Context/ThemeContext";
 
 export default function ThemeToggleButton() {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDark]);
+  const { isDark, toggleTheme } = useContext(ThemeContext);
 
   return (
     <div className="flex items-center justify-center">
@@ -18,7 +11,7 @@ export default function ThemeToggleButton() {
         id="themeCheck"
         className="sr-only"
         checked={isDark}
-        onChange={() => setIsDark(!isDark)}
+        onChange={toggleTheme}
       />
       <label
         htmlFor="themeCheck"

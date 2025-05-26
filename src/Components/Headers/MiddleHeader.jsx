@@ -2,18 +2,17 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import ThemeToggleButton from "../ThemeToggleButton/ThemeToggleButton";
 import AuthContext from "../../Context/AuthContext";
-
+;
 
 export default function MiddleHeader() {
   const authContext = useContext(AuthContext);
-
 
 
   return (
     <>
       <header>
         {/* Desktop Header */}
-        <div className="hidden lg:block w-full max-w-[1600px] mx-auto px-4 lg:px-8">
+        <div className="hidden lg:block dark:!bg-black w-full max-w-[1600px] mx-auto px-4 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Right Header */}
             <div className="flex items-center mt-4">
@@ -23,15 +22,18 @@ export default function MiddleHeader() {
               </a>
               {/* Links */}
               <ul className="pt-4 flex items-center md:gap-x-5 lg:gap-x-8">
-                 <li className="relative group">
-                  <Link to='/courses' className="no-underline font-Dana text-black lg:text-lg cursor-pointer">
+                <li className="relative group">
+                  <Link
+                    to="/courses"
+                    className="no-underline font-Dana dark:!text-red-600 text-black lg:text-lg cursor-pointer"
+                  >
                     دوره‌های آموزشی
                   </Link>
 
                   {/* زیرمنو اصلی */}
-                 {/* <ul className="absolute hidden right-0 top-7 rounded-tr-lg rounded-br-lg group-hover:flex flex-col bg-white w-44 h-auto z-40 ">
+                  {/* <ul className="absolute hidden right-0 top-7 rounded-tr-lg rounded-br-lg group-hover:flex flex-col bg-white w-44 h-auto z-40 ">
                   {/* Menus */}
-                   {/* {allMenus.map((menu) => (
+                  {/* {allMenus.map((menu) => (
                     <li key={menu._id} className="relative group/frontend">
                       <Link
                         to="/courses/frontend"
@@ -42,7 +44,7 @@ export default function MiddleHeader() {
 
                       <>
                         {/*  subMenus */}
-                         {/* <ul className="absolute hidden -top-2 right-[175px] -z-20 overflow-y-scroll  group-hover/frontend:flex flex-col bg-zinc-50 p-2 w-44 h-72">
+                  {/* <ul className="absolute hidden -top-2 right-[175px] -z-20 overflow-y-scroll  group-hover/frontend:flex flex-col bg-zinc-50 p-2 w-44 h-72">
                           {menu.submenus.length ? (
                             <>
                               {menu.submenus.map((submenu) => (
@@ -62,16 +64,14 @@ export default function MiddleHeader() {
                         </ul> 
                        </> 
                      </li>  */}
-                   {/* ))}  */} 
-                 {/* </ul>  */}
-                 </li> 
-
-         
+                  {/* ))}  */}
+                  {/* </ul>  */}
+                </li>
 
                 <li>
                   <Link
                     to="/mag"
-                    className="no-underline font-Dana text-black lg:text-lg"
+                    className="no-underline font-Dana dark:text-red-600 text-black lg:text-lg"
                   >
                     مقالات
                   </Link>

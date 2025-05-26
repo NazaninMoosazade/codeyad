@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from "react";
 import routes from "./routse";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AuthContext from "./Context/AuthContext";
+import { ThemeContextProvider } from "./Context/ThemeContext";
 
 export default function App() {
   const router = createBrowserRouter(routes);
@@ -23,7 +24,7 @@ export default function App() {
     localStorage.removeItem("user");
   }, []);
 
- useEffect(() => {
+  useEffect(() => {
     const localStorageData = JSON.parse(localStorage.getItem("user"));
     if (localStorageData) {
       fetch(`http://localhost:4000/v1/auth/me`, {
@@ -37,27 +38,26 @@ export default function App() {
           setUserInfos(userData);
           console.log("userInfos in App.jsx", userInfos);
         });
-    } 
+    }
   }, [login]);
-
-
 
   return (
     <>
-      <AuthContext.Provider
-        value={{
-          isLoggIn,
-          token,
-          userInfos,
-          login,
-          logout,
-        }}
-      >
-        <div className="min-h-screen bg-bgWhite">
-          <RouterProvider router={router} />
-        </div>
-      </AuthContext.Provider>
+      <ThemeContextProvider>
+        <AuthContext.Provider
+          value={{
+            isLoggIn,
+            token,
+            userInfos,
+            login,
+            logout,
+          }}
+        >
+          <div className="min-h-screen bg-bgWhite">
+            <RouterProvider router={router} />
+          </div>
+        </AuthContext.Provider>
+      </ThemeContextProvider>
     </>
   );
 }
-
