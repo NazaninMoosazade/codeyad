@@ -2,11 +2,10 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import ThemeToggleButton from "../ThemeToggleButton/ThemeToggleButton";
 import AuthContext from "../../Context/AuthContext";
-;
-
 export default function MiddleHeader() {
   const authContext = useContext(AuthContext);
-
+  const { userInfos, isLoggedIn } = useContext(AuthContext);
+  console.log("Header userInfos:", userInfos, "isLoggIn:", isLoggedIn);
 
   return (
     <>
@@ -119,8 +118,8 @@ export default function MiddleHeader() {
 
               {/* Login & Register */}
 
-              {authContext.isLoggIn ? (
-                <Link className="no-underline text-white bg-blue rounded-lg p-2.5 font-Dana">
+              {/* {authContext.isLoggIn ? (
+                <Link to="/register" className="no-underline text-white bg-blue rounded-lg p-2.5 font-Dana">
                   {authContext.userInfos.name}
                 </Link>
               ) : (
@@ -130,7 +129,22 @@ export default function MiddleHeader() {
                 >
                   ورود یا ثبت نام
                 </Link>
+              )} */}
+
+              {/* {isLoggedIn && userInfos.name && <span>سلام، {userInfos.name}!</span>} */}
+
+              {isLoggedIn && userInfos.name ? (
+                <Link to='/register' className="no-underline text-white bg-blue rounded-lg p-2.5 font-Dana" >سلام، {userInfos.name}!</Link>
+              ) : (
+                <Link
+                  to="/login"
+                  className="no-underline text-white bg-blue rounded-lg p-2.5 font-Dana"
+                >
+                  ورود یا ثبت نام
+                </Link>
               )}
+
+
             </div>
           </div>
         </div>

@@ -25,25 +25,45 @@ export default function Register() {
     false
   );
 
-  const registerUser = async (newUserInfos) => {
-    const response = await fetch("http://localhost:4000/v1/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUserInfos),
-    });
+  // const registerUser = async (newUserInfos) => {
+  //   const response = await fetch("http://localhost:4000/v1/auth/register", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(newUserInfos),
+  //   });
 
-    if (!response.ok) {
-      authContext.login(result.user , result.accessToken)
-      const errorData = await response.json();
-      throw new Error(errorData.message || "خطایی در ثبت‌نام رخ داده است.");
-    }
+  //   if (!response.ok) {
+  //     authContext.login(result.user , result.accessToken)
+  //     const errorData = await response.json();
+  //     throw new Error(errorData.message || "خطایی در ثبت‌نام رخ داده است.");
+  //   }
 
-    return response.json();
-  };
+  //   return response.json();
+  // };
 
 
+const registerUser = async (newUserInfos) => {
+  const response = await fetch("http://localhost:4000/v1/auth/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newUserInfos),
+  });
+
+  const result = await response.json();
+
+  if (!response.ok) {
+    throw new Error(result.message || "خطایی در ثبت‌نام رخ داده است.");
+  }
+
+  // ثبت‌نام موفق: لاگین کن با داده‌ها
+  authContext.login(result.user, result.accessToken);
+
+  return result;
+};
 
 
   const mutation = useMutation({

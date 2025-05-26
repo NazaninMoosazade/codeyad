@@ -1,5 +1,73 @@
+// import React, { useState, useCallback, useEffect } from "react";
+// import routes from "./routse";
+// import { RouterProvider, createBrowserRouter } from "react-router-dom";
+// import AuthContext from "./Context/AuthContext";
+// import { ThemeContextProvider } from "./Context/ThemeContext";
+
+// export default function App() {
+//   const router = createBrowserRouter(routes);
+
+//   const [isLoggIn, setIsLoggedIng] = useState(false);
+//   const [token, setToken] = useState(false);
+//   const [userInfos, setUserInfos] = useState({});
+
+//   const login = useCallback((userInfos, token) => {
+//     setToken(token);
+//     setIsLoggedIng(true);
+//     setUserInfos(userInfos);
+//     localStorage.setItem("user", JSON.stringify({ token }));
+//   }, []);
+
+//   const logout = useCallback(() => {
+//     setToken(null);
+//     setUserInfos({});
+//     localStorage.removeItem("user");
+//   }, []);
+
+//   useEffect(() => {
+//     const localStorageData = JSON.parse(localStorage.getItem("user"));
+//     if (localStorageData) {
+//       fetch(`http://localhost:4000/v1/auth/me`, {
+//         headers: {
+//           Authorization: `Bearer ${localStorageData.token}`,
+//         },
+//       })
+//         .then((res) => res.json())
+//         .then((userData) => {
+//           setIsLoggedIng(true);
+//           setUserInfos(userData);
+//           console.log("userInfos in App.jsx", userInfos);
+//         });
+//     }
+//   }, [login]);
+
+
+
+
+
+//   return (
+//     <>
+//       <ThemeContextProvider>
+//         <AuthContext.Provider
+//           value={{
+//             isLoggIn,
+//             token,
+//             userInfos,
+//             login,
+//             logout,
+//           }}
+//         >
+//           <div className="min-h-screen dark:bg-darker bg-bgWhite">
+//             <RouterProvider router={router} />
+//           </div>
+//         </AuthContext.Provider>
+//       </ThemeContextProvider>
+//     </>
+//   );
+// }
+
 import React, { useState, useCallback, useEffect } from "react";
-import routes from "./routse";
+import routes from './routse'
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AuthContext from "./Context/AuthContext";
 import { ThemeContextProvider } from "./Context/ThemeContext";
@@ -7,57 +75,66 @@ import { ThemeContextProvider } from "./Context/ThemeContext";
 export default function App() {
   const router = createBrowserRouter(routes);
 
-  const [isLoggIn, setIsLoggedIng] = useState(false);
-  const [token, setToken] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [token, setToken] = useState(null);
   const [userInfos, setUserInfos] = useState({});
 
   const login = useCallback((userInfos, token) => {
     setToken(token);
-    setIsLoggedIng(true);
+    setIsLoggedIn(true);
     setUserInfos(userInfos);
     localStorage.setItem("user", JSON.stringify({ token }));
   }, []);
 
   const logout = useCallback(() => {
     setToken(null);
+    setIsLoggedIn(false);
     setUserInfos({});
     localStorage.removeItem("user");
   }, []);
 
+  // وقتی اپ اجرا میشه، اگر توکن داشتیم اطلاعات کاربر رو می‌گیریم
   useEffect(() => {
     const localStorageData = JSON.parse(localStorage.getItem("user"));
-    if (localStorageData) {
+
+    if (localStorageData?.token) {
       fetch(`http://localhost:4000/v1/auth/me`, {
         headers: {
           Authorization: `Bearer ${localStorageData.token}`,
         },
       })
-        .then((res) => res.json())
+        .then(async (res) => {
+          if (!res.ok) {
+            throw new Error("توکن نامعتبر است یا منقضی شده");
+          }
+          return res.json();
+        })
         .then((userData) => {
-          setIsLoggedIng(true);
+          setIsLoggedIn(true);
           setUserInfos(userData);
-          console.log("userInfos in App.jsx", userInfos);
+          setToken(localStorageData.token);
+        })
+        .catch(() => {
+          logout();
         });
     }
-  }, [login]);
+  }, [logout]);
 
   return (
-    <>
-      <ThemeContextProvider>
-        <AuthContext.Provider
-          value={{
-            isLoggIn,
-            token,
-            userInfos,
-            login,
-            logout,
-          }}
-        >
-          <div className="min-h-screen dark:bg-darker bg-bgWhite">
-            <RouterProvider router={router} />
-          </div>
-        </AuthContext.Provider>
-      </ThemeContextProvider>
-    </>
+    <ThemeContextProvider>
+      <AuthContext.Provider
+        value={{
+          isLoggedIn,
+          token,
+          userInfos,
+          login,
+          logout,
+        }}
+      >
+        <div className="min-h-screen dark:bg-darker bg-bgWhite">
+          <RouterProvider router={router} />
+        </div>
+      </AuthContext.Provider>
+    </ThemeContextProvider>
   );
 }
