@@ -8,12 +8,10 @@ import { useForm } from "../Hooks/UseForm";
 import Rules from "../validators/Rules";
 import { useMutation } from "@tanstack/react-query";
 import AuthContext from "../Context/AuthContext";
+import Swal from "sweetalert2";
 
 export default function Register() {
-
-  const authContext = useContext(AuthContext)
-
-  
+  const authContext = useContext(AuthContext);
 
   const [formState, onInputHandler] = useForm(
     {
@@ -25,7 +23,7 @@ export default function Register() {
     false
   );
 
-  // const registerUser = async (newUserInfos) => {
+
   //   const response = await fetch("http://localhost:4000/v1/auth/register", {
   //     method: "POST",
   //     headers: {
@@ -34,56 +32,98 @@ export default function Register() {
   //     body: JSON.stringify(newUserInfos),
   //   });
 
+  //   const result = await response.json();
+
   //   if (!response.ok) {
-  //     authContext.login(result.user , result.accessToken)
-  //     const errorData = await response.json();
-  //     throw new Error(errorData.message || "خطایی در ثبت‌نام رخ داده است.");
+  //     throw new Error(result.message || "خطایی در ثبت‌نام رخ داده است.");
   //   }
 
-  //   return response.json();
+  //   // ثبت‌نام موفق: لاگین کن با داده‌ها
+  //   authContext.login(result.user, result.accessToken);
+
+  //   return result;
   // };
 
+  //   const mutation = useMutation({
+  //     mutationFn: registerUser,
+  //     onSuccess: (data) => {
+  //       // console.log("ثبت‌نام موفق", data);
+  //       alert("ثبت‌نام با موفقیت انجام شد.");
+  //     },
+  //     onError: (error) => {
+  //       // console.error("خطا در ثبت‌نام:", error.message);
+  //       alert(error.message);
+  //     },
+  //   });
 
-const registerUser = async (newUserInfos) => {
-  const response = await fetch("http://localhost:4000/v1/auth/register", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(newUserInfos),
-  });
+  //   const registerNewUser = (event) => {
+  //     event.preventDefault();
 
-  const result = await response.json();
+  //     if (!formState.isFormValid) {
+  //       alert("فرم معتبر نیست! لطفا ورودی‌ها را بررسی کنید.");
+  //       return;
+  //     }
 
-  if (!response.ok) {
-    throw new Error(result.message || "خطایی در ثبت‌نام رخ داده است.");
-  }
+  //     const newUserInfos = {
+  //       name: formState.inputs.name.value,
+  //       username: formState.inputs.username.value,
+  //       email: formState.inputs.email.value,
+  //       password: formState.inputs.password.value,
+  //       confirmPassword: formState.inputs.password.value,
+  //     };
 
-  // ثبت‌نام موفق: لاگین کن با داده‌ها
-  authContext.login(result.user, result.accessToken);
+  //     mutation.mutate(newUserInfos);
+  //   };
 
-  return result;
-};
+  const registerUser = async (newUserInfos) => {
+    const response = await fetch("http://localhost:4000/v1/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUserInfos),
+    });
 
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.message || "خطایی در ثبت‌نام رخ داده است.");
+    }
+
+    authContext.login(result.user, result.accessToken);
+    return result;
+  };
 
   const mutation = useMutation({
     mutationFn: registerUser,
     onSuccess: (data) => {
-      console.log("ثبت‌نام موفق", data);
-      alert("ثبت‌نام با موفقیت انجام شد.");
+      Swal.fire({
+        icon: "success",
+        title: "ثبت‌نام موفق",
+        text: `${data.user.name} عزیز خوش آمدی!`,
+        confirmButtonText: "باشه",
+      });
     },
     onError: (error) => {
-      console.error("خطا در ثبت‌نام:", error.message);
-      alert(error.message);
+      Swal.fire({
+        icon: "error",
+        title: "خطا در ثبت‌نام",
+        text: error.message || "مشکلی پیش آمده است.",
+        confirmButtonText: "متوجه شدم",
+      });
     },
   });
-  
 
   const registerNewUser = (event) => {
     event.preventDefault();
 
     if (!formState.isFormValid) {
-      alert("فرم معتبر نیست! لطفا ورودی‌ها را بررسی کنید.");
+      Swal.fire({
+        icon: "warning",
+        title: "فرم ناقص است",
+        text: "لطفا همه‌ی فیلدها را به درستی پر کنید.",
+        confirmButtonText: "متوجه شدم",
+      });
       return;
     }
 
@@ -226,7 +266,8 @@ const registerUser = async (newUserInfos) => {
             </span>
             <ul className="py-3 list-disc">
               <li className="font-Dana text-sm text-gray-500 mr-5">
-                لطفا از مرورگرهای مطمئن و بروز مانند گوگل کروم و فایرفاکس استفاده کنید.
+                لطفا از مرورگرهای مطمئن و بروز مانند گوگل کروم و فایرفاکس
+                استفاده کنید.
               </li>
               <li className="font-Dana text-sm text-gray-500 mr-5">
                 ما هرگز اطلاعات محرمانه شما را از طریق ایمیل درخواست نمی‌کنیم.
@@ -242,4 +283,3 @@ const registerUser = async (newUserInfos) => {
     </>
   );
 }
-

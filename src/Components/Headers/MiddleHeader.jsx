@@ -8,7 +8,7 @@ import MobileHeader from "./MobileHeader";
 export default function MiddleHeader() {
   const authContext = useContext(AuthContext);
   const { userInfos, isLoggedIn } = useContext(AuthContext);
-  console.log("Header userInfos:", userInfos, "isLoggIn:", isLoggedIn);
+  // console.log("Header userInfos:", userInfos, "isLoggIn:", isLoggedIn);
 
   return (
     <>

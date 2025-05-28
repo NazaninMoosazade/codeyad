@@ -36,13 +36,13 @@ export default function Courses() {
       <Header />
       <section className="mt-12 w-full max-w-[1600px] mx-auto px-4 lg:px-8">
         <div className=" border-b dark:border-gray-700">
-          <h1 className="mx-auto text-center font-DanaDemiBold">
+          <h1 className="mx-auto text-center dark:!text-white font-DanaDemiBold">
             دوره های کد یاد
           </h1>
           <div className="mt-10">
             <ul className="flex justify-center items-stretch gap-x-6">
               <li>
-                <Link className="font-Dana text-lg no-underline text-black">
+                <Link className="font-Dana text-lg no-underline dark:!text-white text-black">
                   همه دوره ها
                 </Link>
               </li>
