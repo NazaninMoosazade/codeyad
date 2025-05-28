@@ -1,7 +1,11 @@
-import React from "react";
+import React , { useContext } from "react";
 import { Link } from "react-router-dom";
+import AuthContext from "../../Context/AuthContext";
 
 export default function MobileHeader() {
+  const authContext = useContext(AuthContext);
+  const { userInfos, isLoggedIn } = useContext(AuthContext);
+
   return (
     <div className="block lg:hidden w-full h-20 bg-white p-3.5">
       <div className="flex items-center justify-between">
@@ -23,9 +27,22 @@ export default function MobileHeader() {
         {/* Logo */}
         <img src="/img/logo.png" alt="logo" className="h-[30px]" />
         {/* Login & Register */}
-        <Link className="no-underline text-sm text-white bg-blue rounded-lg p-1.5 font-Dana">
-          ورود یا ثبت نام
-        </Link>
+        {isLoggedIn && userInfos.name ? (
+          <Link
+            to="/register"
+            className="no-underline text-white text-sm bg-blue rounded-lg p-1 w-28 font-Dana"
+          >
+            {" "}
+            سلام، {userInfos.name} !
+          </Link>
+        ) : (
+          <Link
+            to="/login"
+            className="no-underline text-white bg-blue rounded-lg p-2.5 font-Dana"
+          >
+            ورود یا ثبت نام
+          </Link>
+        )}
       </div>
     </div>
   );

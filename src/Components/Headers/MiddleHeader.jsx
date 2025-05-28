@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import ThemeToggleButton from "../ThemeToggleButton/ThemeToggleButton";
 import AuthContext from "../../Context/AuthContext";
-import MobileResponsive from "./MobileHeader";
 import MobileHeader from "./MobileHeader";
 
 
@@ -121,24 +120,10 @@ export default function MiddleHeader() {
               <ThemeToggleButton />
 
               {/* Login & Register */}
-
-              {/* {authContext.isLoggIn ? (
-                <Link to="/register" className="no-underline text-white bg-blue rounded-lg p-2.5 font-Dana">
-                  {authContext.userInfos.name}
-                </Link>
-              ) : (
-                <Link
-                  to="/login"
-                  className="no-underline text-white bg-blue rounded-lg p-2.5 font-Dana"
-                >
-                  ورود یا ثبت نام
-                </Link>
-              )} */}
-
               {/* {isLoggedIn && userInfos.name && <span>سلام، {userInfos.name}!</span>} */}
 
               {isLoggedIn && userInfos.name ? (
-                <Link to='/register' className="no-underline text-white bg-blue rounded-lg p-2.5 font-Dana" > سلام، {userInfos.name} !</Link>
+                <Link to='/register' className="no-underline text-white bg-blue rounded-lg text-sm p-2 font-Dana" > سلام، {userInfos.name} !</Link>
               ) : (
                 <Link
                   to="/login"
