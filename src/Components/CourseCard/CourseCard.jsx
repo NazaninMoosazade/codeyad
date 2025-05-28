@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function CourseCard() {
+export default function CourseCard(props) {
   return (
-    <div className=" mx-auto bg-white dark:!border-2 dark:!border-gray-500 dark:!bg-bgDarker mt-10 rounded-xl shadow-md overflow-hidden flex flex-col transition-transform hover:-translate-y-4 hover:shadow-lg duration-300 w-full max-w-sm">
+    <div className=" mx-auto bg-white dark:!border-2 dark:!border-gray-500 dark:!bg-bgDarker mt-10 rounded-xl shadow-lg overflow-hidden flex flex-col transition-transform hover:-translate-y-4 hover:shadow-lg duration-300 w-full max-w-sm">
       {/* <!-- تصویر --> */}
       <a href="/course/personal-professional-success-specialization">
         <img
-          src="/img/courseBanner.webp"
-          alt="آموزش تخصص در دستیابی به موفقیت شخصی و حرفه‌ای"
+          src={`http://localhost:4000/courses/covers/${props.cover}`}
+          alt={props.cover}
           className="w-full h-48 object-cover"
         />
       </a>
@@ -17,29 +17,28 @@ export default function CourseCard() {
       <div className="p-4 flex flex-col justify-between flex-grow">
         {/* <!-- عنوان دوره --> */}
         <Link className="font-Dana no-underline text-gray-800 dark:!text-white text-base leading-6 hover:text-blue transition-colors mb-3">
-          آموزش تخصص در دستیابی به موفقیت شخصی و حرفه‌ای
+          {props.name}
         </Link>
 
-        {/* <!-- سطح --> */}
-        <span className="text-xs font-DanaDemiBold text-blue rounded-full px-3 py-1 w-fit mb-2">
-          مدرس دوره : امین سعیدی
-        </span>
 
-        {/* <!-- اطلاعات زمان و جلسات --> */}
-        <div className="flex items-center text-sm text-gray-600 gap-3 mb-4">
-          <div className="flex items-center gap-1">
-            ⏰ <span dir="ltr">00 : 00 : 00</span>
-          </div>
-          <span className="w-1 h-1 bg-gray-400 rounded-full"></span>
-          <div className="flex items-center gap-1">
-            🎬 <span>0 جلسه</span>
-          </div>
+        {/* <!-- اطلاعات به روز رسانی    --> */}
+        <div className="flex justify-between items-stretch pb-2 ">
+          <span className="text-sm font-Dana text-gray-500"> آخرین به روز رسانی</span>
+
+          <span className="font-Dana text-sm text-gray-500">{props.updatedAt.slice(0, 10)}</span>
         </div>
 
         {/* <!-- قیمت و دکمه --> */}
         <div className="">
           <p className="text-blue font-bold ">
-            ۱۹۹,۰۰۰ <span className="text-sm font-Dana ">تومان</span>
+            {props.price === 0 ? (
+              <span className="text-sm font-Dana">رایگان</span>
+            ) : (
+              <>
+                {props.price.toLocaleString("fa-IR")}
+                <span className="text-sm font-DanaDemiBold mr-1">تومان</span>
+              </>
+            )}{" "}
           </p>
 
           <div className="no-underline p-2 flex items-center justify-center gap-x-2 text-white bg-blue rounded-lg font-Dana">

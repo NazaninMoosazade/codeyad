@@ -37,7 +37,7 @@ export default function ButtonHeader() {
     <section className="w-full max-w-[1600px] mx-auto mt-5 px-4 lg:px-8 relative">
       <button
         className="swiper-button-prev-custom absolute -bottom-2 left-2 z-20 -translate-y-1/2 
-                   bg-gray-500 bg-opacity-60 hover:bg-opacity-90 text-white rounded-full p-3 shadow-lg
+                   bg-gray-500 bg-opacity-60 hover:bg-opacity-90 text-white rounded-full p-3 shadow-sm
                    flex items-center justify-center cursor-pointer transition duration-300"
       >
         <svg
@@ -58,7 +58,7 @@ export default function ButtonHeader() {
 
       <button
         className="swiper-button-next-custom absolute -bottom-2 right-2 z-20 -translate-y-1/2 
-                   bg-gray-500 bg-opacity-60 hover:bg-opacity-90 text-white rounded-full p-3 shadow-lg
+                   bg-gray-500 bg-opacity-60 hover:bg-opacity-90 text-white rounded-full p-3 shadow-sm
                    flex items-center justify-center cursor-pointer transition duration-300"
       >
         <svg

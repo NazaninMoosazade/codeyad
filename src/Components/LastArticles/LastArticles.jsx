@@ -5,7 +5,7 @@ import ArticlesCard from '../ArticlesCard/ArticlesCard'
 export default function LastArticles() {
   return (
     <div className='mt-24 w-full max-w-[1600px] mx-auto px-4 lg:px-8'>
-      <SectionTitle title={'آخرین مقالات'} btnTitle={'همرو ببین'} />
+      <SectionTitle title={'آخرین مقالات'} btnTitle={'همرو ببین'} btnHref={'/mag'}/>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
         {/* ستون راست: دو تا کارت زیر هم */}
