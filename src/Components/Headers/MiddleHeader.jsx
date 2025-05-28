@@ -2,6 +2,10 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import ThemeToggleButton from "../ThemeToggleButton/ThemeToggleButton";
 import AuthContext from "../../Context/AuthContext";
+import MobileResponsive from "./MobileHeader";
+import MobileHeader from "./MobileHeader";
+
+
 export default function MiddleHeader() {
   const authContext = useContext(AuthContext);
   const { userInfos, isLoggedIn } = useContext(AuthContext);
@@ -134,7 +138,7 @@ export default function MiddleHeader() {
               {/* {isLoggedIn && userInfos.name && <span>سلام، {userInfos.name}!</span>} */}
 
               {isLoggedIn && userInfos.name ? (
-                <Link to='/register' className="no-underline text-white bg-blue rounded-lg p-2.5 font-Dana" >سلام، {userInfos.name}!</Link>
+                <Link to='/register' className="no-underline text-white bg-blue rounded-lg p-2.5 font-Dana" > سلام، {userInfos.name} !</Link>
               ) : (
                 <Link
                   to="/login"
@@ -149,31 +153,7 @@ export default function MiddleHeader() {
           </div>
         </div>
         {/* Mobile Header */}
-        <div className="block lg:hidden w-full h-20 bg-white p-3.5">
-          <div className="flex items-center justify-between">
-            {/* Menu */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-7 h-7 text-black"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-            {/* Logo */}
-            <img src="/img/logo.png" alt="logo" className="h-[30px]" />
-            {/* Login & Register */}
-            <Link className="no-underline text-sm text-white bg-blue rounded-lg p-1.5 font-Dana">
-              ورود یا ثبت نام
-            </Link>
-          </div>
-        </div>
+      <MobileHeader/>
       </header>
     </>
   );
