@@ -21,7 +21,6 @@ export default function DailyOffers() {
     },
   });
 
-  console.log(offersCourse);
 
   if (isLoading)
     return (
@@ -40,8 +39,8 @@ export default function DailyOffers() {
         {[...offersCourse]
           .reverse()
           .slice(0, 4)
-          .map((course) => (
-            <CourseCard key={course.id} {...course} />
+          .map((course , index) => (
+            <CourseCard key={index} {...course} />
           ))}
       </div>
     </div>

@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
-import 'swiper/css';
+import React, { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
+import "swiper/css";
 
 // آیکون ستاره SVG
 const StarIcon = ({ filled }) => (
   <svg
-    className={`w-5 h-5 ${filled ? 'text-yellow-400' : 'text-gray-300'}`}
-    fill={filled ? 'currentColor' : 'none'}
+    className={`w-5 h-5 ${filled ? "text-yellow-400" : "text-gray-300"}`}
+    fill={filled ? "currentColor" : "none"}
     stroke="currentColor"
     strokeWidth="2"
     viewBox="0 0 24 24"
@@ -28,10 +28,26 @@ export default function SpesialComments() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const comments = [
-    { name: 'زهرا حسینی', text: 'این دوره واقعا مفید بود و تونستم خیلی چیز یاد بگیرم. ممنون از استاد عزیز.', rating: 5 },
-    { name: 'محمد عباسی', text: 'ساده و کاربردی بود. حتی برای کسی که هیچ تجربه‌ای نداره مناسب بود.', rating: 4 },
-    { name: 'سارا کریمی', text: 'پشتیبانی دوره خیلی عالی بود. هر سوالی داشتم سریع پاسخ داده شد.', rating: 5 },
-    { name: 'رضا توکلی', text: 'نسبت به هزینه‌ای که پرداخت کردم واقعا ارزشش رو داشت.', rating: 4 },
+    {
+      name: "زهرا حسینی",
+      text: "این دوره واقعا مفید بود و تونستم خیلی چیز یاد بگیرم. ممنون از استاد عزیز.",
+      rating: 5,
+    },
+    {
+      name: "محمد عباسی",
+      text: "ساده و کاربردی بود. حتی برای کسی که هیچ تجربه‌ای نداره مناسب بود.",
+      rating: 4,
+    },
+    {
+      name: "سارا کریمی",
+      text: "پشتیبانی دوره خیلی عالی بود. هر سوالی داشتم سریع پاسخ داده شد.",
+      rating: 5,
+    },
+    {
+      name: "رضا توکلی",
+      text: "نسبت به هزینه‌ای که پرداخت کردم واقعا ارزشش رو داشت.",
+      rating: 4,
+    },
   ];
 
   const renderStars = (count) => {
@@ -43,49 +59,56 @@ export default function SpesialComments() {
   };
 
   return (
-    <section className="mt-44 w-full bg-bgComments py-12 px-6">
-      <Swiper
-        modules={[Autoplay]}
-        autoplay={{ delay: 1500, disableOnInteraction: false }}
-        loop={true}
-        centeredSlides={true}
-        spaceBetween={24}
-        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-        breakpoints={{
-          0: { slidesPerView: 1 },
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-        }}
-      >
-        {comments.map((comment, index) => {
-          const isActive = index === activeIndex;
-          return (
-            <SwiperSlide key={index}>
-              <div
-                dir="rtl"
-                className={`
+    <>
+      <h2 className="mx-auto text-center dark:!text-white font-DanaDemiBold mt-24">نظرات کاربران</h2>
+      <section className="mt-16 w-full bg-bgComments py-12 px-6">
+        <Swiper
+          modules={[Autoplay]}
+          autoplay={{ delay: 1500, disableOnInteraction: false }}
+          loop={true}
+          centeredSlides={true}
+          spaceBetween={24}
+          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+          breakpoints={{
+            0: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+        >
+          {comments.map((comment, index) => {
+            const isActive = index === activeIndex;
+            return (
+              <SwiperSlide key={index}>
+                <div
+                  dir="rtl"
+                  className={`
                   transition-all duration-300 ease-in-out
                   rounded-xl p-6 min-h-[200px] flex flex-col justify-between
                   shadow-md
                   ${
                     isActive
-                      ? 'bg-white  dark:!bg-gray-700  text-blue-700 scale-105 shadow-xl'
-                      : 'bg-gray-100 dark:!bg-bgDarker text-gray-600 scale-100'
+                      ? "bg-white  dark:!bg-gray-700  text-blue-700 scale-105 shadow-xl"
+                      : "bg-gray-100 dark:!bg-bgDarker text-gray-600 scale-100"
                   }
                 `}
-              >
-                <div>
-                  <p className="font-semibold font-DanaDemiBold text-lg mb-3 text-black dark:!text-white">{comment.name}</p>
-                  <p className="leading-relaxed font-Dana text-sm text-gray-700 dark:!text-gray-400 mb-4">{comment.text}</p>
+                >
+                  <div>
+                    <p className="font-semibold font-DanaDemiBold text-lg mb-3 text-black dark:!text-white">
+                      {comment.name}
+                    </p>
+                    <p className="leading-relaxed font-Dana text-sm text-gray-700 dark:!text-gray-400 mb-4">
+                      {comment.text}
+                    </p>
+                  </div>
+                  <div className="flex space-x-1 rtl:space-x-reverse">
+                    {renderStars(comment.rating)}
+                  </div>
                 </div>
-                <div className="flex space-x-1 rtl:space-x-reverse">
-                  {renderStars(comment.rating)}
-                </div>
-              </div>
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
-    </section>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </section>
+    </>
   );
 }
