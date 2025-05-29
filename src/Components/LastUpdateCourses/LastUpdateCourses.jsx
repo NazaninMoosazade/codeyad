@@ -21,7 +21,6 @@ export default function LastUpdateCourses() {
     },
   });
 
-  console.log(updateCourse);
 
   if (isLoading)
     return (
