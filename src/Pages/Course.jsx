@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Components/Headers/Header";
 import Footer from "../Components/Footer/Footer";
 import StickyTabs from "../Components/StickyTabs/StickyTabs";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 import CourseContent from "../Components/StickyTabs/CourseContent";
 import CourseChapters from "../Components/StickyTabs/CourseChapters";
@@ -9,6 +11,38 @@ import CourseComments from "../Components/StickyTabs/CourseComments";
 import CourseFeatures from "../Components/StickyTabs/CourseFeatures";
 
 export default function Course() {
+  const { courseName } = useParams();
+
+  const [comments, setComments] = useState([]);
+  const [sessionts, setSessionts] = useState([]);
+  const [courseDetails, setCourseDetails] = useState({});
+  const [updatedAt, setUpdateAt] = useState("");
+  const [createdAt, setCreatedAt] = useState("");
+
+  useEffect(() => {
+    fetch(`http://localhost:4000/v1/courses/${courseName}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("user")).token
+        }`,
+      },
+    })
+      .then((res) => res.json())
+      .then((courseInfo) => {
+        setCourseDetails(courseInfo);
+        setComments(courseInfo.comments);
+        setSessionts(courseInfo.sessions);
+        setUpdateAt(courseInfo.updateAt);
+        setCreatedAt(courseInfo.createdAt);
+        console.log(courseInfo);
+
+        // setCreatedAt(courseInfo.createdAt);
+        // setUpdateAt(courseInfo.updateAt);
+        // setCurseCategory(courseInfo.categoryID);
+      });
+  }, []);
+
   // آیتم‌های تب با id های منطبق بر بخش‌های صفحه
   const tabItems = [
     { id: "content", label: "محتوای دوره" },
@@ -99,26 +133,21 @@ export default function Course() {
             <div className="w-full mx-auto text-center lg:w-[50%]">
               <div className="flex items-center justify-center gap-x-5 lg:justify-start lg:gap-x-3">
                 <span className="bg-bgSecondary text-blue font-Dana p-1.5 lg:p-2.5 rounded-full">
-                  فرانت اند
+                  {courseDetails.name}
                 </span>
                 <span className="bg-bgSky  text-white font-Dana p-1.5 lg:p-2.5 rounded-full">
-                  این دوره در حال برگزاری است
+                  <span> زمان برگزاری : </span>
+                  {createdAt.slice(0, 10)}   
                 </span>
               </div>
 
-              <div className="w-full text-center pt-4">
-                <h1 className="font-DanaDemiBold text-white md:text-lg lg:text-3xl lg:max-w-[600px] mx-auto">
-                  آموزش رایگان HTML , CSS برای طراحی سایت فروشگاهی (از صفر)
-                </h1>
-              </div>
-
-              <p className="font-Dana text-white pt-2 flex items-center justify-center lg:justify-start">
-                مناسب برای افراد مبتدی بدون هیچگونه آشنایی با برنامه نویسی - در راستای ورود به بازار کار
+              <p className="font-Dana leading-10 text-white pt-5 flex items-center justify-center lg:justify-start lg:max-w-[700px]">
+                {courseDetails.description}
               </p>
 
               <div className="w-full flex-wrap flex items-center justify-center pb-4 lg:justify-start gap-x-14 lg:gap-x-32">
-                <span className="font-Dana text-white flex gap-x-2.5">
-                  بروزرسانی در تاریخ ۱۴۰۴/۰۲/۲۸
+                <div className="font-Dana text-white flex gap-x-2.5">
+                  <span>آخرین آپدیت</span>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -133,22 +162,41 @@ export default function Course() {
                       d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008H16.5V15Zm0 2.25h.008v.008H16.5v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z"
                     />
                   </svg>
-                </span>
-
-                
+                  {courseDetails.updatedAt
+                    ? courseDetails.updatedAt.slice(0, 10)
+                    : "رایگان"}
+                </div>
               </div>
 
-              <span className="text-textGreen flex items-center justify-center lg:justify-start pb-4 font-DanaMeduim text-2xl">
-                قیمت دوره : رایگان
-              </span>
+              <div className="text-textGreen flex items-center justify-center gap-x-2 lg:justify-start pb-4 font-DanaMeduim text-2xl">
+                <span>قیمت دوره : </span>
+                <span>
+                  {typeof courseDetails.price === "number" ? (
+                    courseDetails.price === 0 ? (
+                      <span className="text-sm font-Dana">رایگان</span>
+                    ) : (
+                      <>
+                        <span>
+                          {courseDetails.price.toLocaleString("fa-IR")}
+                        </span>
+                        <span className="text-sm font-DanaDemiBold mr-1">
+                          تومان
+                        </span>
+                      </>
+                    )
+                  ) : (
+                    <span className="text-sm text-red-500">قیمت نامعتبر</span>
+                  )}
+                </span>
+              </div>
             </div>
 
             {/* بخش چپ - تصویر دوره */}
             <div className="w-full mx-auto text-center lg:w-[50%]">
               <img
-                src="/img/courseBanner.webp"
-                alt="courseBanner"
-                className="rounded-lg"
+                src={`http://localhost:4000/courses/covers/${courseDetails.cover}`}
+                alt={courseDetails.cover}
+                className="rounded-lg w-full"
               />
             </div>
           </div>

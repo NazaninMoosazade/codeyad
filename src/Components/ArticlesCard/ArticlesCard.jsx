@@ -3,7 +3,7 @@ import React from "react";
 export default function ArticlesCard( props ) {
   return (
     <div
-      className={`w-full bg-white dark:!bg-bgDarker rounded-xl shadow-md overflow-hidden flex flex-col`}
+      className={`w-full mb-4 bg-white dark:!bg-bgDarker rounded-xl shadow-md overflow-hidden flex flex-col`}
     >
       {/* تصویر مقاله */}
       <div className="h-48 w-full">

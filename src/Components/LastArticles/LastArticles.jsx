@@ -17,7 +17,7 @@ export default function LastArticles() {
     },
   });
 
-  console.log(lastArtilces);
+  // console.log(lastArtilces);
   
 
   

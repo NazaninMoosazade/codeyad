@@ -23,6 +23,9 @@ export default function () {
     queryFn: fetchCourses,
   });
 
+  // console.log(allCourses);
+  
+
 if (isLoading)
     return (
       <StatusMessage status="loading" message="در حال بارگذاری اطلاعات..." />
