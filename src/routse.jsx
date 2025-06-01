@@ -1,7 +1,7 @@
 import Index from "./Pages";
 import Course from "./Pages/Course";
 import CourseCat from "./Pages/CourseCat";
-// import Blug from "./Pages/Blug";
+import MagInfo from "./Pages/MagInfo";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import AllCourse from "./Pages/AllCourse";
@@ -12,6 +12,7 @@ import Courses from "./Pages/Courses";
 const routes = [
   { path: "/", element: <Index /> },
   { path: "course/:courseName", element: <Course /> },
+  { path: "mag/:artilceName", element: <MagInfo /> },
   { path: "/course-cat/:categoryName", element: <CourseCat /> },
   { path: "/login", element: <Login /> },
   { path: "/register", element: <Register /> },
