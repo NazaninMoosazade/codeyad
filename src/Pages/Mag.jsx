@@ -23,6 +23,7 @@ export default function Mag() {
   });
 
   console.log(articles);
+  
 
   if (isLoading)
     return (

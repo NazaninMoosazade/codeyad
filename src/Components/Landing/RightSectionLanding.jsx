@@ -17,11 +17,11 @@ export default function RightSectionLanding() {
           </span>
         </h2>
 
-        <div className="no-underline mt-4 h-11 w-full lg:w-28 p-2.5 flex items-center justify-center gap-x-2 text-white bg-blue rounded-lg font-Dana">
-          <a className="text-white font-DanaDemiBold no-underline">
-            {" "}
-            بزن بریم{" "}
-          </a>
+        <Link to='/allCourse' className="no-underline mt-4 h-11 w-full lg:w-28 p-2.5 flex items-center justify-center gap-x-2 text-white bg-blue rounded-lg font-Dana">
+          <Link to='/allCourse' className="text-white font-DanaDemiBold no-underline">
+            
+            بزن بریم
+          </Link>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -36,7 +36,7 @@ export default function RightSectionLanding() {
               d="M15.75 19.5 8.25 12l7.5-7.5"
             />
           </svg>
-        </div>
+        </Link>
 
         <svg
           xmlns="http://www.w3.org/2000/svg"

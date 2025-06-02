@@ -24,7 +24,7 @@ export default function MiddleHeader() {
               </a>
               {/* Links */}
               <ul className="pt-4 flex items-center md:gap-x-5 lg:gap-x-8 ">
-                <li className="relative group">
+                {/* <li className="relative group">
                   <Link
                     to="/courses"
                     className="no-underline font-Dana dark:!text-white text-black lg:text-lg cursor-pointer"
@@ -68,7 +68,7 @@ export default function MiddleHeader() {
                      </li>  */}
                   {/* ))}  */}
                   {/* </ul>  */}
-                </li>
+                {/* </li> */} 
 
                 <li>
                   <Link
