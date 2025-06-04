@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Header from "../Components/Headers/Header";
 import Footer from "../Components/Footer/Footer";
-import { Link } from "react-router-dom";
+import { Link  , useNavigate} from "react-router-dom";
 import Input from "../Components/Form/Input";
 import Button from "../Components/Form/Button";
 import { useForm } from "../Hooks/UseForm";
@@ -11,6 +11,9 @@ import AuthContext from "../Context/AuthContext";
 import Swal from "sweetalert2";
 
 export default function Register() {
+
+  const navigate = useNavigate()
+
   const authContext = useContext(AuthContext);
 
   const [formState, onInputHandler] = useForm(
@@ -103,6 +106,7 @@ export default function Register() {
         text: `${data.user.name} عزیز خوش آمدی!`,
         confirmButtonText: "باشه",
       });
+      navigate('/')
     },
     onError: (error) => {
       Swal.fire({
