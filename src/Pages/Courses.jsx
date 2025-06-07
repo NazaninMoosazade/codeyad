@@ -13,7 +13,7 @@ export default function Courses() {
   } = useQuery({
     queryKey: ["menus"],
     queryFn: () =>
-      fetch("http://localhost:4000/v1/menus").then((res) => {
+      fetch("http://localhost:5000/v1/menus").then((res) => {
         if (!res.ok) {
           throw new Error("Network response was not ok");
         }
@@ -58,15 +58,15 @@ export default function Courses() {
                         {menus.submenus.length ? (
                           <>
                             {menus.submenus.map((submenuo) => (
-                               <li>
-                                 <Link
+                              <li>
+                                <Link
                                   key={submenuo.href}
                                   to={`/course/${submenuo.href}`}
                                   className="block font-Dana no-underline px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                 >
                                   {submenuo.title}
                                 </Link>
-                               </li>
+                              </li>
                             ))}
                           </>
                         ) : (

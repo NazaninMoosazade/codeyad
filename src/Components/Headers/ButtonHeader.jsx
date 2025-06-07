@@ -15,7 +15,7 @@ export default function ButtonHeader() {
   } = useQuery({
     queryKey: ["menus"],
     queryFn: () =>
-      fetch("http://localhost:4000/v1/menus").then((res) => {
+      fetch("http://localhost:5000/v1/menus").then((res) => {
         if (!res.ok) {
           throw new Error("Network response was not ok");
         }

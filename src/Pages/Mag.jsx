@@ -13,7 +13,7 @@ export default function Mag() {
   } = useQuery({
     queryKey: ["allArtilces"],
     queryFn: () => {
-      return fetch("http://localhost:4000/v1/articles").then((res) => {
+      return fetch("http://localhost:5000/v1/articles").then((res) => {
         if (!res.ok) {
           throw new Error("response not ok");
         }
@@ -22,8 +22,7 @@ export default function Mag() {
     },
   });
 
-  console.log(articles);
-  
+  // console.log(articles);
 
   if (isLoading)
     return (

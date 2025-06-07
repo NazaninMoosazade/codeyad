@@ -22,7 +22,7 @@ export default function Course() {
     queryKey: ["course", courseName],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:4000/v1/courses/${courseName}`,
+        `http://localhost:5000/v1/courses/${courseName}`,
         {
           method: "GET",
           headers: {
@@ -36,9 +36,6 @@ export default function Course() {
       return res.json();
     },
   });
-
-
-  
 
   // const tabItems = [
   //   { id: "content", label: "محتوای دوره" },
@@ -188,7 +185,7 @@ export default function Course() {
 
             <div className="w-full mx-auto text-center lg:w-[50%]">
               <img
-                src={`http://localhost:4000/courses/covers/${courseDetails.cover}`}
+                src={`http://localhost:5000/courses/covers/${courseDetails.cover}`}
                 alt={courseDetails.cover}
                 className="rounded-lg w-full"
               />

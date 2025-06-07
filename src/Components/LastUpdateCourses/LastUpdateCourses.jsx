@@ -12,7 +12,7 @@ export default function LastUpdateCourses() {
   } = useQuery({
     queryKey: ["course"],
     queryFn: () => {
-      return fetch("http://localhost:4000/v1/courses/popular").then((res) => {
+      return fetch("http://localhost:5000/v1/courses/popular").then((res) => {
         if (!res.ok) {
           throw new Error("response not ok");
         }
@@ -20,7 +20,6 @@ export default function LastUpdateCourses() {
       });
     },
   });
-
 
   if (isLoading)
     return (
@@ -40,11 +39,9 @@ export default function LastUpdateCourses() {
         btnHref={"/allCourse"}
       />
       <div className="w-full max-w-[1600px] mx-auto px-4 lg:px-8 gap-x-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {
-          updateCourse.slice(0,4).map(course => (
-        <CourseCard key={course._id} {...course} />
-          ))
-        }
+        {updateCourse.slice(0, 4).map((course) => (
+          <CourseCard key={course._id} {...course} />
+        ))}
       </div>
     </div>
   );

@@ -4,17 +4,25 @@ import Footer from "../Components/Footer/Footer";
 import { useParams } from "react-router-dom";
 
 export default function MagInfo() {
-  const { magName } = useParams();
+  const { articleName } = useParams();
 
   // useEffect(() => {
-  //   fetch(`http://localhost:4000/v1/articles/${magName}`).then((res) =>
+  //   fetch(`http://localhost:5000/v1/articles/${magName}`).then((res) =>
   //     res.json()
   //   .then(artcileInfo => {
   //       console.log(a);
-        
+
   //   })
   //   );
   // }, []);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/v1/articles/${articleName}`)
+        .then(response => {
+      console.log(response);
+      return response.json()
+      }).then(data => console.log(data))
+  }, []);
 
   return (
     <>

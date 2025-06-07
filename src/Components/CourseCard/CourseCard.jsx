@@ -8,7 +8,7 @@ export default function CourseCard(props) {
         {/* <!-- تصویر --> */}
         <Link to={`/course/${props.shortName}`}>
           <img
-            src={`http://localhost:4000/courses/covers/${props.cover}`}
+            src={`http://localhost:5000/courses/covers/${props.cover}`}
             alt={props.cover}
             className="w-full h-48 object-cover"
           />

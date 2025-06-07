@@ -7,7 +7,7 @@ import StatusMessage from "../Components/StatusMessage/StatusMessage";
 
 export default function () {
   const fetchCourses = async () => {
-    const res = await fetch("http://localhost:4000/v1/courses");
+    const res = await fetch("http://localhost:5000/v1/courses");
     if (!res.ok) {
       throw new Error("Failed to fetch courses");
     }
@@ -24,9 +24,8 @@ export default function () {
   });
 
   // console.log(allCourses);
-  
 
-if (isLoading)
+  if (isLoading)
     return (
       <StatusMessage status="loading" message="در حال بارگذاری اطلاعات..." />
     );
@@ -35,7 +34,6 @@ if (isLoading)
     return (
       <StatusMessage status="error" message="خطا! لطفا دوباره تلاش کنید" />
     );
-
 
   return (
     <>

@@ -27,7 +27,7 @@
 //   useEffect(() => {
 //     const localStorageData = JSON.parse(localStorage.getItem("user"));
 //     if (localStorageData) {
-//       fetch(`http://localhost:4000/v1/auth/me`, {
+//       fetch(`http://localhost:5000/v1/auth/me`, {
 //         headers: {
 //           Authorization: `Bearer ${localStorageData.token}`,
 //         },
@@ -40,10 +40,6 @@
 //         });
 //     }
 //   }, [login]);
-
-
-
-
 
 //   return (
 //     <>
@@ -67,7 +63,7 @@
 // }
 
 import React, { useState, useCallback, useEffect } from "react";
-import routes from './routse'
+import routes from "./routse";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import AuthContext from "./Context/AuthContext";
 import { ThemeContextProvider } from "./Context/ThemeContext";
@@ -98,7 +94,7 @@ export default function App() {
     const localStorageData = JSON.parse(localStorage.getItem("user"));
 
     if (localStorageData?.token) {
-      fetch(`http://localhost:4000/v1/auth/me`, {
+      fetch(`http://localhost:5000/v1/auth/me`, {
         headers: {
           Authorization: `Bearer ${localStorageData.token}`,
         },

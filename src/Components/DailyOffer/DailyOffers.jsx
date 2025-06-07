@@ -12,7 +12,7 @@ export default function DailyOffers() {
   } = useQuery({
     queryKey: ["offers"],
     queryFn: () => {
-      return fetch("http://localhost:4000/v1/courses/presell").then((res) => {
+      return fetch("http://localhost:5000/v1/courses/presell").then((res) => {
         if (!res.ok) {
           throw new Error("res not ok");
         }
@@ -20,7 +20,6 @@ export default function DailyOffers() {
       });
     },
   });
-
 
   if (isLoading)
     return (
@@ -39,7 +38,7 @@ export default function DailyOffers() {
         {[...offersCourse]
           .reverse()
           .slice(0, 4)
-          .map((course , index) => (
+          .map((course, index) => (
             <CourseCard key={index} {...course} />
           ))}
       </div>

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Header from "../Components/Headers/Header";
 import Footer from "../Components/Footer/Footer";
-import { Link  , useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../Components/Form/Input";
 import Button from "../Components/Form/Button";
 import { useForm } from "../Hooks/UseForm";
@@ -11,8 +11,7 @@ import AuthContext from "../Context/AuthContext";
 import Swal from "sweetalert2";
 
 export default function Register() {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const authContext = useContext(AuthContext);
 
@@ -26,8 +25,7 @@ export default function Register() {
     false
   );
 
-
-  //   const response = await fetch("http://localhost:4000/v1/auth/register", {
+  //   const response = await fetch("http://localhost:5000/v1/auth/register", {
   //     method: "POST",
   //     headers: {
   //       "Content-Type": "application/json",
@@ -79,7 +77,7 @@ export default function Register() {
   //   };
 
   const registerUser = async (newUserInfos) => {
-    const response = await fetch("http://localhost:4000/v1/auth/register", {
+    const response = await fetch("http://localhost:5000/v1/auth/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -106,7 +104,7 @@ export default function Register() {
         text: `${data.user.name} عزیز خوش آمدی!`,
         confirmButtonText: "باشه",
       });
-      navigate('/')
+      navigate("/");
     },
     onError: (error) => {
       Swal.fire({
