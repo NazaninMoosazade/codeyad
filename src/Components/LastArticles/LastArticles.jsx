@@ -42,13 +42,13 @@ export default function LastArticles() {
       />
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-        <div className="flex flex-col gap-4 order-2 md:order-1">
+        <div className=" flex flex-col gap-4 order-2 md:order-1">
           {lastArtilces.slice(0, 2).map((article) => (
             <ArticlesCard key={article.id} {...article} />
           ))}
         </div>
 
-        <div className="md:col-span-2 order-1 md:order-2 flex">
+        <div className="w-full md:col-span-2 order-1 md:order-2 flex">
           {lastArtilces[2] && (
             <ArticlesCard {...lastArtilces[2]} className="h-full w-full" />
           )}

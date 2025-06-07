@@ -12,7 +12,7 @@ import Courses from "./Pages/Courses";
 const routes = [
   { path: "/", element: <Index /> },
   { path: "course/:courseName", element: <Course /> },
-  { path: "/mag/:blugName", element: <MagInfo /> },
+  { path: "/mag/:articleName", element: <MagInfo /> },
   { path: "/course-cat/:categoryName", element: <CourseCat /> },
   { path: "/login", element: <Login /> },
   { path: "/register", element: <Register /> },

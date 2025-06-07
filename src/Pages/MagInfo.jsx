@@ -1,28 +1,41 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Header from "../Components/Headers/Header";
 import Footer from "../Components/Footer/Footer";
 import { useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import StatusMessage from "../Components/StatusMessage/StatusMessage";
 
 export default function MagInfo() {
   const { articleName } = useParams();
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/v1/articles/${magName}`).then((res) =>
-  //     res.json()
-  //   .then(artcileInfo => {
-  //       console.log(a);
+  const fetchArticle = async () => {
+    const res = await fetch(`http://localhost:5000/v1/articles/${articleName}`);
+    if (!res.ok) {
+      throw new Error("Failed to fetch article data");
+    }
+    return res.json();
+  };
 
-  //   })
-  //   );
-  // }, []);
+  const {
+    data: articleDetails,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["article", articleName],
+    queryFn: fetchArticle,
+    staleTime: 5 * 60 * 1000,
+  });
 
-  useEffect(() => {
-    fetch(`http://localhost:5000/v1/articles/${articleName}`)
-        .then(response => {
-      console.log(response);
-      return response.json()
-      }).then(data => console.log(data))
-  }, []);
+  if (isLoading)
+    return (
+      <StatusMessage status="loading" message="در حال بارگذاری اطلاعات..." />
+    );
+
+  if (isError)
+    return (
+      <StatusMessage status="error" message="خطا! لطفا دوباره تلاش کنید" />
+    );
 
   return (
     <>
@@ -30,33 +43,36 @@ export default function MagInfo() {
       <section className="mt-7 w-full max-w-[1600px] mx-auto px-4 lg:px-8">
         <div className="w-full lg:w-[90%] mx-auto text-center h-auto bg-white dark:!bg-bgDarker p-4 rounded-md">
           <img
-            src="/img/courseBanner.webp"
-            alt=""
+            src={`http://localhost:5000/courses/covers/${articleDetails.cover}`}
+            alt={articleDetails.cover}
             className="h-auto lg:h-96 mx-auto text-center rounded-md"
           />
           <h1 className="font-DanaDemiBold text-lg lg:text-4xl mt-14 dark:text-white">
-            سرفصل بلاگ
+            {articleDetails.title}{" "}
           </h1>
-          <p className="font-Dana lg:text-lg dark:text-gray-300">
-            زمانی که ما به دنبال اطلاعاتی در مورد یک موضوع خاص هستیم، خب اولین
-            قدمی که به ذهن ما خواهد رسید، جستجو در گوگل است تا بتوانیم با مراجعه
-            به سایت های مختلف به اطلاعاتی که نیازمند آن هستیم برسیم. تمام این
-            اطلاعات در وبلاگ وب سایت ها برای مخاطبان به اشتراک گذاشته می شود تا
-            بتوانند با خواندن مقاله ها به اطلاعات مورد نظر دسترسی پیدا کنند. ما
-            به عنوان یک مدیر وب سایت اطلاعات بسیار زیادی را در بستر وبلاگ ها
-            برای دیده شدن توسط مخاطبان منتشر می کنیم. هدف این اشتراک گذاری، اول
-            از همه به دلیل ایجاد محتوای با کیفیت برای جامعه ی تخصصی خود و در
-            نهایت آگاه سازی دیگران از وجودمان می باشد تا بتوانیم محصول خودمان را
-            به افراد حاضر در اینترنت نمایش دهیم و همچنین بتوانیم مخاطبین را به
-            افرادی تبدیل کنیم که متقاضی محتوا های دیگر ما شوند. این رویه شگفت
-            انگیز همان بازاریابی محتوا است. زمانی که محتوایی را به رایگان برای
-            دیده شدن عموم به اشتراک می گذارید به کسب کار خود اجازه می دهید تا در
-            ذهن مخاطبان اعتماد سازی شکل بگیرد و آن ها تبدیل به مشتری دائمی کسب و
-            کار ما شوند. در این مقاله از آکادمی برنامه نویسی کدیاد، قصد داریم تا
-            به صورت تخصصی و جامع در مورد بازاریابی محتوا یا همان (Content
-            Marketing) همراه با مزایا و ویژگی ها و چرخه فعالیتی و … آن صحبت
-            کنیم.
+          <p className="font-Dana lg:text-lg mt-7 dark:text-gray-300">
+            {articleDetails.description}
           </p>
+
+          {/* Last Update */}
+          <div className="pb-3 flex items-center gap-x-1 child:font-Dana child:text-gray-500">
+            <svg
+              className="w-5 h-5"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+              />
+            </svg>
+            <span>{articleDetails.updatedAt.slice(0, 10)}</span>
+            <span> بروز رسانی</span>
+          </div>
         </div>
       </section>
       <Footer />
