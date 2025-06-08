@@ -1,5 +1,3 @@
-// src/components/StatusMessage.jsx
-
 import React from "react";
 
 const icons = {

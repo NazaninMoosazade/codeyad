@@ -1,14 +1,11 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 
-const SortFilters = () => {
-  const [activeFilter, setActiveFilter] = useState("all");
-
+const FilterBox = ({ activeFilter, setActiveFilter }) => {
   const filters = [
     { key: "all", label: "همه دوره ها" },
     { key: "cheap", label: "ارزان ترین" },
     { key: "expensive", label: "گران ترین" },
-    { key: "popular", label: "پرمخاطب ها" },
+    { key: "free", label: "رایگان" },
   ];
 
   return (
@@ -19,18 +16,20 @@ const SortFilters = () => {
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             stroke="currentColor"
             className="w-7 h-7 dark:!text-white"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M6 13.5V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 9.75V10.5"
             />
           </svg>
 
-          <span className="font-DanaMeduim pl-10 dark:!text-white">مرتب سازی بر اساس :</span>
+          <span className="font-DanaMeduim pl-10 dark:!text-white">
+            مرتب سازی بر اساس :
+          </span>
         </div>
         <div className="flex gap-x-5 lg:gap-x-8 h-full font-Dana">
           {filters.map((filter) => (
@@ -52,4 +51,4 @@ const SortFilters = () => {
   );
 };
 
-export default SortFilters;
+export default FilterBox;
