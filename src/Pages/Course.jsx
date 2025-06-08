@@ -6,10 +6,11 @@ import Footer from "../Components/Footer/Footer";
 import StickyTabs from "../Components/StickyTabs/StickyTabs";
 import StatusMessage from "../Components/StatusMessage/StatusMessage";
 
-// import CourseContent from "../Components/StickyTabs/CourseContent";
-// import CourseChapters from "../Components/StickyTabs/CourseChapters";
-// import CourseComments from "../Components/StickyTabs/CourseComments";
-// import CourseFeatures from "../Components/StickyTabs/CourseFeatures";
+import CourseContent from "../Components/StickyTabs/CourseContent";
+import CourseChapters from "../Components/StickyTabs/CourseChapters";
+import CourseComments from "../Components/StickyTabs/CourseComments";
+import CourseFeatures from "../Components/StickyTabs/CourseFeatures";
+
 
 export default function Course() {
   const { courseName } = useParams();
@@ -37,75 +38,75 @@ export default function Course() {
     },
   });
 
-  // const tabItems = [
-  //   { id: "content", label: "محتوای دوره" },
-  //   { id: "chapters", label: "سرفصل‌های دوره" },
-  //   { id: "comments", label: "نظرات دانشجویان" },
-  //   { id: "course", label: "ویژگی های دوره" },
-  // ];
+  const tabItems = [
+    { id: "content", label: "محتوای دوره" },
+    { id: "chapters", label: "سرفصل‌های دوره" },
+    { id: "comments", label: "نظرات دانشجویان" },
+    { id: "course", label: "ویژگی های دوره" },
+  ];
 
-  // const featuresList = [
-  //   {
-  //     id: 1,
-  //     title: "پشتیبانی مستقیم",
-  //     icon: (
-  //       <svg
-  //         xmlns="http://www.w3.org/2000/svg"
-  //         className="w-6 h-6 text-blue"
-  //         fill="none"
-  //         viewBox="0 0 24 24"
-  //         stroke="currentColor"
-  //         strokeWidth="1.5"
-  //       >
-  //         <path
-  //           strokeLinecap="round"
-  //           strokeLinejoin="round"
-  //           d="M9 12h6m2 2H7m4 4h2m2-16H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"
-  //         />
-  //       </svg>
-  //     ),
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "دسترسی دائمی",
-  //     icon: (
-  //       <svg
-  //         xmlns="http://www.w3.org/2000/svg"
-  //         className="w-6 h-6 text-blue"
-  //         fill="none"
-  //         viewBox="0 0 24 24"
-  //         stroke="currentColor"
-  //         strokeWidth="1.5"
-  //       >
-  //         <path
-  //           strokeLinecap="round"
-  //           strokeLinejoin="round"
-  //           d="M12 6v6h4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"
-  //         />
-  //       </svg>
-  //     ),
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "ضبط با کیفیت بالا",
-  //     icon: (
-  //       <svg
-  //         xmlns="http://www.w3.org/2000/svg"
-  //         className="w-6 h-6 text-blue"
-  //         fill="none"
-  //         viewBox="0 0 24 24"
-  //         stroke="currentColor"
-  //         strokeWidth="1.5"
-  //       >
-  //         <path
-  //           strokeLinecap="round"
-  //           strokeLinejoin="round"
-  //           d="M15 10l4.553-2.276A1 1 0 0 1 21 8.618v6.764a1 1 0 0 1-1.447.894L15 14m-6 0V10m0 0L5.447 7.724A1 1 0 0 0 4 8.618v6.764a1 1 0 0 0 1.447.894L9 14"
-  //         />
-  //       </svg>
-  //     ),
-  //   },
-  // ];
+  const featuresList = [
+    {
+      id: 1,
+      title: "پشتیبانی مستقیم",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-6 h-6 text-blue"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M9 12h6m2 2H7m4 4h2m2-16H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"
+          />
+        </svg>
+      ),
+    },
+    {
+      id: 2,
+      title: "دسترسی دائمی",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-6 h-6 text-blue"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 6v6h4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"
+          />
+        </svg>
+      ),
+    },
+    {
+      id: 3,
+      title: "ضبط با کیفیت بالا",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-6 h-6 text-blue"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth="1.5"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M15 10l4.553-2.276A1 1 0 0 1 21 8.618v6.764a1 1 0 0 1-1.447.894L15 14m-6 0V10m0 0L5.447 7.724A1 1 0 0 0 4 8.618v6.764a1 1 0 0 0 1.447.894L9 14"
+          />
+        </svg>
+      ),
+    },
+  ];
 
   if (isLoading)
     return (
@@ -120,6 +121,8 @@ export default function Course() {
   return (
     <>
       <Header />
+
+
 
       <section className="bg-blue dark:!bg-bgDarker w-full h-auto">
         <div className="mt-7 w-full max-w-[1600px] mx-auto px-4 lg:px-8">
@@ -194,9 +197,9 @@ export default function Course() {
         </div>
       </section>
 
-      {/* <StickyTabs tabs={tabItems} /> */}
+    <StickyTabs tabs={tabItems} />
 
-      {/* <div className="w-full max-w-[1600px] mx-auto px-4 lg:px-8">
+       <div className="w-full max-w-[1600px] mx-auto px-4 lg:px-8">
         <div id="content" className="mt-10">
           <CourseContent content={courseDetails.shortName} />
         </div>
@@ -215,7 +218,7 @@ export default function Course() {
           </h2>
           <CourseFeatures features={featuresList} />
         </div>
-      </div> */}
+      </div> 
 
       <Footer />
     </>

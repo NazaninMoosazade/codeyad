@@ -4,6 +4,7 @@ import Footer from "../Components/Footer/Footer";
 import CourseCard from "../Components/CourseCard/CourseCard";
 import { useQuery } from "@tanstack/react-query";
 import StatusMessage from "../Components/StatusMessage/StatusMessage";
+import FilterBox from "../Components/FilteredBox/FilterBox";
 
 export default function () {
   const fetchCourses = async () => {
@@ -39,6 +40,9 @@ export default function () {
     <>
       <Header />
       <div className="mt-10 w-full max-w-[1600px] mx-auto px-4 lg:px-8">
+        {/* Filter */}
+        <FilterBox />
+
         <div className="grid grid-cols-1 md:grid-cols-3">
           {allCourses.map((course) => (
             <CourseCard key={course._id} {...course} />

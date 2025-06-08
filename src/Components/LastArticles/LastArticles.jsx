@@ -40,15 +40,16 @@ export default function LastArticles() {
         btnTitle={"همرو ببین"}
         btnHref={"/mag"}
       />
-
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-        <div className=" flex flex-col gap-4 order-2 md:order-1">
+        {/* مقالات کوچکتر در چپ، توی دو ردیف زیر هم */}
+        <div className="flex flex-col gap-4 order-2 md:order-2 md:col-span-2">
           {lastArtilces.slice(0, 2).map((article) => (
             <ArticlesCard key={article.id} {...article} />
           ))}
         </div>
 
-        <div className="w-full md:col-span-2 order-1 md:order-2 flex">
+        {/* مقاله بزرگ در سمت راست */}
+        <div className="order-1 md:order-1 md:col-span-1">
           {lastArtilces[2] && (
             <ArticlesCard {...lastArtilces[2]} className="h-full w-full" />
           )}

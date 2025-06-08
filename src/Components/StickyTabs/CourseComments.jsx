@@ -7,7 +7,9 @@ export default function CourseComments({ comments }) {
         {comments?.length > 0 ? (
           comments.map((comment) => (
             <div key={comment._id} className="border-b border-gray-300 pb-4">
-              <p className="text-gray-800 dark:text-gray-200">{comment.body}</p>
+              <p className="text-gray-800 dark:text-gray-200">
+                {comment.body}
+                </p>
               <p className="text-sm text-gray-500 mt-1">
                 توسط: {comment.creator?.name || "ناشناس"}
               </p>
