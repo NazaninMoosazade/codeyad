@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function SearchBox() {
+
+    const [sercheName , setSearcheName] = useState('')
+    const navigate = useNavigate()
+
+    const goToSearchPage = () => {
+    navigate(`/search/${sercheName}`)
+    }
+
   return (
     <form className="relative">
       <input
+      onChange={(event) => setSearcheName(event.target.value)}
+      value={sercheName}
         type="text"
         placeholder="هرچی میخوای جست و جو کن"
         className="p-3 dark:bg-bgDarker placeholder-gray-300 placeholder:text-sm placeholder:font-Dana h-[45px] w-full lg:w-[260px] rounded-lg"
       />
-      <button className="absolute top-4 left-2">
+      <button onClick={goToSearchPage} className="absolute top-4 left-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

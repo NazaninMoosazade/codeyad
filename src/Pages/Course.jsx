@@ -186,7 +186,7 @@ export default function Course() {
               )}
             </div>
 
-            <div className="w-full mx-auto text-center lg:w-[50%]">
+            <div className="w-full mx-auto text-center mt-5 lg:w-[50%]">
               <img
                 src={`http://localhost:5000/courses/covers/${courseDetails.cover}`}
                 alt={courseDetails.cover}

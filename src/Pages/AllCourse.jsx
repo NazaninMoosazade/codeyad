@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 import StatusMessage from "../Components/StatusMessage/StatusMessage";
 import FilterBox from "../Components/FilteredBox/FilterBox";
 import SearchBox from "../Components/SearchBox/SearchBox";
+import FilterMobile from "../Components/FilteredBoxMobile/FilterMobile";
 
 export default function CoursesPage({ page }) {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -57,13 +58,17 @@ export default function CoursesPage({ page }) {
   return (
     <>
       <Header />
+
       <div className="mt-10 w-full max-w-[1600px] mx-auto px-4 lg:px-8">
         {/* Search Box */}
         <div className="lg:hidden mx-auto text-center">
-        <SearchBox />
+          <SearchBox />
         </div>
+      </div>
 
-
+      {/* FilterMobile */}
+      <FilterMobile />
+      <div className="mt-10 w-full max-w-[1600px] mx-auto px-4 lg:px-8">
         {/* Filter Box */}
         <FilterBox
           activeFilter={activeFilter}
