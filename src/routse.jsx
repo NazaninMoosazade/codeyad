@@ -8,6 +8,8 @@ import AllCourse from "./Pages/AllCourse";
 import AboutUs from "./Pages/AboutUs";
 import Mag from "./Pages/Mag";
 import Courses from "./Pages/Courses";
+import SearchPage from "./Pages/SearchPage";
+
 
 const routes = [
   { path: "/", element: <Index /> },
@@ -20,6 +22,7 @@ const routes = [
   { path: "/about-us", element: <AboutUs /> },
   { path: "/mag", element: <Mag /> },
   { path: "/courses", element: <Courses /> },
+  { path: "/search/:name", element: <SearchPage /> },
 
 
 
