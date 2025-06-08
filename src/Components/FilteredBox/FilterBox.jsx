@@ -9,7 +9,7 @@ const FilterBox = ({ activeFilter, setActiveFilter }) => {
   ];
 
   return (
-    <div className="hidden md:flex items-center gap-x-6 px-5 mb-8 h-14 bg-white dark:!bg-bgDarker shadow-normal dark:shadow-none rounded-lg">
+    <div className="hidden lg:flex items-center gap-x-6 px-5 mb-8 h-14 bg-white dark:!bg-bgDarker shadow-normal dark:shadow-none rounded-lg">
       <div className="flex items-center">
         <div className="flex items-center shrink-0 gap-x-2">
           <svg

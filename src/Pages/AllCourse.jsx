@@ -5,6 +5,7 @@ import CourseCard from "../Components/CourseCard/CourseCard";
 import { useQuery } from "@tanstack/react-query";
 import StatusMessage from "../Components/StatusMessage/StatusMessage";
 import FilterBox from "../Components/FilteredBox/FilterBox";
+import SearchBox from "../Components/SearchBox/SearchBox";
 
 export default function CoursesPage({ page }) {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -17,7 +18,11 @@ export default function CoursesPage({ page }) {
     return res.json();
   };
 
-  const { data: allCourses, isLoading, isError } = useQuery({
+  const {
+    data: allCourses,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["courses", page],
     queryFn: fetchCourses,
   });
@@ -53,7 +58,17 @@ export default function CoursesPage({ page }) {
     <>
       <Header />
       <div className="mt-10 w-full max-w-[1600px] mx-auto px-4 lg:px-8">
-        <FilterBox activeFilter={activeFilter} setActiveFilter={setActiveFilter} />
+        {/* Search Box */}
+        <div className="lg:hidden mx-auto text-center">
+        <SearchBox />
+        </div>
+
+
+        {/* Filter Box */}
+        <FilterBox
+          activeFilter={activeFilter}
+          setActiveFilter={setActiveFilter}
+        />
 
         <div className="grid gap-x-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {filteredCourses.length > 0 ? (
@@ -61,7 +76,9 @@ export default function CoursesPage({ page }) {
               <CourseCard key={course._id} {...course} />
             ))
           ) : (
-            <p className="text-center text-gray-500 mt-10">هیچ دوره‌ای یافت نشد.</p>
+            <p className="text-center text-gray-500 mt-10">
+              هیچ دوره‌ای یافت نشد.
+            </p>
           )}
         </div>
       </div>
