@@ -39,7 +39,7 @@ export default function Mag() {
       <div className="mt-28 w-full max-w-[1600px] mx-auto px-4 lg:px-8">
         <div className="grid gap-x-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {articles.map((article) => (
-            <ArticlesCard {...article} />
+            <ArticlesCard key={article._id} {...article} />
           ))}
         </div>
       </div>

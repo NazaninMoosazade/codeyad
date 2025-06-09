@@ -67,7 +67,10 @@ export default function CoursesPage({ page }) {
       </div>
 
       {/* FilterMobile */}
-      <FilterMobile />
+      <FilterMobile
+        activeFilter={activeFilter}
+        setActiveFilter={setActiveFilter}
+      />
       <div className="mt-10 w-full max-w-[1600px] mx-auto px-4 lg:px-8">
         {/* Filter Box */}
         <FilterBox

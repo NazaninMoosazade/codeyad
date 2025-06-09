@@ -7,7 +7,7 @@ export default function MobileHeader() {
   const { userInfos, isLoggedIn } = useContext(AuthContext);
 
   return (
-    <div className="block lg:hidden w-full h-20 bg-white p-3.5">
+    <div className="block lg:hidden w-full h-20 dark:!bg-bgDarker bg-white p-3.5">
       <div className="flex items-center justify-between">
         {/* Menu */}
         <svg
@@ -16,7 +16,7 @@ export default function MobileHeader() {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="w-7 h-7 text-black"
+          className="w-7 h-7 text-black dark:!text-white"
         >
           <path
             strokeLinecap="round"

@@ -4,6 +4,7 @@ import StatusMessage from "../StatusMessage/StatusMessage";
 import { useQuery } from "@tanstack/react-query";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
+import { Link } from "react-router-dom";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -22,6 +23,7 @@ export default function ButtonHeader() {
         return res.json();
       }),
   });
+  
 
   if (isLoading)
     return (
@@ -94,7 +96,9 @@ export default function ButtonHeader() {
       >
         {allMenus.map((menus, index) => (
           <SwiperSlide key={index}>
-            <BoxButtonHeader title={menus.title} />
+            <Link to={`/course-cat/${menus.href}`} className="no-underline text-black">
+              <BoxButtonHeader to={`/course-cat/${menus.href}`} title={menus.title} />
+           </Link> 
           </SwiperSlide>
         ))}
       </Swiper>

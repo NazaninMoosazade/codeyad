@@ -15,7 +15,7 @@ const routes = [
   { path: "/", element: <Index /> },
   { path: "course/:courseName", element: <Course /> },
   { path: "/mag/:articleName", element: <MagInfo /> },
-  { path: "/course-cat/:categoryName", element: <CourseCat /> },
+  // { path: "/course-cat/:categoryName", element: <CourseCat /> },
   { path: "/login", element: <Login /> },
   { path: "/register", element: <Register /> },
   { path: "/allCourse", element: <AllCourse /> },
