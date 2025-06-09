@@ -24,51 +24,6 @@ export default function MiddleHeader() {
               </a>
               {/* Links */}
               <ul className="pt-4 flex items-center md:gap-x-5 lg:gap-x-8 ">
-                {/* <li className="relative group">
-                  <Link
-                    to="/courses"
-                    className="no-underline font-Dana dark:!text-white text-black lg:text-lg cursor-pointer"
-                  >
-                    دوره‌های آموزشی
-                  </Link>
-
-                  {/* زیرمنو اصلی */}
-                {/* <ul className="absolute hidden right-0 top-7 rounded-tr-lg rounded-br-lg group-hover:flex flex-col bg-white w-44 h-auto z-40 ">
-                  {/* Menus */}
-                {/* {allMenus.map((menu) => (
-                    <li key={menu._id} className="relative group/frontend">
-                      <Link
-                        to="/courses/frontend"
-                        className="block no-underline font-DanaDemiBold px-4 py-2  text-gray-700 hover:bg-gray-100"
-                      >
-                        {menu.title}
-                      </Link>
-
-                      <>
-                        {/*  subMenus */}
-                {/* <ul className="absolute hidden -top-2 right-[175px] -z-20 overflow-y-scroll  group-hover/frontend:flex flex-col bg-zinc-50 p-2 w-44 h-72">
-                          {menu.submenus.length ? (
-                            <>
-                              {menu.submenus.map((submenu) => (
-                                <li>
-                                  <Link
-                                    to="/courses/frontend/javascript"
-                                    className="block font-Dana no-underline px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                  >
-                                    {submenu.title}
-                                  </Link>
-                                </li>
-                              ))}
-                            </>
-                          ) : (
-                            <p>دوره ای وجود ندارد</p>
-                          )}
-                        </ul> 
-                       </> 
-                     </li>  */}
-                {/* ))}  */}
-                {/* </ul>  */}
-                {/* </li> */}
 
                 <li>
                   <Link

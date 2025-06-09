@@ -1,5 +1,8 @@
 import React, { useContext } from "react";
 import { MobileMenuContext } from "../../Context/MobileContextMenu";
+import SearchBox from "../SearchBox/SearchBox";
+import { Link } from "react-router-dom";
+import ThemeToggleButton from "../ThemeToggleButton/ThemeToggleButton";
 
 export default function MobileMenuWrapper() {
   const { isMenuOpen, closeMenu } = useContext(MobileMenuContext);
@@ -16,29 +19,29 @@ export default function MobileMenuWrapper() {
           />
 
           {/* منوی موبایل با انیمیشن اسلاید */}
-          <div className="absolute top-0 right-0 w-72 h-full bg-white dark:bg-darker shadow-lg z-50 pt-5 px-4 overflow-auto transform transition-transform duration-300 translate-x-0">
+          <div className="absolute top-0 right-0 w-72 h-full bg-white dark:!bg-bgDarker shadow-lg z-50 pt-5 px-4 overflow-auto transform transition-transform duration-300 translate-x-0">
             {/* Header */}
             <div className="flex items-center justify-between mb-4">
               {/* لوگو */}
-              <img className="h-10" src="/img/logo.webp" alt="logo" />
+              <img className="h-10" src="/img/logo.png" alt="logo" />
 
               {/* دکمه بستن */}
               <button
                 onClick={closeMenu}
-                className="flex items-center justify-center h-10 w-10 rounded-full bg-gray-100 text-slate-600 dark:bg-white/5 dark:text-white"
+                className="flex items-center justify-center h-10 w-10 rounded-full  text-slate-600  dark:!text-white"
               >
                 <svg
-                  className="w-6 h-6"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  strokeWidth="1.5"
+                  stroke-width="1.5"
                   stroke="currentColor"
+                  className="w-6 h-6"
                 >
                   <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18 18 6M6 6l12 12"
                   />
                 </svg>
               </button>
@@ -46,13 +49,31 @@ export default function MobileMenuWrapper() {
 
             {/* محتوای منو */}
             <div className="space-y-4">
-              <a href="#" className="block text-slate-800 dark:text-white">
-                لینک اول
-              </a>
-              <a href="#" className="block text-slate-800 dark:text-white">
-                لینک دوم
-              </a>
-              {/* ... بیشتر اضافه کن */}
+              <ul className="flex-col mt-5 mb-5 space-y-5">
+                <li>
+                  <Link
+                    to="/mag"
+                    className="no-underline  font-Dana dark:!text-white text-black lg:text-lg"
+                  >
+                    مقالات
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/about-us"
+                    className="no-underline font-Dana dark:!text-white text-black lg:text-lg"
+                  >
+                    درباره ما
+                  </Link>
+                </li>
+              </ul>
+
+              <SearchBox />
+
+              <div className="ml-44 mt-5">
+                <ThemeToggleButton />
+              </div>
+
             </div>
           </div>
         </div>

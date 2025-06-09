@@ -17,7 +17,7 @@ export default function SearchBox() {
       value={sercheName}
         type="text"
         placeholder="هرچی میخوای جست و جو کن"
-        className="p-3 dark:bg-bgDarker placeholder-gray-300 placeholder:text-sm placeholder:font-Dana h-[45px] w-full lg:w-[260px] rounded-lg"
+        className="p-3 dark:bg-bgDarker placeholder-gray-300 border-2 border-gray-200 placeholder:text-sm placeholder:font-Dana h-[45px] w-full lg:w-[260px] rounded-lg"
       />
       <button onClick={goToSearchPage} className="absolute top-4 left-2">
         <svg
