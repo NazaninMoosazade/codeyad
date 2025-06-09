@@ -1,6 +1,7 @@
 import React , { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../../Context/AuthContext";
+import MobileMenuWrapper from "./MobileMenuWrapper";
 
 export default function MobileHeader() {
   const authContext = useContext(AuthContext);
@@ -24,6 +25,7 @@ export default function MobileHeader() {
             d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
           />
         </svg>
+        <MobileMenuWrapper/>
         {/* Logo */}
         <img src="/img/logo.png" alt="logo" className="h-[30px]" />
         {/* Login & Register */}
