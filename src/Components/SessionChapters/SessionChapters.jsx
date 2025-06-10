@@ -1,9 +1,10 @@
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
+import "./Style.css";
 
 export default function SessionChapters({ sessions = [] }) {
   return (
-    <div className="bg-white overflow-y-scroll z-40 dark:!bg-bgDarker h-[450px] w-auto rounded-xl mt-6 lg:mt-8">
+    <div className="bg-white dark:!bg-bgDarker overflow-y-scroll scrollable-session z-40 h-[450px] w-auto rounded-xl mt-6 lg:mt-8">
       <div className="flex items-center gap-x-2 lg:p-4 mb-3 pb-3">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -11,7 +12,7 @@ export default function SessionChapters({ sessions = [] }) {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="w-7 h-7 dark:!text-white"
+          className="w-7 h-7 dark:text-white"
         >
           <path
             strokeLinecap="round"
@@ -20,19 +21,27 @@ export default function SessionChapters({ sessions = [] }) {
           />
         </svg>
 
-        <span className="font-DanaDemiBold text-lg dark:!text-white">
+        <span className="font-DanaDemiBold text-lg  dark:text-white">
           سرفصل های دوره
         </span>
       </div>
 
       <Accordion defaultActiveKey="0">
         <Accordion.Item eventKey="1">
-          <Accordion.Header>جلسات دوره</Accordion.Header>
+          <Accordion.Header className="accordion-header font-DanaDemiBold">
+            جلسات دوره
+          </Accordion.Header>
+
           {sessions.length === 0 ? (
-            <Accordion.Body>هیچ جلسه‌ای وجود ندارد</Accordion.Body>
+            <Accordion.Body className="accordionBody font-DanaDemiBold">
+              هیچ جلسه‌ای وجود ندارد
+            </Accordion.Body>
           ) : (
             sessions.map((session, index) => (
-              <Accordion.Body key={session.id || index}>
+              <Accordion.Body
+                key={session.id || index}
+                className="accordionBody font-Dana"
+              >
                 {session.title}
               </Accordion.Body>
             ))
