@@ -6,6 +6,7 @@ import Footer from "../Components/Footer/Footer";
 // import StickyTabs from "../Components/StickyTabs/StickyTabs";
 import StatusMessage from "../Components/StatusMessage/StatusMessage";
 import QuestionBox from "../Components/QuestionBox/QuestionBox";
+import SessionChapters from "../Components/SessionChapters/SessionChapters";
 
 // import CourseContent from "../Components/StickyTabs/CourseContent";
 // import CourseChapters from "../Components/StickyTabs/CourseChapters";
@@ -198,11 +199,16 @@ export default function Course() {
       </section>
 
       <div className="mt-7 w-full max-w-[1600px] mx-auto px-4 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="order-2 md:order-2">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          {/* سمت چپ - SessionChapters */}
+          <div className="order-2 lg:order-1 lg:col-span-1">
+            <SessionChapters />
+          </div>
+
+          {/* سمت راست - QuestionBox */}
+          <div className="order-1 lg:order-2 lg:col-span-2">
             <QuestionBox />
           </div>
-          <div className="order-1 md:order-1"></div>
         </div>
       </div>
 

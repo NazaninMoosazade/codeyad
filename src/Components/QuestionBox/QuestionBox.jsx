@@ -26,10 +26,10 @@ export default function QuestionBox() {
         </div>
         {/* <!-- Q&A Rule --> */}
         <div className="lg:p-4">
-          <h6 className="font-DanaDemiBold lg:text-lg">
+          <h6 className="font-DanaDemiBold lg:text-lg dark:text-slate-200">
             چگونه سوال خود را مطرح کنم تا به بهترین پاسخ ممکن برسم؟
           </h6>
-          <p className="font-Dana text-lg leading-9 lg:max-w-[820px]">
+          <p className="font-Dana text-lg leading-9 lg:max-w-[820px] dark:text-slate-200">
             برای اینکه مهارت حل مسئله و دیباگ کردن‌تون رو بالا ببرید، قبل از
             اینکه سوالی بپرسید، با دقت و تمرکز سعی کنید مشکل رو خودتون حل کنید.
             اگه به جواب نرسیدید، می‌تونید از گوگل کمک بگیرید. اگه با خطایی مواجه
@@ -45,9 +45,8 @@ export default function QuestionBox() {
           </p>
         </div>
 
-              <span className="block w-full bg-slate-300 h-px"></span>
+        <span className="block w-full bg-slate-300 h-px"></span>
       </div>
-
     </>
   );
 }
