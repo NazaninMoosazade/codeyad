@@ -1,20 +1,34 @@
-export default function CourseChapters({ chapters }) {
-  return (
-    <div id="chapters" className="p-4 dark:bg-bgDarker bg-bgWhite mt-8">
-      <h2 className="text-xl font-DanaDemiBold font-bold mb-2 dark:!text-white">سرفصل‌های دوره</h2>
+import React from 'react'
+    import Accordion from 'react-bootstrap/Accordion';
 
-      <div className="space-y-3">
-        {chapters?.length > 0 ? (
-          chapters.map((chapter) => (
-            <div key={chapter._id} className="border-b border-gray-200 pb-2">
-              <h3 className="font-DanaBold text-base dark:text-white">{chapter.title}</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">مدت زمان: {chapter.duration}</p>
-            </div>
-          ))
-        ) : (
-          <p className="dark:text-gray-300 font-Dana">سرفصلی برای این دوره ثبت نشده است.</p>
-        )}
-      </div>
-    </div>
+export default function CourseChapters() {
+  return (
+     <Accordion defaultActiveKey="0">
+      <Accordion.Item eventKey="0">
+        <Accordion.Header>Accordion Item #1</Accordion.Header>
+        <Accordion.Body>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </Accordion.Body>
+      </Accordion.Item>
+      <Accordion.Item eventKey="1">
+        <Accordion.Header>Accordion Item #2</Accordion.Header>
+        <Accordion.Body>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </Accordion.Body>
+      </Accordion.Item>
+    </Accordion>
   );
 }
+ 

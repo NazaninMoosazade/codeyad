@@ -3,14 +3,14 @@ import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Header from "../Components/Headers/Header";
 import Footer from "../Components/Footer/Footer";
-import StickyTabs from "../Components/StickyTabs/StickyTabs";
+// import StickyTabs from "../Components/StickyTabs/StickyTabs";
 import StatusMessage from "../Components/StatusMessage/StatusMessage";
+import QuestionBox from "../Components/QuestionBox/QuestionBox";
 
-import CourseContent from "../Components/StickyTabs/CourseContent";
-import CourseChapters from "../Components/StickyTabs/CourseChapters";
-import CourseComments from "../Components/StickyTabs/CourseComments";
-import CourseFeatures from "../Components/StickyTabs/CourseFeatures";
-
+// import CourseContent from "../Components/StickyTabs/CourseContent";
+// import CourseChapters from "../Components/StickyTabs/CourseChapters";
+// import CourseComments from "../Components/StickyTabs/CourseComments";
+// import CourseFeatures from "../Components/StickyTabs/CourseFeatures";
 
 export default function Course() {
   const { courseName } = useParams();
@@ -37,6 +37,8 @@ export default function Course() {
       return res.json();
     },
   });
+
+  console.log(courseDetails);
 
   const tabItems = [
     { id: "content", label: "محتوای دوره" },
@@ -122,8 +124,6 @@ export default function Course() {
     <>
       <Header />
 
-
-
       <section className="bg-blue dark:!bg-bgDarker w-full h-auto">
         <div className="mt-7 w-full max-w-[1600px] mx-auto px-4 lg:px-8">
           <div className="flex-wrap md:flex items-center justify-between pt-5 pb-5">
@@ -197,9 +197,18 @@ export default function Course() {
         </div>
       </section>
 
-    <StickyTabs tabs={tabItems} />
+      <div className="mt-7 w-full max-w-[1600px] mx-auto px-4 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="order-2 md:order-2">
+            <QuestionBox />
+          </div>
+          <div className="order-1 md:order-1"></div>
+        </div>
+      </div>
 
-       <div className="w-full max-w-[1600px] mx-auto px-4 lg:px-8">
+      {/* <StickyTabs tabs={tabItems} /> */}
+
+      {/* <div className="w-full max-w-[1600px] mx-auto px-4 lg:px-8">
         <div id="content" className="mt-10">
           <CourseContent content={courseDetails.shortName} />
         </div>
@@ -218,7 +227,7 @@ export default function Course() {
           </h2>
           <CourseFeatures features={featuresList} />
         </div>
-      </div> 
+      </div>  */}
 
       <Footer />
     </>
