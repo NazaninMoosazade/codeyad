@@ -26,28 +26,30 @@ export default function SessionChapters({ sessions = [] }) {
         </span>
       </div>
 
-      <Accordion defaultActiveKey="0">
-        <Accordion.Item eventKey="1">
-          <Accordion.Header className="accordion-header font-DanaDemiBold">
-            جلسات دوره
-          </Accordion.Header>
+      {sessions.length === 0 ? (
+        <div className="font-DanaDemiBold text-center p-6 dark:text-white">
+          در حال حاضر دوره‌ای وجود ندارد
+        </div>
+      ) : (
+        <Accordion defaultActiveKey="0">
+          <Accordion.Item eventKey="1">
+            <Accordion.Header className="accordion-header font-DanaDemiBold">
+              جلسات دوره
+            </Accordion.Header>
 
-          {sessions.length === 0 ? (
-            <Accordion.Body className="accordionBody font-DanaDemiBold">
-              هیچ جلسه‌ای وجود ندارد
-            </Accordion.Body>
-          ) : (
-            sessions.map((session, index) => (
+            {sessions.map((session, index) => (
               <Accordion.Body
                 key={session.id || index}
                 className="accordionBody font-Dana"
               >
+                <span className="dark:!text-white">{index + 1}</span>
                 {session.title}
+                <span className="dark:!text-white"> {session.time}</span>
               </Accordion.Body>
-            ))
-          )}
-        </Accordion.Item>
-      </Accordion>
+            ))}
+          </Accordion.Item>
+        </Accordion>
+      )}
     </div>
   );
 }

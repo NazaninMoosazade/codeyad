@@ -1,11 +1,14 @@
-import React from "react";
-import CommentTextArea from "../CommentTextArea/CommentTextArea";
+import React, { useContext } from "react";
+import AuthContext from "../../Context/AuthContext";
 
 export default function QuestionBox() {
+  const authContext = useContext(AuthContext);
+  const { userInfos, isLoggedIn } = useContext(AuthContext);
+
   return (
     <>
       <div className="bg-white dark:!bg-bgDarker h-auto w-auto rounded-xl mt-6 lg:mt-8">
-        <div className="flex relative gap-x-5 lg:p-4">
+        <div className="flex relative gap-x-5 p-3 lg:p-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -23,14 +26,14 @@ export default function QuestionBox() {
           <h4 className="font-DanaDemiBold dark:!text-white lg:text-2xl">
             پرسش و پاسخ
           </h4>
-          <span class="absolute -right-2 block w-1.5 h-[34px] md:h-9.5 bg-red-500 rounded-r-sm "></span>
+          <span class="absolute -right-1 block w-1.5 h-[34px] md:h-9.5 bg-red-500 rounded-r-sm "></span>
         </div>
         {/* <!-- Q&A Rule --> */}
-        <div className="lg:p-4">
+        <div className="p-2.5 lg:p-4">
           <h6 className="font-DanaDemiBold lg:text-lg dark:text-slate-200">
             چگونه سوال خود را مطرح کنم تا به بهترین پاسخ ممکن برسم؟
           </h6>
-          <p className="font-Dana text-lg leading-9 lg:max-w-[820px] dark:text-slate-200">
+          <p className="font-Dana text-sm md:text-lg leading-9 md:leading-9 lg:max-w-[820px] dark:text-slate-200">
             برای اینکه مهارت حل مسئله و دیباگ کردن‌تون رو بالا ببرید، قبل از
             اینکه سوالی بپرسید، با دقت و تمرکز سعی کنید مشکل رو خودتون حل کنید.
             اگه به جواب نرسیدید، می‌تونید از گوگل کمک بگیرید. اگه با خطایی مواجه
@@ -67,7 +70,7 @@ export default function QuestionBox() {
 
             <div className="flex-col pt-4">
               <h6 className="text-lg font-DanaDemiBold dark:!text-white">
-                نازنین موسی زاده
+                  {userInfos.name}
               </h6>
               <p className="font-Dana dark:!text-white">پرسش جدید</p>
             </div>
@@ -88,14 +91,10 @@ export default function QuestionBox() {
                 d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z"
               />
             </svg>
-            <h6 className="font-DanaDemiBold pt-2 text-red-600">لطفا قبل از ثبت پرسش بالاتر بخش قوانین ایجاد سوال را مطالعه کنید</h6>
+            <h6 className="font-DanaDemiBold pt-2 text-red-600">
+              لطفا قبل از ثبت پرسش بالاتر بخش قوانین ایجاد سوال را مطالعه کنید
+            </h6>
           </div>
-
-           <div className="lg:p-4">
-          <CommentTextArea/>
-           </div>
-
-
         </div>
       </div>
     </>

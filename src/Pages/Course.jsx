@@ -6,6 +6,7 @@ import Footer from "../Components/Footer/Footer";
 import StatusMessage from "../Components/StatusMessage/StatusMessage";
 import QuestionBox from "../Components/QuestionBox/QuestionBox";
 import SessionChapters from "../Components/SessionChapters/SessionChapters";
+import CommentsTextArea from "../Components/CommentTextArea/CommentTextArea";
 
 
 
@@ -137,6 +138,10 @@ export default function Course() {
           {/* سمت راست - QuestionBox */}
           <div className="order-1 lg:order-2 lg:col-span-2">
             <QuestionBox />
+            <div className="bg-white dark:!bg-bgDarker h-auto w-auto rounded-xl mt-6 lg:mt-8">
+            <CommentsTextArea comments={courseDetails.comments}/>
+            </div>
+
           </div>
         </div>
       </div>

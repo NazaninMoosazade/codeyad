@@ -7,16 +7,15 @@
 }
 
 .scrollable-session::-webkit-scrollbar-thumb {
-  background-color: #4f46e5; 
+  background-color: #4f46e5;
   border-radius: 10px;
   border: 2px solid transparent;
   background-clip: content-box;
 }
 
 .dark .scrollable-session::-webkit-scrollbar-thumb {
-  background-color: #818cf8; 
+  background-color: #818cf8;
 }
-
 
 .scrollable-session {
   scrollbar-width: thin;
@@ -27,12 +26,9 @@
   scrollbar-color: #818cf8 transparent;
 }
 
-
-
-
 .accordion-header {
-  background-color: #f9fafb; /* خاکستری خیلی روشن */
-  color: #111827; /* مشکی ملایم */
+  /* background-color: #f9fafb; */
+  color: #111827;
   padding: 10px 20px !important;
   border-radius: 8px 8px 0 0;
   font-weight: 600;
@@ -40,41 +36,43 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   box-shadow: 0 2px 6px rgb(0 0 0 / 0.05);
-  
 }
 
 .accordion-header:hover,
 .accordion-header:focus {
-  background-color: #e5e7eb; /* خاکستری ملایم‌تر */
+  background-color: #e5e7eb;
   outline: none;
 }
 
 .dark .accordion-header {
-  background-color: #374151; /* خاکستری تیره */
-  color: #d1d5db; /* خاکستری روشن */
+  background-color: #374151;
+  color: #d1d5db;
   border: 1px solid #4b5563;
   box-shadow: 0 2px 6px rgb(255 255 255 / 0.1);
 }
 
 .dark .accordion-header:hover,
 .dark .accordion-header:focus {
-  background-color: #4b5563; /* خاکستری کمی روشن‌تر */
+  background-color: #4b5563;
 }
 
 .accordionBody {
-  background-color: #ffffff; /* سفید */
-  color: #1f2937; /* مشکی ملایم */
+  background-color: #ffffff;
+  color: #1f2937;
   padding: 15px 20px;
   border-radius: 0 0 8px 8px;
   border: 1px solid #e5e7eb;
   font-size: 14px;
   line-height: 1.6;
   margin-top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .dark .accordionBody {
-  background-color: #1f2937; /* خاکستری خیلی تیره */
-  color: #d1d5db; /* خاکستری روشن */
+  background-color: #1f2937;
+  color: #d1d5db;
   border: 1px solid #374151;
 }
 
