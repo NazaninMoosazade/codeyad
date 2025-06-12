@@ -1,17 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import swal from "sweetalert";
+
 import Header from "../Components/Headers/Header";
 import Footer from "../Components/Footer/Footer";
 import StatusMessage from "../Components/StatusMessage/StatusMessage";
 import QuestionBox from "../Components/QuestionBox/QuestionBox";
 import SessionChapters from "../Components/SessionChapters/SessionChapters";
 import CommentsTextArea from "../Components/CommentTextArea/CommentTextArea";
+import { useSubmitComment } from "../Hooks/useSubmitComment";
 
 export default function Course() {
   const { courseName } = useParams();
+  const localStorageData = JSON.parse(localStorage.getItem("user"));
 
-  const localStorageData = JSON.parse(localStorage.getItem('user'))
+  const [comments, setComments] = useState([]);
 
   const {
     data: courseDetails,
@@ -36,7 +40,34 @@ export default function Course() {
     },
   });
 
-  console.log(courseDetails);
+  // وقتی courseDetails لود شد، کامنت‌ها رو ست کن
+  useEffect(() => {
+    if (courseDetails?.comments?.length) {
+      setComments(courseDetails.comments);
+    }
+  }, [courseDetails]);
+
+  const submitCommentMutation = useSubmitComment(courseName);
+
+  // تابع ارسال کامنت با swal برای نمایش پیام‌ها
+  const submitComment = (newCommentBody) => {
+    submitCommentMutation.mutate(newCommentBody, {
+      onSuccess: () => {
+        swal({
+          title: "کامنت شما با موفقیت ثبت شد",
+          icon: "success",
+          button: "باشه",
+        });
+      },
+      onError: () => {
+        swal({
+          title: "کامنت شما ثبت نشد",
+          icon: "error",
+          button: "باشه",
+        });
+      },
+    });
+  };
 
   if (isLoading)
     return (
@@ -61,8 +92,7 @@ export default function Course() {
                   {courseDetails.name}
                 </span>
                 <span className="bg-bgSky text-white font-Dana p-1.5 lg:p-2.5 rounded-full">
-                  {courseDetails.createdAt?.slice(0, 10)}{" "}
-                  <span> زمان برگزاری </span>
+                  {courseDetails.createdAt?.slice(0, 10)} زمان برگزاری
                 </span>
               </div>
 
@@ -73,29 +103,25 @@ export default function Course() {
               <div className="w-full flex-wrap flex items-center justify-center pb-4 lg:justify-start gap-x-14 lg:gap-x-32">
                 <div className="font-Dana text-white flex gap-x-2.5">
                   <span>آخرین آپدیت</span>
-                  <span>
-                    {courseDetails.updatedAt?.slice(0, 10) ?? "ندارد"}
-                  </span>
+                  <span>{courseDetails.updatedAt?.slice(0, 10) ?? "ندارد"}</span>
                 </div>
               </div>
 
               <div className="w-full flex-wrap flex items-center justify-center pb-4 lg:justify-start gap-x-14">
                 <div className="font-Dana text-white flex gap-x-2">
-                  <span> تعداد دانشجو : </span>
+                  <span>تعداد دانشجو :</span>
                   <span>{courseDetails.courseStudentsCount}</span>
                 </div>
               </div>
 
               <div className="text-textGreen flex items-center justify-center gap-x-2 lg:justify-start pb-4 font-DanaMeduim text-2xl">
-                <span>قیمت دوره : </span>
+                <span>قیمت دوره :</span>
                 {courseDetails.price === 0 ? (
                   <span className="text-sm font-Dana">رایگان</span>
                 ) : (
                   <>
                     <span>{courseDetails.price.toLocaleString("fa-IR")}</span>
-                    <span className="text-sm font-DanaDemiBold mr-1">
-                      تومان
-                    </span>
+                    <span className="text-sm font-DanaDemiBold mr-1">تومان</span>
                   </>
                 )}
               </div>
@@ -127,16 +153,17 @@ export default function Course() {
 
       <div className="mt-7 w-full max-w-[1600px] mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          {/* سمت چپ - SessionChapters */}
           <div className="order-2 lg:order-1 lg:col-span-1">
             <SessionChapters sessions={courseDetails.sessions} />
           </div>
 
-          {/* سمت راست - QuestionBox */}
           <div className="order-1 lg:order-2 lg:col-span-2">
             <QuestionBox />
             <div className="bg-white dark:!bg-bgDarker h-auto w-auto rounded-xl mt-6 lg:mt-8">
-              <CommentsTextArea comments={courseDetails.comments} />
+              <CommentsTextArea
+                submitComment={submitComment}
+                comments={comments}
+              />
             </div>
           </div>
         </div>
