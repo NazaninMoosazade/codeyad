@@ -8,10 +8,10 @@ import QuestionBox from "../Components/QuestionBox/QuestionBox";
 import SessionChapters from "../Components/SessionChapters/SessionChapters";
 import CommentsTextArea from "../Components/CommentTextArea/CommentTextArea";
 
-
-
 export default function Course() {
   const { courseName } = useParams();
+
+  const localStorageData = JSON.parse(localStorage.getItem('user'))
 
   const {
     data: courseDetails,
@@ -26,7 +26,7 @@ export default function Course() {
           method: "GET",
           headers: {
             Authorization: `Bearer ${
-              JSON.parse(localStorage.getItem("user")).token
+              localStorageData === null ? null : localStorageData.token
             }`,
           },
         }
@@ -36,10 +36,7 @@ export default function Course() {
     },
   });
 
-
   console.log(courseDetails);
-  
-
 
   if (isLoading)
     return (
@@ -132,21 +129,18 @@ export default function Course() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {/* سمت چپ - SessionChapters */}
           <div className="order-2 lg:order-1 lg:col-span-1">
-            <SessionChapters sessions={courseDetails.sessions}/>
+            <SessionChapters sessions={courseDetails.sessions} />
           </div>
 
           {/* سمت راست - QuestionBox */}
           <div className="order-1 lg:order-2 lg:col-span-2">
             <QuestionBox />
             <div className="bg-white dark:!bg-bgDarker h-auto w-auto rounded-xl mt-6 lg:mt-8">
-            <CommentsTextArea comments={courseDetails.comments}/>
+              <CommentsTextArea comments={courseDetails.comments} />
             </div>
-
           </div>
         </div>
       </div>
-
-  
 
       <Footer />
     </>
