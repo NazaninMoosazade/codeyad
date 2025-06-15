@@ -40,7 +40,7 @@ export default function Course() {
     },
   });
 
-  // وقتی courseDetails لود شد، کامنت‌ها رو ست کن
+
   useEffect(() => {
     if (courseDetails?.comments?.length) {
       setComments(courseDetails.comments);
@@ -49,7 +49,7 @@ export default function Course() {
 
   const submitCommentMutation = useSubmitComment(courseName);
 
-  // تابع ارسال کامنت با swal برای نمایش پیام‌ها
+
   const submitComment = (newCommentBody) => {
     submitCommentMutation.mutate(newCommentBody, {
       onSuccess: () => {
@@ -162,7 +162,7 @@ export default function Course() {
             <div className="bg-white dark:!bg-bgDarker h-auto w-auto rounded-xl mt-6 lg:mt-8">
               <CommentsTextArea
                 submitComment={submitComment}
-                comments={comments}
+                comments={courseDetails.comments}
               />
             </div>
           </div>

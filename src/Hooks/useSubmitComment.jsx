@@ -27,7 +27,7 @@ export const useSubmitComment = (courseName) => {
       return res.json();
     },
     onSuccess: () => {
-         console.log("✅ Mutation موفق، invalidateQueries اجرا می‌شه");
+        //  console.log("✅ Mutation موفق، invalidateQueries اجرا می‌شه");
       queryClient.invalidateQueries(["course", courseName]);
     },
   });
