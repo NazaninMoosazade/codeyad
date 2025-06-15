@@ -1,6 +1,5 @@
 import Index from "./Pages";
 import Course from "./Pages/Course";
-import CourseCat from "./Pages/CourseCat";
 import MagInfo from "./Pages/MagInfo";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
@@ -15,7 +14,6 @@ const routes = [
   { path: "/", element: <Index /> },
   { path: "course/:courseName", element: <Course /> },
   { path: "/mag/:articleName", element: <MagInfo /> },
-  // { path: "/course-cat/:categoryName", element: <CourseCat /> },
   { path: "/login", element: <Login /> },
   { path: "/register", element: <Register /> },
   { path: "/allCourse", element: <AllCourse /> },
@@ -24,7 +22,7 @@ const routes = [
   { path: "/courses", element: <Courses /> },
   { path: "/search/:name", element: <SearchPage /> },
 
-
+     {path:'adminPanel' , element: }
 
 ];
 
