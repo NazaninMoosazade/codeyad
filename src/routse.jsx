@@ -9,6 +9,9 @@ import Mag from "./Pages/Mag";
 import Courses from "./Pages/Courses";
 import SearchPage from "./Pages/SearchPage";
 
+// Admin Page
+import Panel from "./Pages/adminPanle/Panel";
+import AdminUser from "./Pages/adminPanle/adminUser";
 
 const routes = [
   { path: "/", element: <Index /> },
@@ -22,8 +25,13 @@ const routes = [
   { path: "/courses", element: <Courses /> },
   { path: "/search/:name", element: <SearchPage /> },
 
-     {path:'adminPanel' , element: }
-
+  {
+    path: "/adminPanel",
+    element: <Panel />,
+    children: [
+      { path: "users", element: <AdminUser /> }
+    ],
+  },
 ];
 
 export default routes;
