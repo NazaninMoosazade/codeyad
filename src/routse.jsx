@@ -15,6 +15,7 @@ import AdminUser from "./Pages/adminPanle/adminUser";
 import AdminCourses from "./Pages/adminPanle/AdminCourses";
 import AdminMenus from "./Pages/adminPanle/AdminMenus";
 import AdmiArticles from "./Pages/adminPanle/AdmiArticles";
+import AdminIndex from "./Pages/adminPanle/AdminIndex";
 
 const routes = [
   { path: "/", element: <Index /> },
@@ -29,9 +30,10 @@ const routes = [
   { path: "/search/:name", element: <SearchPage /> },
 
   {
-    path: "/adminPanel/*",
+    path: "/adminPanel",
     element: <Panel />,
     children: [
+       { path: "/adminPanel", element: <AdminIndex /> },
       { path: "users", element: <AdminUser /> },
       { path: "courses", element: <AdminCourses /> },
       { path: "menus", element: <AdminMenus /> },
