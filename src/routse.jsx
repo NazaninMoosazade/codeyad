@@ -13,6 +13,7 @@ import SearchPage from "./Pages/SearchPage";
 import Panel from "./Pages/adminPanle/Panel";
 import AdminUser from "./Pages/adminPanle/adminUser";
 import AdminCourses from "./Pages/adminPanle/AdminCourses";
+import AdminMenus from "./Pages/adminPanle/AdminMenus";
 
 const routes = [
   { path: "/", element: <Index /> },
@@ -32,6 +33,7 @@ const routes = [
     children: [
       { path: "users", element: <AdminUser /> },
       { path: "courses", element: <AdminCourses /> },
+      { path: "menus", element: <AdminMenus /> },
       
 
     ],
