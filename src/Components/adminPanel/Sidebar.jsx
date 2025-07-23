@@ -31,12 +31,12 @@ export default function Sidebar() {
 
       {/* سایدبار */}
       <div
-        className={`fixed top-0 left-0 h-screen w-64 bg-red-600 text-white shadow-lg z-50
+        className={`fixed top-0 left-0 h-screen w-64 bg-blue text-white shadow-lg z-50
           transform transition-transform duration-300
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
           md:translate-x-0 md:static md:flex md:flex-col`}
       >
-        <div className="p-6 text-2xl font-bold border-b border-red-700">
+        <div className="p-6 text-2xl font-bold font-DanaDemiBold border-b border-gray-300">
           پنل مدیریت
         </div>
         <nav className="flex flex-col p-4 space-y-3 flex-1">
@@ -44,13 +44,14 @@ export default function Sidebar() {
             <NavLink
               key={to}
               to={`/adminPanel/${to}`}
-              end={to === ""} //  فقط روی صفحه اصلی
+              end={to === ""}
               className={({ isActive }) =>
-                `block px-4 py-3 rounded-md text-base font-semibold transition-colors ${
-                  isActive
-                    ? "bg-red-800 text-white"
-                    : "text-red-100 hover:bg-red-700 hover:text-white"
-                }`
+                `block px-4 py-3 rounded-md font-Dana no-underline text-base font-semibold transition-all duration-200
+    ${
+      isActive
+        ? "bg-slate-300 text-black "
+        : "text-red-100 hover:bg-black hover:bg-opacity-10 hover:text-white"
+    }`
               }
               onClick={() => setIsOpen(false)}
             >
