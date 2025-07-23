@@ -14,6 +14,7 @@ import Panel from "./Pages/adminPanle/Panel";
 import AdminUser from "./Pages/adminPanle/adminUser";
 import AdminCourses from "./Pages/adminPanle/AdminCourses";
 import AdminMenus from "./Pages/adminPanle/AdminMenus";
+import AdmiArticles from "./Pages/adminPanle/AdmiArticles";
 
 const routes = [
   { path: "/", element: <Index /> },
@@ -34,6 +35,7 @@ const routes = [
       { path: "users", element: <AdminUser /> },
       { path: "courses", element: <AdminCourses /> },
       { path: "menus", element: <AdminMenus /> },
+      { path: "articles", element: <AdmiArticles/> },
       
 
     ],
