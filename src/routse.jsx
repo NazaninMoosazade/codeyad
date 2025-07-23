@@ -18,6 +18,7 @@ import AdmiArticles from "./Pages/adminPanle/AdmiArticles";
 import AdminIndex from "./Pages/adminPanle/AdminIndex";
 import AdminSession from "./Pages/adminPanle/AdminSession";
 import AdminComments from "./Pages/adminPanle/AdminComments";
+import AdminCategory from "./Pages/adminPanle/AdminCategory";
 
 const routes = [
   { path: "/", element: <Index /> },
@@ -35,18 +36,17 @@ const routes = [
     path: "/adminPanel",
     element: <Panel />,
     children: [
-       { path: "/adminPanel", element: <AdminIndex /> },
+      { path: "/adminPanel", element: <AdminIndex /> },
       { path: "users", element: <AdminUser /> },
       { path: "courses", element: <AdminCourses /> },
       { path: "menus", element: <AdminMenus /> },
-      { path: "articles", element: <AdmiArticles/> },
-      { path: "sessions", element: <AdminSession/> },
-      { path: "comments", element: <AdminComments/> },
-      
+      { path: "articles", element: <AdmiArticles /> },
+      { path: "sessions", element: <AdminSession /> },
+      { path: "comments", element: <AdminComments /> },
+      { path: "category", element: <AdminCategory /> },
 
     ],
   },
 ];
-
 
 export default routes;
