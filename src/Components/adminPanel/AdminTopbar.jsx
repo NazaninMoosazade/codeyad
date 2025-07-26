@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import StatusMessage from "../StatusMessage/StatusMessage";
+import AuthContext from "../../Context/AuthContext";
+import swal from "sweetalert";
+import { useNavigate } from "react-router-dom";
+
 
 export default function AdminTopbar() {
+
+  const authContext = useContext(AuthContext)
+  const navigate = useNavigate()
+
   const localStorageData = JSON.parse(localStorage.getItem("user"));
 
   const fetchAdminInfo = async () => {
@@ -17,7 +25,13 @@ export default function AdminTopbar() {
     return res.json();
   };
 
-  const { data: adminInfo, isLoading, isError, error } = useQuery({
+
+  const {
+    data: adminInfo,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
     queryKey: ["adminInfo"],
     queryFn: fetchAdminInfo,
     enabled: !!localStorageData?.token,
@@ -28,23 +42,44 @@ export default function AdminTopbar() {
     retry: 2,
   });
 
+  const logOutAdmin = (event) => {
+    event.preventDefault()
+    
+    swal({
+      title: 'با موفقیت خارج شدید',
+      icon : 'success',
+      buttons: 'ok'
+    }).then(() => {
+      authContext.logout()
+    navigate('/')
+    })
+  }
+
   return (
     <div className="w-full h-20 px-4 md:px-6 mb-5 flex items-center justify-between bg-white dark:bg-darker shadow-sm">
       {/* راست: جستجو */}
       <div className="flex items-center gap-2 flex-shrink-0">
         <div className="relative">
-          <input
+          {/* <input
             type="text"
             placeholder="جستجو..."
-            className="w-40 md:w-56 h-9 font-Dana rounded-lg border border-gray-300 bg-gray-100 text-sm px-3 text-black focus:outline-none focus:ring-2 focus:ring-red-400 transition-all"
-          />
+            className="w-40 md:w-56 h-9 font-Dana rounded-lg border border-gray-300 bg-gray-100 dext-sm px-3 text-black focus:outline-none focus:ring-2 focus:ring-red-400 transition-all"
+          /> */}
+         
+        <button onClick={logOutAdmin}>
+          <a className="font-DanaDemiBold no-underline text-blue hover:text-red-500"> خروج از پنل</a>
+        </button>
+
         </div>
       </div>
 
       {/* چپ: وضعیت یا نام ادمین */}
       <div className="flex items-center gap-2">
         {isLoading && (
-          <StatusMessage status="loading" message="در حال بارگذاری اطلاعات..." />
+          <StatusMessage
+            status="loading"
+            message="در حال بارگذاری اطلاعات..."
+          />
         )}
         {isError && (
           <StatusMessage
