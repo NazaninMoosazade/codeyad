@@ -11,7 +11,7 @@ export default function Sidebar() {
     { to: "menus", label: "منو ها" },
     { to: "articles", label: "مقاله ها" },
     { to: "users", label: "کاربران" },
-    { to: "comments", label: "کامت ها" },
+    { to: "comments", label: "کامنت ها" },
     { to: "category", label: "دسته بندی" },
   ];
 
