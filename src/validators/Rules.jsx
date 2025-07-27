@@ -1,11 +1,17 @@
+export const requiredValue = "REQUIRED";
+export const minValue = "MIN";
+export const maxValue = "MAX";
+export const emailValue = "EMAIL";
+
 const Rules = {
-  requiredValue: "REQUIRED",
-  minValue: "MIN",
-  maxValue: "MAX",
-  emailValue: "EMAIL",
+  requiredValue,
+  minValue,
+  maxValue,
+  emailValue
 };
 
 export default Rules;
+
 
 // const requiredValue = "REQUIRED_VALUE";
 // const minValue = "MIN_VALUE";
