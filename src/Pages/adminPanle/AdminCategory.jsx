@@ -29,42 +29,40 @@ export default function AdminCategory() {
 
   const queryClient = useQueryClient();
 
-const addCategoryMutation = useMutation({
-  mutationFn: async (newCategory) => {
-    const localStorageData = JSON.parse(localStorage.getItem("user"));
-    const response = await fetch("http://localhost:5000/v1/category", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorageData.token}`,
-      },
-      body: JSON.stringify(newCategory),
-    });
-    if (!response.ok) throw new Error("خطا در افزودن دسته‌بندی");
-    return response.json();
-  },
-  onSuccess: () => {
-    swal("دسته‌بندی با موفقیت اضافه شد", { icon: "success" });
-    queryClient.invalidateQueries(["categorys"]); // آپدیت لیست
-  },
-  onError: () => {
-    swal("خطا در افزودن دسته‌بندی", { icon: "error" });
-  },
-});
+  const addCategoryMutation = useMutation({
+    mutationFn: async (newCategory) => {
+      const localStorageData = JSON.parse(localStorage.getItem("user"));
+      const response = await fetch("http://localhost:5000/v1/category", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorageData.token}`,
+        },
+        body: JSON.stringify(newCategory),
+      });
+      if (!response.ok) throw new Error("خطا در افزودن دسته‌بندی");
+      return response.json();
+    },
+    onSuccess: () => {
+      swal("دسته‌بندی با موفقیت اضافه شد", { icon: "success" });
+      queryClient.invalidateQueries(["categorys"]); // آپدیت لیست
+    },
+    onError: () => {
+      swal("خطا در افزودن دسته‌بندی", { icon: "error" });
+    },
+  });
 
-const addNewCategory = (event) => {
-  event.preventDefault();
+  // اضافه کردن دسته بندی
+  const addNewCategory = (event) => {
+    event.preventDefault();
 
-  const newCategory = {
-    title: formState.inputs.title.value,
-    name: formState.inputs.shortName.value,
+    const newCategory = {
+      title: formState.inputs.title.value,
+      name: formState.inputs.shortName.value,
+    };
+
+    addCategoryMutation.mutate(newCategory);
   };
-
-  addCategoryMutation.mutate(newCategory);
-};
-
-
-  
 
   // گرفتن دسته‌بندی‌ها
   const FetchCategory = async () => {
@@ -131,7 +129,11 @@ const addNewCategory = (event) => {
                 id="title"
                 element="input"
                 placeholder="لطفا عنوان را وارد کنید"
-               validations={[{ value: requiredValue }, { value: minValue, min: 8 }, { value: maxValue, max: 20 }]}
+                validations={[
+                  { value: requiredValue },
+                  { value: minValue, min: 8 },
+                  { value: maxValue, max: 20 },
+                ]}
                 onInputHandler={onInputHandler}
               />
               <span className="error-message text-danger"></span>
@@ -145,7 +147,11 @@ const addNewCategory = (event) => {
                 id="shortName"
                 element="input"
                 placeholder="لطفا اسم کوتاه را وارد کنید"
-validations={[{ value: requiredValue }, { value: minValue, min: 8 }, { value: maxValue, max: 20 }]}
+                validations={[
+                  { value: requiredValue },
+                  { value: minValue, min: 8 },
+                  { value: maxValue, max: 20 },
+                ]}
                 onInputHandler={onInputHandler}
               />
               <span className="error-message text-danger"></span>
@@ -153,13 +159,16 @@ validations={[{ value: requiredValue }, { value: minValue, min: 8 }, { value: ma
           </div>
 
           <div className="absolute left-32">
-       <input
-  type="submit"
-  value={addCategoryMutation.isLoading ? "در حال افزودن..." : "افزودن دسته‌بندی جدید"}
-  className="btn btn-primary !font-Dana"
-  onClick={addNewCategory}
-/>
-
+            <input
+              type="submit"
+              value={
+                addCategoryMutation.isLoading
+                  ? "در حال افزودن..."
+                  : "افزودن دسته‌بندی جدید"
+              }
+              className="btn btn-primary !font-Dana"
+              onClick={addNewCategory}
+            />
           </div>
         </form>
       </div>
@@ -170,7 +179,6 @@ validations={[{ value: requiredValue }, { value: minValue, min: 8 }, { value: ma
               <tr className="font-DanaMeduim">
                 <th>شناسه</th>
                 <th>عنوان</th>
-                <th>ویرایش</th>
                 <th>حذف</th>
               </tr>
             </thead>
@@ -179,11 +187,6 @@ validations={[{ value: requiredValue }, { value: minValue, min: 8 }, { value: ma
                 <tr key={category._id} className="font-DanaMeduim">
                   <td>{index + 1}</td>
                   <td>{category.title}</td>
-                  <td>
-                    <button className="bg-blue text-white px-3 py-1 font-DanaMeduim rounded">
-                      ویرایش
-                    </button>
-                  </td>
                   <td>
                     <button
                       onClick={() => removeCategory(category._id)}
