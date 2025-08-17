@@ -1,5 +1,5 @@
 import React from "react";
-import DataTable from "../../Components/adminPanel/DataTable";
+import DataTable from "../../Components/AdminPanel/DataTable.jsx";
 import Table from "react-bootstrap/Table";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import swal from "sweetalert";
