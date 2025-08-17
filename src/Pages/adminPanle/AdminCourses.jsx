@@ -1,11 +1,14 @@
 import React from "react";
 import DataTable from "../../Components/adminPanel/DataTable";
 import Table from "react-bootstrap/Table";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import StatusMessage from "../../Components/StatusMessage/StatusMessage";
+import swal from "sweetalert";
 
 export default function AdminCourses() {
-  // ✅ گرفتن دوره‌ها
+  const queryClient = useQueryClient();
+
+  // گرفتن دوره‌ها
   const FetchCourses = async () => {
     const localStorageData = localStorage.getItem("user");
     if (!localStorageData) throw new Error("دوره ای ثبت نشده است");
@@ -19,6 +22,42 @@ export default function AdminCourses() {
     return response.json();
   };
 
+  // حذف دوره (Mutation)
+  const deleteCourse = async (courseID) => {
+    const localStorageData = JSON.parse(localStorage.getItem("user"));
+    const res = await fetch(`http://localhost:5000/v1/courses/${courseID}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${localStorageData.token}`,
+      },
+    });
+    if (!res.ok) throw new Error("مشکل در حذف دوره");
+    return courseID; // ✅ برای استفاده در onSuccess
+  };
+
+  const mutation = useMutation({
+    mutationFn: deleteCourse,
+    onSuccess: (deletedId) => {
+      // ✅ آپدیت لیست دوره‌ها بدون رفرش کامل
+      queryClient.setQueryData(["courses"], (oldData) => {
+        return oldData.filter((c) => c._id !== deletedId);
+      });
+
+      swal({
+        title: "دوره با موفقیت حذف شد",
+        icon: "success",
+        buttons: "اوکی",
+      });
+    },
+    onError: () => {
+      swal({
+        title: "خطا در حذف دوره",
+        icon: "error",
+        buttons: "اوکی",
+      });
+    },
+  });
+
   const {
     data: courses = [],
     isLoading,
@@ -26,8 +65,6 @@ export default function AdminCourses() {
   } = useQuery({
     queryKey: ["courses"],
     queryFn: FetchCourses,
-    refetchInterval: 5000, // ✅ هر ۵ ثانیه داده‌ها آپدیت می‌شوند
-    refetchOnWindowFocus: true, // ✅ وقتی کاربر به تب برگردد، رفرش می‌شود
   });
 
   if (isLoading)
@@ -78,8 +115,22 @@ export default function AdminCourses() {
                   </button>
                 </td>
                 <td>
-                  <button className="font-Dana bg-red-500 text-white px-3 py-1 rounded text-xs md:text-sm">
-                    حذف
+                  <button
+                    onClick={() => {
+                      swal({
+                        title: "آیا مطمئن هستید؟",
+                        icon: "warning",
+                        buttons: ["نه", "آره"],
+                      }).then((result) => {
+                        if (result) {
+                          mutation.mutate(course._id);
+                        }
+                      });
+                    }}
+                    className="font-Dana bg-red-500 text-white px-3 py-1 rounded text-xs md:text-sm"
+                    disabled={mutation.isLoading}
+                  >
+                    {mutation.isLoading ? "..." : "حذف"}
                   </button>
                 </td>
               </tr>
