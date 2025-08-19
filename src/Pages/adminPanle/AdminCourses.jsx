@@ -128,9 +128,6 @@ export default function AdminCourses() {
   return (
     <>
       <div className="container bg-white h-auto">
-        <div className="font-DanaDemiBold mt-9">
-          <span className="text-blue-700">افزودن دوره جدید</span>
-        </div>
         <form className="grid grid-cols-2 mr-6" onSubmit={addNewCourse}>
           {/* نام دوره */}
           <div className="flex flex-col mt-3">
@@ -253,7 +250,7 @@ export default function AdminCourses() {
                 />
               </label>
             </div>
-            <div className="font-Dana btn btn-primary mt-9 mb-3">
+            <div className="!font-DanaMeduim btn btn-primary mt-9 mb-3">
               <input
                 type="submit"
                 value={addCourseMutation.isLoading ? "در حال افزودن..." : "افزودن"}
