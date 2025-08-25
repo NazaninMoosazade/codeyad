@@ -25,7 +25,11 @@ export default function AdminArticles() {
   );
 
   // گرفتن دسته‌بندی‌ها
-  const { data: categories = [], isLoading, isError } = useQuery({
+  const {
+    data: categories = [],
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["categories"],
     queryFn: async () => {
       const res = await fetch("http://localhost:5000/v1/category");
@@ -98,16 +102,28 @@ export default function AdminArticles() {
   };
 
   if (isLoading)
-    return <StatusMessage status="loading" message="در حال بارگذاری دسته‌بندی‌ها..." />;
+    return (
+      <StatusMessage
+        status="loading"
+        message="در حال بارگذاری دسته‌بندی‌ها..."
+      />
+    );
   if (isError)
-    return <StatusMessage status="error" message="مشکلی در دریافت دسته‌بندی‌ها پیش آمد" />;
+    return (
+      <StatusMessage
+        status="error"
+        message="مشکلی در دریافت دسته‌بندی‌ها پیش آمد"
+      />
+    );
 
   return (
     <>
       <div className="bg-white w-[95%] h-auto mx-auto mt-5">
         <form onSubmit={addNewArticles}>
           <div className="p-3">
-            <h1 className="font-DanaDemiBold text-xl dark:text-white">افزودن مقاله جدید</h1>
+            <h1 className="font-DanaDemiBold text-xl dark:text-white">
+              افزودن مقاله جدید
+            </h1>
 
             <div className="flex flex-col">
               <label className="font-DanaDemiBold mt-4">عنوان</label>
@@ -186,9 +202,13 @@ export default function AdminArticles() {
             <div className="mt-5">
               <input
                 type="submit"
-                value={addArticleMutation.isLoading ? "در حال افزودن..." : "افزودن"}
+                value={
+                  addArticleMutation.isLoading ? "در حال افزودن..." : "افزودن"
+                }
                 className="btn btn-primary !font-DanaDemiBold"
-                disabled={!formState.isFormValid || addArticleMutation.isLoading}
+                disabled={
+                  !formState.isFormValid || addArticleMutation.isLoading
+                }
               />
             </div>
           </div>

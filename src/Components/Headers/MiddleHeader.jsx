@@ -58,7 +58,7 @@ export default function MiddleHeader() {
               {isLoggedIn && userInfos.name ? (
                 <Link
                   to="/register"
-                  className="no-underline text-white bg-blue rounded-lg text-sm p-2 font-Dana"
+                  className="no-underline text-white bg-blue rounded-lg text-sm p-1.5 font-Dana"
                 >
                   {" "}
                   سلام، {userInfos.name} !
