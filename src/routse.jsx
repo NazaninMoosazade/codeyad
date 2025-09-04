@@ -8,6 +8,7 @@ import AboutUs from "./Pages/AboutUs";
 import Mag from "./Pages/Mag";
 import Courses from "./Pages/Courses";
 import SearchPage from "./Pages/SearchPage";
+import Session from "./Pages/Session";
 
 // Admin Page
 import Panel from "./Pages/adminPanle/Panel";
@@ -31,6 +32,7 @@ const routes = [
   { path: "/mag", element: <Mag /> },
   { path: "/courses", element: <Courses /> },
   { path: "/search/:name", element: <SearchPage /> },
+  { path: "course/:sessionID", element: <Session /> },
 
   {
     path: "/adminPanel",
