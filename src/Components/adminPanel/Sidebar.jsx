@@ -5,10 +5,9 @@ export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const links = [
-    { to: "", label: "صفحه اصلی" },
+    // { to: "", label: "صفحه اصلی" },
     { to: "courses", label: "دوره ها" },
     { to: "sessions", label: "جلسات" },
-    { to: "menus", label: "منو ها" },
     { to: "articles", label: "مقاله ها" },
     { to: "users", label: "کاربران" },
     { to: "comments", label: "کامنت ها" },
@@ -18,7 +17,7 @@ export default function Sidebar() {
   return (
     <>
       {/* دکمه موبایل */}
-      <div className="md:hidden p-4 bg-red-700 text-white flex justify-between items-center">
+      <div className="p-4  text-white flex justify-between items-center">
         <div className="text-xl font-bold">پنل مدیریت</div>
         <button
           onClick={() => setIsOpen(!isOpen)}

@@ -23,7 +23,7 @@ import AdminCategory from "./Pages/adminPanle/AdminCategory";
 
 const routes = [
   { path: "/", element: <Index /> },
-  { path: "course/:courseName", element: <Course /> },
+  { path: "/course/:courseName", element: <Course /> },
   { path: "/mag/:articleName", element: <MagInfo /> },
   { path: "/login", element: <Login /> },
   { path: "/register", element: <Register /> },
@@ -32,7 +32,7 @@ const routes = [
   { path: "/mag", element: <Mag /> },
   { path: "/courses", element: <Courses /> },
   { path: "/search/:name", element: <SearchPage /> },
-  { path: "course/:sessionID", element: <Session /> },
+  { path: "/:courseName/:sessionID", element: <Session /> },
 
   {
     path: "/adminPanel",

@@ -1,8 +1,9 @@
 import React from "react";
 import Accordion from "react-bootstrap/Accordion";
 import "./Style.css";
+import { Link } from "react-router-dom";
 
-export default function SessionChapters({ sessions = [] }) {
+export default function SessionChapters({ sessions = []  , course }) {
   return (
     <div className="bg-white dark:!bg-bgDarker overflow-y-scroll scrollable-session z-40 h-[450px] w-auto rounded-xl mt-6 lg:mt-8">
       <div className="flex items-center gap-x-2 lg:p-4 mb-3 pb-3">
@@ -42,9 +43,11 @@ export default function SessionChapters({ sessions = [] }) {
                 key={session.id || index}
                 className="accordionBody font-Dana"
               >
+           <Link to={`/${course}/${session._id}`}>
                 <span className="dark:!text-white">{index + 1}</span>
                 {session.title}
                 <span className="dark:!text-white"> {session.time}</span>
+           </Link>
               </Accordion.Body>
             ))}
           </Accordion.Item>
