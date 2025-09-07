@@ -16,17 +16,6 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* دکمه موبایل */}
-      <div className="p-4  text-white flex justify-between items-center">
-        <div className="text-xl font-bold">پنل مدیریت</div>
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle sidebar"
-          className="text-white text-3xl leading-none"
-        >
-          {isOpen ? "×" : "☰"}
-        </button>
-      </div>
 
       {/* سایدبار */}
 <div

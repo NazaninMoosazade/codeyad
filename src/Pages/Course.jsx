@@ -154,7 +154,7 @@ export default function Course() {
       <div className="mt-7 w-full max-w-[1600px] mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div className="order-2 lg:order-1 lg:col-span-1">
-            <SessionChapters sessions={courseDetails.sessions} course={courseDetails.name} />
+            <SessionChapters sessions={courseDetails.sessions}  />
           </div>
 
           <div className="order-1 lg:order-2 lg:col-span-2">

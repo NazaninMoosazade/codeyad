@@ -12,6 +12,8 @@ export default function AdminSession() {
   const [sessionsVideo, setSessionsVideo] = useState(null);
   const [sessionsStatus, setSessionsStatus] = useState(1);
   const [sessionCourse, setSessionsCourse] = useState("-1");
+
+
   const queryClient = useQueryClient();
 
   const [formState, onInputHandler] = useForm(
@@ -85,6 +87,8 @@ export default function AdminSession() {
     formData.append("time", formState.inputs.time.value);
     formData.append("video", sessionsVideo);
     formData.append("free", sessionsStatus);
+
+
 
     createSessionMutation.mutate(formData);
   };
